@@ -47,6 +47,15 @@ public class HttpSecurityConfig {
                 .authenticationProvider(authenticationProvider)
                 .authorizeHttpRequests( authConfig ->{
 //                    authConfig.requestMatchers("/error").permitAll();
+                    authConfig.requestMatchers(
+                            "/swagger-ui.html",
+                            "/swagger-ui/**",
+                            "/v3/api-docs/**",
+                            "/v3/api-docs.yaml",
+                            "/v3/api-docs.json",
+                            "/swagger-resources/**",
+                            "/webjars/**"
+                    ).permitAll();
                     authConfig.requestMatchers(HttpMethod.OPTIONS, "/**").permitAll();
                     authConfig.requestMatchers(HttpMethod.POST, "/api/auth/**").permitAll();
                     authConfig.requestMatchers(HttpMethod.POST, "/api/mail/sendemail").permitAll();

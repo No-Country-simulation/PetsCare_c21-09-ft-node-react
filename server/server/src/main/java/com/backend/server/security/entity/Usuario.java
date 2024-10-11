@@ -33,7 +33,6 @@ public class Usuario implements UserDetails {
 
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Mascota> misMascotas = new ArrayList<>();
-
 //Para luego darle uso a estos atributos, faltan esas clases
 //    private List<Reserva> misReservasHechas;
 //

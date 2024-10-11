@@ -1,4 +1,6 @@
 package com.backend.server.security.entity;
+import com.backend.server.ServicioPackage.Servicio;
+import com.backend.server.TurnoPackage.Turno;
 import com.backend.server.security.util.Role;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
@@ -38,6 +40,10 @@ public class Usuario implements UserDetails {
 //    private List<Reserva> misReservasHechas;
 //
 //    private List<Reserva> misServiciosReservados;
+
+    private List<Turno> misTurnosDisponibles;
+
+    private List<Servicio> misServiciosOfrecidos;
 
     private String codigoVerificacion;
 

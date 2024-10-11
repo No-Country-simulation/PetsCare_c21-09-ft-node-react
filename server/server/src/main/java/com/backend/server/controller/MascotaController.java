@@ -1,14 +1,13 @@
-package com.backend.server.security.controller;
-
-import com.backend.server.security.entity.Mascota;
-import com.backend.server.security.service.MascotaServiceInterface;
+package com.backend.server.controller;
+import com.backend.server.entity.Mascota;
+import com.backend.server.service.serviceMascota.MascotaServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 import java.util.Optional;
+
 
 @RestController
 @RequestMapping("/api/mascotas")
@@ -23,7 +22,7 @@ public class MascotaController {
         return mascotaService.getMascotas();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/buscar/{id}")
     public ResponseEntity<?> obtenerMascotaPorId(@PathVariable Long id) {
         Optional<Mascota> mascotaOpt = mascotaService.findMascotaById(id);
         if (mascotaOpt.isPresent()) {

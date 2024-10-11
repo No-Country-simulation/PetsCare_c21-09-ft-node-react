@@ -1,5 +1,4 @@
-package com.backend.server.ServicioPackage;
-
+package com.backend.server.entity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -20,9 +19,16 @@ public class Servicio {
 
     private String nombreServicio;
 
-    private String lugarServicio;
+    private boolean lugarFisico;
+
+    private boolean voyAlLugar;
 
     private String observacion;
+
+    private String pais;
+    private String provincia;
+    private String estadoDepartamento;
+    private String direccion;
 
 
 }

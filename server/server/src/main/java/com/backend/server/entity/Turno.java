@@ -1,6 +1,6 @@
-package com.backend.server.TurnoPackage;
+package com.backend.server.entity;
 
-import com.backend.server.ServicioPackage.Servicio;
+import com.backend.server.entity.Servicio;
 import com.backend.server.security.entity.Usuario;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
@@ -28,15 +28,15 @@ public class Turno {
     private boolean reservadoTurno;
 
 
-    @ManyToOne
-    @JoinColumn(name = "idServicio")
-    @JsonBackReference
-    private Servicio servicio;
-
-    @ManyToOne
-    @JoinColumn(name = "idUsuario")
-    @JsonBackReference
-    private Usuario servidor;
+//    @ManyToOne
+//    @JoinColumn(name = "idServicio")
+//    @JsonBackReference
+//    private Servicio servicio;
+//
+//    @ManyToOne
+//    @JoinColumn(name = "idUsuario")
+//    @JsonBackReference
+//    private Usuario servidor;
 
 
 

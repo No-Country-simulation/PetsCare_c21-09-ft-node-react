@@ -1,5 +1,5 @@
-package com.backend.server.security.entity;
-
+package com.backend.server.entity;
+import com.backend.server.security.entity.Usuario;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;

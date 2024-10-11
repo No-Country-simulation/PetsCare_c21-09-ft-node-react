@@ -62,6 +62,8 @@ public class HttpSecurityConfig {
                     authConfig.requestMatchers(HttpMethod.POST, "/api/mail/sendverifyemail").permitAll();
                     authConfig.requestMatchers(HttpMethod.POST, "/api/auth/login").permitAll();
 
+                    authConfig.requestMatchers(HttpMethod.POST, "/api/mascotas/agregar").hasRole("USUARIO");
+
 
                     authConfig.requestMatchers(HttpMethod.PUT, "/api/usuario/admin/update").hasRole("ADMINISTRADOR");
                     authConfig.requestMatchers(HttpMethod.GET, "/api/usuario/**").hasRole("ADMINISTRADOR");

@@ -1,8 +1,6 @@
-package com.backend.server.security.service.impl;
-
-import com.backend.server.security.entity.Mascota;
-import com.backend.server.security.repository.MascotaRepository;
-import com.backend.server.security.service.MascotaServiceInterface;
+package com.backend.server.service.serviceMascota;
+import com.backend.server.entity.Mascota;
+import com.backend.server.repository.MascotaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

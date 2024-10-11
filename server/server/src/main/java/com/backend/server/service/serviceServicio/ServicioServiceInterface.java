@@ -1,5 +1,5 @@
-package com.backend.server.ServicioPackage;
-
+package com.backend.server.service.serviceServicio;
+import com.backend.server.entity.Servicio;
 import java.util.List;
 import java.util.Optional;
 

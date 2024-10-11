@@ -1,4 +1,6 @@
-package com.backend.server.ServicioPackage;
+package com.backend.server.service.serviceServicio;
+import com.backend.server.repository.ServicioRepository;
+import com.backend.server.entity.Servicio;
 import com.backend.server.exceptionHandler.DatabaseException;
 import com.backend.server.exceptionHandler.InvalidDataException;
 import com.backend.server.exceptionHandler.NotFoundException;
@@ -8,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class ServicioServiceImplement implements ServicioServiceInterface{
+public class ServicioServiceImplement implements ServicioServiceInterface {
 
     @Autowired
     private ServicioRepository servicioRepository;

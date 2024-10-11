@@ -1,5 +1,7 @@
-package com.backend.server.ServicioPackage;
+package com.backend.server.controller;
+import com.backend.server.entity.Servicio;
 import com.backend.server.exceptionHandler.NotFoundException;
+import com.backend.server.service.serviceServicio.ServicioServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,26 +16,26 @@ public class ServicioController {
     @Autowired
     private ServicioServiceInterface servicioService;
 
-    @GetMapping
+    @GetMapping("/allservicios")
     public ResponseEntity<List<Servicio>> getAllServicios() {
         List<Servicio> servicios = servicioService.getAllServicios();
         return new ResponseEntity<>(servicios, HttpStatus.OK);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/buscar/{id}")
     public ResponseEntity<Servicio> getServicioById(@PathVariable Long id) {
         Optional<Servicio> servicio = servicioService.findServicioById(id);
         return servicio.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
                 .orElseThrow(() -> new NotFoundException("Servicio no encontrado con el ID: " + id));
     }
 
-    @PostMapping
+    @PostMapping("/crearservicio")
     public ResponseEntity<Servicio> createServicio(@RequestBody Servicio servicio) {
         Servicio nuevoServicio = servicioService.saveServicio(servicio);
         return new ResponseEntity<>(nuevoServicio, HttpStatus.CREATED);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/modificar/{id}")
     public ResponseEntity<Servicio> updateServicio(@PathVariable Long id, @RequestBody Servicio servicio) {
         Optional<Servicio> servicioExistente = servicioService.findServicioById(id);
         if (servicioExistente.isPresent()) {
@@ -45,7 +47,7 @@ public class ServicioController {
         }
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/eliminar/{id}")
     public ResponseEntity<Void> deleteServicio(@PathVariable Long id) {
         servicioService.deleteServicioById(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);

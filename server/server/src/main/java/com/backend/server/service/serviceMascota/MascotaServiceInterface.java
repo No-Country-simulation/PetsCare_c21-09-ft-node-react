@@ -1,7 +1,5 @@
-package com.backend.server.security.service;
-
-import com.backend.server.security.entity.Mascota;
-
+package com.backend.server.service.serviceMascota;
+import com.backend.server.entity.Mascota;
 import java.util.List;
 import java.util.Optional;
 

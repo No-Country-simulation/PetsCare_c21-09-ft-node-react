@@ -6,6 +6,9 @@ import com.backend.server.exceptionHandler.InvalidDataException;
 import com.backend.server.exceptionHandler.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,7 +23,7 @@ public class ServicioServiceImplement implements ServicioServiceInterface {
         try {
             return servicioRepository.findAll();
         } catch (Exception e) {
-            throw new DatabaseException("Error al obtener la lista de servicios");
+            throw new DatabaseException("Error al obtener la lista de servicios", e);
         }
     }
 
@@ -31,7 +34,7 @@ public class ServicioServiceImplement implements ServicioServiceInterface {
         } catch (IllegalArgumentException e) {
             throw new InvalidDataException("Los datos proporcionados para el servicio no son válidos");
         } catch (Exception e) {
-            throw new DatabaseException("Error al guardar el servicio");
+            throw new DatabaseException("Error al guardar el servicio", e);
         }
     }
 
@@ -45,7 +48,7 @@ public class ServicioServiceImplement implements ServicioServiceInterface {
         } catch (NotFoundException e) {
             throw e;
         } catch (Exception e) {
-            throw new DatabaseException("Error al eliminar el servicio");
+            throw new DatabaseException("Error al eliminar el servicio", e);
         }
     }
 
@@ -59,7 +62,29 @@ public class ServicioServiceImplement implements ServicioServiceInterface {
         } catch (NotFoundException e) {
             throw e;
         } catch (Exception e) {
-            throw new DatabaseException("Error al buscar el servicio");
+            throw new DatabaseException("Error al buscar el servicio", e);
         }
     }
+
+    @Override
+    public List<Servicio> findServicioByNombreAndFechaTurno(String nombreServicio, LocalDate fechaTurno) {
+       try{
+           List<Servicio> servicios = servicioRepository.findByNombreServicioContaining(nombreServicio);
+           List<Servicio> serviciosConTurnosDisponibles = new ArrayList<>();
+
+           for (Servicio servicio : servicios) {
+               boolean tieneTurnosDisponibles = servicio.getTurnosDisponibles().stream()
+                       .anyMatch(turno -> turno.getFechaTurno().isEqual(fechaTurno) && !turno.isReservadoTurno());
+
+               if (tieneTurnosDisponibles) {
+                   serviciosConTurnosDisponibles.add(servicio);
+               }
+           }
+
+           return serviciosConTurnosDisponibles;
+       } catch (Exception e){
+        throw new DatabaseException("Error al buscar el servicio", e);
+       }
+    }
+
 }

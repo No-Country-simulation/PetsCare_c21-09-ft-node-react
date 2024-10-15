@@ -1,5 +1,7 @@
 package com.backend.server.security.entity;
 import com.backend.server.entity.Mascota;
+import com.backend.server.entity.Reserva;
+import com.backend.server.entity.Servicio;
 import com.backend.server.security.util.Role;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
@@ -34,14 +36,12 @@ public class Usuario implements UserDetails {
 
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Mascota> misMascotas = new ArrayList<>();
-//Para luego darle uso a estos atributos, faltan esas clases
-//    private List<Reserva> misReservasHechas;
-//
-//    private List<Reserva> misServiciosReservados;
 
-//    private List<Turno> misTurnosDisponibles;
+    @OneToMany(mappedBy = "usuarioQueReserva", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Reserva> misReservasHechas = new ArrayList<>();
 
-//    private List<Servicio> misServiciosOfrecidos;
+    @OneToMany(mappedBy = "prestadorServicio", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Servicio> misServiciosOfrecidos = new ArrayList<>();
 
     private String codigoVerificacion;
 

@@ -1,15 +1,11 @@
 package com.backend.server.entity;
-
-import com.backend.server.entity.Servicio;
-import com.backend.server.security.entity.Usuario;
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import java.time.LocalDate;
 import java.time.LocalTime;
+
 
 @Data
 @NoArgsConstructor
@@ -28,15 +24,9 @@ public class Turno {
     private boolean reservadoTurno;
 
 
-//    @ManyToOne
-//    @JoinColumn(name = "idServicio")
-//    @JsonBackReference
-//    private Servicio servicio;
-//
-//    @ManyToOne
-//    @JoinColumn(name = "idUsuario")
-//    @JsonBackReference
-//    private Usuario servidor;
+    @ManyToOne
+    @JoinColumn(name = "idServicio")
+    private Servicio servicio;
 
 
 

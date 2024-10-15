@@ -65,6 +65,23 @@ public class HttpSecurityConfig {
                     authConfig.requestMatchers(HttpMethod.POST, "/api/mascotas/agregar").hasRole("USUARIO");
 
 
+                    authConfig.requestMatchers(HttpMethod.GET, "/api/servicios/allservicios").permitAll();
+                    authConfig.requestMatchers(HttpMethod.GET, "/api/servicios/buscar/{id}").permitAll();
+                    authConfig.requestMatchers(HttpMethod.POST, "/api/servicios/crearservicio").hasRole("PRESTADORSERVICIO");
+                    authConfig.requestMatchers(HttpMethod.PUT, "/api/servicios/modificar/{id}").hasRole("PRESTADORSERVICIO");
+                    authConfig.requestMatchers(HttpMethod.DELETE, "/api/servicios/eliminar/{id}").hasRole("PRESTADORSERVICIO");
+                    authConfig.requestMatchers(HttpMethod.GET, "/api/servicios/buscarpornombreservicioyfecha").permitAll();
+
+                    authConfig.requestMatchers(HttpMethod.GET, "/api/turnos/todos").permitAll();
+                    authConfig.requestMatchers(HttpMethod.GET, "/api/turnos/{idTurno}").permitAll();
+                    authConfig.requestMatchers(HttpMethod.GET, "/api/turnos/fecha/{fechaTurno}").permitAll();
+                    authConfig.requestMatchers(HttpMethod.GET, "/api/turnos/servicio/{idServicio}").hasRole("USUARIO");
+                    authConfig.requestMatchers(HttpMethod.GET, "/api/turnos/disponibles").hasRole("USUARIO");
+                    authConfig.requestMatchers(HttpMethod.GET, "/api/turnos/disponibles/servicio/{idServicio}").hasRole("USUARIO");
+                    authConfig.requestMatchers(HttpMethod.GET, "/api/turnos/disponibles/servicio/{idServicio}/fecha/{fechaTurno}/hora/{horaTurno}").hasRole("USUARIO");
+                    authConfig.requestMatchers(HttpMethod.POST, "/api/turnos/agregarturno").hasRole("PRESTADORSERVICIO");
+                    authConfig.requestMatchers(HttpMethod.DELETE, "/api/turnos/delete/{idTurno}").hasRole("PRESTADORSERVICIO");
+
                     authConfig.requestMatchers(HttpMethod.PUT, "/api/usuario/admin/update").hasRole("ADMINISTRADOR");
                     authConfig.requestMatchers(HttpMethod.GET, "/api/usuario/**").hasRole("ADMINISTRADOR");
                     authConfig.requestMatchers(HttpMethod.DELETE, "/api/usuario/**").hasRole("ADMINISTRADOR");

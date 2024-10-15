@@ -3,9 +3,12 @@ import com.backend.server.entity.Servicio;
 import com.backend.server.exceptionHandler.NotFoundException;
 import com.backend.server.service.serviceServicio.ServicioServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -51,5 +54,21 @@ public class ServicioController {
     public ResponseEntity<Void> deleteServicio(@PathVariable Long id) {
         servicioService.deleteServicioById(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    @GetMapping("/buscarpornombreservicioyfecha")
+    public ResponseEntity<List<Servicio>> buscarServicioPorNombreYFecha(
+            @RequestParam String nombreServicio,
+            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fechaTurno) {
+
+        try {
+            List<Servicio> servicios = servicioService.findServicioByNombreAndFechaTurno(nombreServicio, fechaTurno);
+            if (servicios.isEmpty()) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+            }
+            return ResponseEntity.ok(servicios);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        }
     }
 }

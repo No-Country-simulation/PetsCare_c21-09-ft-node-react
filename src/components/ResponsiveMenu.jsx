@@ -1,6 +1,5 @@
-import PropTypes from 'prop-types';
+import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
-
 
 const ResponsiveMenu = ({ open }) => {
   return (
@@ -21,6 +20,7 @@ const ResponsiveMenu = ({ open }) => {
                             <li className=" hover:scale-125 transition duration-300 ease-in-out">Veterinarias</li>
                             <li className=" hover:scale-125 transition duration-300 ease-in-out">Paseadores</li>
                             <li className=" hover:scale-125 transition duration-300 ease-in-out">Cuidados</li>
+                            
                         </ul>
                         <div className="flex flex-col gap-4 pt-5 px-5">
                             <button className="rounded-lg border-2 bg-white text-secondary border-secondary transition duration-300 ease-in-out px-6 py-2 ">Registrarse</button>
@@ -33,9 +33,5 @@ const ResponsiveMenu = ({ open }) => {
     </AnimatePresence>
   )
 }
-
-ResponsiveMenu.propTypes = {
-    open: PropTypes.bool.isRequired,
-  };
 
 export default ResponsiveMenu;

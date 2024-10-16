@@ -1,6 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import './App.css'
+import './css/app.css';
 import Home from "./pages/Home";
+import NavBar from "./components/navbar";
+import Footer from "./components/Footer";
 
 function App() {
   
@@ -10,7 +12,7 @@ function App() {
        <>
       <BrowserRouter>
      
-         {/* ElComponente Header */}
+         <NavBar/>
    
          
           
@@ -24,7 +26,7 @@ function App() {
 
      
 
-        {/* El componente Footer */}
+       <Footer/>
           
        
   

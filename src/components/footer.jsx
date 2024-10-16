@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from "react";
 
 const Footer = () => {
   const [showTerms, setShowTerms] = useState(false);
@@ -9,7 +9,7 @@ const Footer = () => {
 
   return (
     <footer className="bg-main-blue text-white py-8  flex flex-col">
-      <div className="container mx-auto px-4 ">
+      <div className="w-full px-4 ">
         <div className="flex flex-col flex-wrap justify-between items-start md:flex-row md:justify-between  ">
           <div className="flex flex-col flex-wrap justify-between gap-4 w-full md:w-1/3 mb-6 md:mb-0">
             <a href='' className='text-white font-bold hover:text-light-violet hover:fill-light-violet  transition duration-300'>
@@ -24,11 +24,11 @@ const Footer = () => {
               <path d="M26 14.9125V23C26 24.0608 25.5786 25.0783 24.8284 25.8284C24.0783 26.5785 23.0609 27 22 27H10C8.93913 27 7.92172 26.5785 7.17157 25.8284C6.42143 25.0783 6 24.0608 6 23V14.9125" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none" />
             </svg>
             </a>
-            <h3 className="text-2xl font-bold mb-2">Cuidado Peludo</h3>
+            <h3 className="text-2xl font-bold mb-2">Cuidados Peludos</h3>
             </div>
           <div className='flex flex-col md:mx-auto'> 
             <h3 className='text-2xl font-bold mb-2'>Contacto</h3>
-            <p  className='text-white font-bold  '>Email: Ejemplo@gmail.com</p>
+            <p  className='text-white font-bold  '>Email: contacto@cuidadospeludos.com</p>
             <p  className='text-white font-bold  '>Telefono: +54 9 55555555</p>
           </div>
           

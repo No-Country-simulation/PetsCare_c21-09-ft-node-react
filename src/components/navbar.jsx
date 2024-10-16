@@ -37,7 +37,10 @@ const NavBar = () => {
                   <button className="text-2xl hover:bg-secondary hover:text-white rounded-full p-2 duration-300">
                     <CiSearch />
                   </button>
-                  <button className="hover:bg-secondary text-secondary font-semibold hover:text-white rounded-lg border-2 border-secondary transition duration-300 ease-in-out px-6 py-2 hidden md:block">Registrarse</button>
+                  <div className="flex gap-2">
+                    <button className="hover:bg-secondary text-secondary font-semibold hover:text-white rounded-lg border-2 border-secondary transition duration-300 ease-in-out px-6 py-2 hidden md:block">Registrarse</button>
+                    <button className="hover:bg-secondary text-secondary font-semibold hover:text-white rounded-lg border-2 border-secondary transition duration-300 ease-in-out px-6 py-2 hidden md:block">Iniciar Sesion</button>
+                  </div>
                 </div>
                 {/* Mobile hamburger Menu section */}
                 <div className="md:hidden" onClick={() => setOpen(!open)}>

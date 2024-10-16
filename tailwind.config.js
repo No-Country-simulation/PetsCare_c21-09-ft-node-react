@@ -6,13 +6,13 @@ export default {
   ],
   theme: {
     extend: {
-      colors:{
+      colors: {
+        primary: "#2e4053",
+        secondary: "#3498db",
         'main-blue':' #60A5FA',
         'light-blue': '#60A5FA99',
         'light-violet': '#AEB0B3',
-        primary: "#2e4053",
-        secondary: "#3498db",
-      }      
+      },
       container: {
         center: true,
         padding: {
@@ -27,4 +27,3 @@ export default {
   },
   plugins: [],
 }
-

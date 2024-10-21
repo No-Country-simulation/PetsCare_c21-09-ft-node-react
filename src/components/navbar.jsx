@@ -5,7 +5,7 @@ import { SiDatadog } from "react-icons/si";
 import { MdMenu } from "react-icons/md";
 import ResponsiveMenu from "./ResponsiveMenu";
 
-const NavBar = () => {
+const NavBar = ({setShowLogin}) => {
   const [open, setOpen] = React.useState( false );
   return (
     <>
@@ -38,8 +38,8 @@ const NavBar = () => {
                     <CiSearch />
                   </button>
                   <div className="flex gap-2">
-                    <button className="hover:bg-secondary text-secondary font-semibold hover:text-white rounded-lg border-2 border-secondary transition duration-300 ease-in-out px-6 py-2 hidden md:block">Registrarse</button>
-                    <button className="hover:bg-secondary text-secondary font-semibold hover:text-white rounded-lg border-2 border-secondary transition duration-300 ease-in-out px-6 py-2 hidden md:block">Iniciar Sesion</button>
+                  <button  onClick={()=>setShowLogin(true)} className="hover:bg-secondary text-secondary font-semibold hover:text-white rounded-lg border-2 border-secondary transition duration-300 ease-in-out px-6 py-2 hidden md:block">Iniciar Sesion</button>
+                   
                   </div>
                 </div>
                 {/* Mobile hamburger Menu section */}

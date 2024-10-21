@@ -2,9 +2,10 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import React from "react";
 
 import { div } from "framer-motion/client";
-import logo from "./assets/logoPets.png";
-import Banner from "./components/Banner";
+
+import LogProfile from "./components/logProfile";
 import NavBar from "./components/NavBar";
+import servicesProfile from "./components/servicesProfile";
 import Footer from "./components/Footer";
 
 function App() {
@@ -17,7 +18,8 @@ function App() {
         <div className="overflow-x-hidden">
           <NavBar />  
         </div>
-        <Banner />
+        <LogProfile />
+        <servicesProfile />
 
         <Footer />
       </div>

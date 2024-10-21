@@ -4,6 +4,7 @@ const Footer = () => {
   const [showTerms, setShowTerms] = useState(false);
 
   const toggleTerms = () => {
+    console.log("Estoy funcionando")
     setShowTerms(!showTerms);
   };
 
@@ -53,7 +54,7 @@ const Footer = () => {
               6. No nos hacemos responsables por lesiones o enfermedades que ocurran durante el cuidado, a menos que se demuestre negligencia por nuestra parte.<br />
               7. El pago completo se requiere al momento de la reserva o al dejar a la mascota, según el servicio.<br />
               8. Las cancelaciones deben hacerse con al menos 24 horas de anticipación para recibir un reembolso completo.<br />
-              9. Al utilizar nuestros servicios, usted acepta estos términos y condiciones.
+              9. Al utilizar nuestros servicios, usted acepta estos términos y condicioneAS.
             </p>
           </div>
         )}

@@ -16,6 +16,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/turnos")
+@CrossOrigin(origins = "http://localhost:5173")
 public class TurnoController {
 
     @Autowired
@@ -104,16 +105,16 @@ public class TurnoController {
         }
     }
 
-    @PostMapping("/agregarturno")
-    public ResponseEntity<Turno> createTurno(@RequestBody Turno turno) {
+    @PostMapping("/agregarturnos")
+    public ResponseEntity<List<Turno>> createTurnos(@RequestBody List<Turno> turnos) {
         try {
-            Turno nuevoTurno = turnoService.createTurno(turno);
-            return ResponseEntity.status(HttpStatus.CREATED).body(nuevoTurno);
+            // Guardar cada turno en la base de datos
+            List<Turno> nuevosTurnos = turnoService.createTurnos(turnos);
+            return ResponseEntity.status(HttpStatus.CREATED).body(nuevosTurnos);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
     }
-
     @DeleteMapping("/delete/{idTurno}")
     public ResponseEntity<Void> deleteTurno(@PathVariable Long idTurno) {
         try {

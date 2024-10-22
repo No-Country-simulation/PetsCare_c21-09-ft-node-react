@@ -1,0 +1,36 @@
+<configuration>
+    <!-- Appender para escribir en la consola -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Appender para escribir en un archivo con rotación diaria -->
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!-- Ruta del archivo de log -->
+        <file>logs/myapp.log</file>
+
+        <!-- Configurar una política de rotación basada en el tiempo -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- Nombre de los archivos rotados, con fecha incluida -->
+            <fileNamePattern>logs/myapp.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <!-- Mantener los últimos 5 días de logs -->
+            <maxHistory>5</maxHistory>
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Configurar el root logger para escribir tanto en consola como en archivo -->
+    <root level="info">
+        <appender-ref ref="CONSOLE" />
+        <appender-ref ref="FILE" />
+    </root>
+
+    <!-- Configurar logging específico para paquetes -->
+    <logger name="com.backend.server" level="debug"/>
+</configuration>
+

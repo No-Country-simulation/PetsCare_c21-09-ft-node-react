@@ -1,11 +1,10 @@
 package com.backend.server.entity;
 import com.backend.server.security.entity.Usuario;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +12,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@JsonIgnoreProperties({"prestadorServicio"})
 public class Servicio {
 
     @Id
@@ -32,13 +32,19 @@ public class Servicio {
     private String estadoDepartamento;
     private String direccion;
 
+    private String imagenServicio;
 
-    @ManyToOne
-    @JoinColumn(name = "idUsuario")
-    @JsonIgnore
+    private double latitud;
+    private double longitud;
+
+
+    @OneToOne
+    @JoinColumn(name = "idUsuario", referencedColumnName = "idUsuario")
+    @JsonBackReference
     private Usuario prestadorServicio;
 
     @OneToMany(mappedBy = "servicio", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private List<Turno> turnosDisponibles = new ArrayList<>();
 
 

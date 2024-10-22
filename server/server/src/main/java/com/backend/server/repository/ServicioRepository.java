@@ -1,6 +1,7 @@
 package com.backend.server.repository;
 
 import com.backend.server.entity.Servicio;
+import com.backend.server.security.entity.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -10,4 +11,8 @@ import java.util.List;
 public interface ServicioRepository extends JpaRepository<Servicio, Long> {
 //    Este es usado para el buscador de la aapp
     List<Servicio> findByNombreServicioContaining(String nombreServicio);
+
+//    traer servicio por id usuario
+List<Servicio> findByPrestadorServicio(Usuario usuario);
+
 }

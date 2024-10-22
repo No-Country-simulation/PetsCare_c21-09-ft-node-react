@@ -4,6 +4,8 @@ import com.backend.server.entity.Reserva;
 import com.backend.server.entity.Servicio;
 import com.backend.server.security.util.Role;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,6 +21,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonIgnoreProperties({"servicio"})
 @Entity
 public class Usuario implements UserDetails {
     @Id
@@ -40,8 +43,9 @@ public class Usuario implements UserDetails {
     @OneToMany(mappedBy = "usuarioQueReserva", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Reserva> misReservasHechas = new ArrayList<>();
 
-    @OneToMany(mappedBy = "prestadorServicio", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Servicio> misServiciosOfrecidos = new ArrayList<>();
+    @OneToOne(mappedBy = "prestadorServicio", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
+    private Servicio servicio;
 
     private String codigoVerificacion;
 

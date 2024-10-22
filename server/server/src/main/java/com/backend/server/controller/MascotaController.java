@@ -11,7 +11,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/mascotas")
-@CrossOrigin(origins = "http://localhost:8085")
+@CrossOrigin(origins = "http://localhost:5173")
 public class MascotaController {
 
     @Autowired

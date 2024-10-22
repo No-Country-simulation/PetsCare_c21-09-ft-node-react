@@ -4,6 +4,8 @@ import com.backend.server.entity.Servicio;
 import com.backend.server.exceptionHandler.DatabaseException;
 import com.backend.server.exceptionHandler.InvalidDataException;
 import com.backend.server.exceptionHandler.NotFoundException;
+import com.backend.server.security.entity.Usuario;
+import com.backend.server.security.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +20,9 @@ public class ServicioServiceImplement implements ServicioServiceInterface {
     @Autowired
     private ServicioRepository servicioRepository;
 
+    @Autowired
+    private UsuarioRepository usuarioRepository;
+
     @Override
     public List<Servicio> getAllServicios() {
         try {
@@ -30,10 +35,18 @@ public class ServicioServiceImplement implements ServicioServiceInterface {
     @Override
     public Servicio saveServicio(Servicio servicio) {
         try {
+            Usuario usuarioPrestador = usuarioRepository.findById(servicio.getPrestadorServicio().getIdUsuario())
+                    .orElseThrow(() -> new NotFoundException("Usuario no encontrado con ID: " + servicio.getPrestadorServicio().getIdUsuario()));
+            servicio.setPrestadorServicio(usuarioPrestador);
+
+            // Imprimir el servicio antes de guardarlo
+            System.out.println("Servicio a guardar: " + servicio);
+
             return servicioRepository.save(servicio);
         } catch (IllegalArgumentException e) {
             throw new InvalidDataException("Los datos proporcionados para el servicio no son válidos");
         } catch (Exception e) {
+            e.printStackTrace(); // Imprime el stack trace completo para obtener más detalles
             throw new DatabaseException("Error al guardar el servicio", e);
         }
     }
@@ -85,6 +98,18 @@ public class ServicioServiceImplement implements ServicioServiceInterface {
        } catch (Exception e){
         throw new DatabaseException("Error al buscar el servicio", e);
        }
+    }
+
+    @Override
+    public List<Servicio> findServiciosByUsuarioId(Long idUsuario) {
+        try{
+
+            Usuario usuario = usuarioRepository.findById(idUsuario).
+                    orElseThrow(() -> new NotFoundException("Usuario no encontrado con ID: "));
+            return servicioRepository.findByPrestadorServicio(usuario);
+        } catch (Exception e){
+            throw new DatabaseException("Error al buscar el servicio por usuario", e);
+        }
     }
 
 }

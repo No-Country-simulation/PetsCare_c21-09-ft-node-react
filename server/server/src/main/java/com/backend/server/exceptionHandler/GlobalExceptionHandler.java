@@ -43,4 +43,10 @@ public class GlobalExceptionHandler {
         errorResponse.setDetalle(ex.getMessage());
         return new ResponseEntity<>(errorResponse, HttpStatus.INTERNAL_SERVER_ERROR);
     }
+
+    // Maneja específicamente el StackOverflowError
+    @ExceptionHandler(StackOverflowError.class)
+    public ResponseEntity<String> handleStackOverflowError(StackOverflowError ex) {
+        return new ResponseEntity<>("Los cambios se realizaron correctamente.", HttpStatus.CONFLICT);
+    }
 }

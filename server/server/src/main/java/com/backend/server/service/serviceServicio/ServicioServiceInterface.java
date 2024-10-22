@@ -18,5 +18,6 @@ public interface ServicioServiceInterface {
 
     List<Servicio> findServicioByNombreAndFechaTurno(String nombreServicio, LocalDate fechaTurno);
 
+    List<Servicio> findServiciosByUsuarioId(Long idUsuario);
 
 }

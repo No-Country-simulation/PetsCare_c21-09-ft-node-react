@@ -28,7 +28,7 @@ public interface TurnoServiceInterface {
             LocalTime horaTurno
     );
 
-    Turno createTurno(Turno turno);
+    List<Turno> createTurnos(List<Turno> turnos);
 
     void deleteTurno(Long idTurno);
 }

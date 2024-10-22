@@ -1,4 +1,5 @@
 package com.backend.server.entity;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -26,6 +27,7 @@ public class Turno {
 
     @ManyToOne
     @JoinColumn(name = "idServicio")
+    @JsonBackReference
     private Servicio servicio;
 
 

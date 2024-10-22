@@ -95,14 +95,17 @@ public class TurnoServiceImplement implements TurnoServiceInterface{
     }
 
     @Override
-    public Turno createTurno(Turno turno) {
+    public List<Turno> createTurnos(List<Turno> turnos) {
         try {
-            turno.setReservadoTurno(false); // Siempre establecer como no reservado inicialmente
-            return turnoRepository.save(turno);
+            for (Turno turno : turnos) {
+                turno.setReservadoTurno(false);  // Marcar todos los turnos como no reservados por defecto
+            }
+            return turnoRepository.saveAll(turnos);  // Guardar todos los turnos en la base de datos
         } catch (Exception e) {
-            throw new DatabaseException("Error al crear el turno", e);
+            throw new DatabaseException("Error al crear los turnos.", e);
         }
     }
+
 
     @Override
     public void deleteTurno(Long idTurno) {

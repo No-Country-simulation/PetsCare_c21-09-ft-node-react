@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Data
@@ -18,7 +19,7 @@ public class Reserva {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long idReserva;
 
-    private String fechaReserva;
+    private LocalDate fechaReserva;
 
     @ManyToOne
     @JoinColumn(name = "idUsuarioReserva")
@@ -37,4 +38,20 @@ public class Reserva {
     @ManyToOne
     @JoinColumn(name = "idUsuarioPrestaServicio")
     private Usuario prestadorServicio;
+
+    @ManyToOne
+    @JoinColumn(name = "idMascota")
+    private Mascota mascotaReserva;
+
+
+    @Transient // se obtiene el servicio del turno
+    private Servicio servicio;
+
+
+    public Servicio getServicio() {
+        if (this.turnos != null && !this.turnos.isEmpty()) {
+            return this.turnos.get(0).getServicio(); // Tomar el servicio del primer turno
+        }
+        return null;
+    }
 }

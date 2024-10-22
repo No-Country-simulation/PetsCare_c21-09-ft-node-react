@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import './LoginPopup.css'
 import { assets } from '../assets/assets'
 
@@ -6,6 +6,25 @@ const LoginPopup = ({setShowLogin}) => {
 
 
   const[currState, setCurrentState]=useState("Login")
+  const [data, setData]=useState({
+    name:"",
+    lastname:"",
+    phone:"",
+    role:"",
+    email:"",
+    password:""
+  })
+
+  const onChangeHandler=(event)=>{
+    const name= event.target.name
+    const value= event.target.value
+    setData(data=>({...data, [name]:value}))
+  }
+
+    useEffect(()=>{
+    console.log(data)
+  }, [data])
+
 
   return (
     <div className='login-popup'>
@@ -30,13 +49,17 @@ const LoginPopup = ({setShowLogin}) => {
       <div class="space-y-4">
         <input
           name="name"
+          value={data.name}
+          onChange={onChangeHandler}
           type="text"
           placeholder="Your Name"
           required
           class="shadow appearance-none border rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
         />
         <input
-          name="lastName"
+          name="lastname"
+          value={data.lastname}
+          onChange={onChangeHandler}
           type="text"
           placeholder="Your Last Name"
           required
@@ -44,13 +67,17 @@ const LoginPopup = ({setShowLogin}) => {
         />
         <input
           name="phone"
+          value={data.phone}
+          onChange={onChangeHandler}
           type="text"
           placeholder="Your Phone"
           required
           class="shadow appearance-none border rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
         />
         <select
-          name="Role"
+          name="role"
+          value={data.role}
+          onChange={onChangeHandler}
           required
           class="shadow appearance-none border rounded-lg w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
         >
@@ -65,6 +92,8 @@ const LoginPopup = ({setShowLogin}) => {
     <div>
       <input
         name="email"
+        value={data.email}
+          onChange={onChangeHandler}
         type="email"
         placeholder="Your Email"
         required
@@ -75,6 +104,8 @@ const LoginPopup = ({setShowLogin}) => {
     <div>
       <input
         name="password"
+        value={data.password}
+          onChange={onChangeHandler}
         type="password"
         placeholder="Your Password"
         required

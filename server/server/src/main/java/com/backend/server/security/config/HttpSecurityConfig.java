@@ -62,7 +62,13 @@ public class HttpSecurityConfig {
                     authConfig.requestMatchers(HttpMethod.POST, "/api/mail/sendverifyemail").permitAll();
                     authConfig.requestMatchers(HttpMethod.POST, "/api/auth/login").permitAll();
 
+                    authConfig.requestMatchers(HttpMethod.GET, "/api/mascotas/listar").permitAll();
+                    authConfig.requestMatchers(HttpMethod.GET, "/api/mascotas/buscar/{id}").permitAll();
+                    authConfig.requestMatchers(HttpMethod.GET, "/api/mascotas/usuario/{userId}").hasRole("USUARIO");
+
                     authConfig.requestMatchers(HttpMethod.POST, "/api/mascotas/agregar").hasRole("USUARIO");
+
+                    authConfig.requestMatchers(HttpMethod.DELETE, "/api/mascotas/eliminar/{id}").hasRole("USUARIO");
 
 
                     authConfig.requestMatchers(HttpMethod.GET, "/api/servicios/allservicios").permitAll();

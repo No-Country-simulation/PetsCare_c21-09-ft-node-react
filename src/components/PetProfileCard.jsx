@@ -1,9 +1,15 @@
-import { useState } from 'react'
+import { useState } from 'react';
+import PropTypes from 'prop-types';
+import { urlImage } from '../js/globalApi';
+import VistaEnlacesAdminUserPet from "../components/VistaEnlaceAdminUserPet";
+import VistaEnlaceAdminUserPet from '../components/VistaEnlaceAdminUserPet';
 
 function PetProfileCard({ pet }) {
   const [isExpanded, setIsExpanded] = useState(false)
 
   return (
+    <>
+    <div className="div">
     <div 
       className={`bg-white rounded-lg shadow-md transition-all duration-300 ${
         isExpanded ? 'w-full col-span-2' : 'w-full cursor-pointer'
@@ -11,11 +17,11 @@ function PetProfileCard({ pet }) {
       onClick={() => !isExpanded && setIsExpanded(true)}
     >
       <div className={`flex ${isExpanded ? 'flex-row' : 'flex-col'}`}>
-        <img 
-          src={pet.image} 
-          alt={pet.name} 
-          className={`rounded-t-lg ${isExpanded ? 'w-1/3 h-full object-cover rounded-l-lg rounded-t-none' : 'w-full h-32 object-cover'}`}
-        />
+      <img 
+  src={urlImage + pet.imagePet} 
+  alt={pet.name} 
+  className={`rounded-t-lg ${isExpanded ? 'w-1/3 h-2/3 object-cover rounded-l-lg rounded-t-none' : 'w-full h-32 object-cover'} max-w-full max-h-full`}
+/>
         <div className={`p-4 ${isExpanded ? 'w-2/3' : 'w-full'}`}>
           <h2 className="text-xl font-bold mb-2">{pet.name}</h2>
           {isExpanded ? (
@@ -47,8 +53,25 @@ function PetProfileCard({ pet }) {
           )}
         </div>
       </div>
+      
     </div>
+    <VistaEnlaceAdminUserPet/>
+    </div>
+    </>
+   
+    
   )
 }
+
+PetProfileCard.propTypes = {
+  pet: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    imagePet: PropTypes.string.isRequired,
+    vaccinated: PropTypes.bool.isRequired,
+    personality: PropTypes.string.isRequired,
+    weight: PropTypes.number.isRequired,
+    details: PropTypes.string.isRequired,
+  }).isRequired,
+};
 
 export default PetProfileCard

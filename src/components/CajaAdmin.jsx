@@ -26,7 +26,7 @@ export default function CajaAdmin() {
           setMostrarAdministracion(true);
         } else if (userRole === 'USUARIO') {
           setNombreRol("MIS MASCOTAS");
-          setRedirect('/mis-mascotas');
+          setRedirect('/admin-mascotas');
           setMostrarAdministracion(true);
         } else {
           setMostrarAdministracion(false); // Usuario no autorizado

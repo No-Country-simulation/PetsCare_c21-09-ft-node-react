@@ -11,4 +11,6 @@ public interface MascotaServiceInterface {
     Mascota saveMascota(Mascota mascota);
 
     void deleteMascota(Long id);
+
+    List<Mascota> getMascotasByUsuarioId(Long idUsuario);
 }

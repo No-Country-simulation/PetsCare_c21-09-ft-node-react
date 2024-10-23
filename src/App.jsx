@@ -14,8 +14,12 @@ import Register from "./components/Register";
 import VerifyCode from "./components/VerifyCode";
 import AdminServicios from "./pages/AdminServicios";
 import AuthPrestadorServicio from "./auth/AuthPrestadorServicio";
-import AgregarServicio from "./components/AgregarServicio";
+import AuthUsuario from "./auth/AuthUsuario";
+import AgregarServicio from "./pages/AgregarServicio";
 import EditarServicio from "./pages/EditarServicio";
+import AdminMascotas from "./pages/AdminMascotas";
+import AgregarMascota from "./pages/AgregarMascota";
+import AdministrarTurnosPrestador from "./pages/AdministrarTurnosPrestador";
 
 function App() {
   
@@ -42,6 +46,12 @@ function App() {
             <Route path="/mis-servicios" element={<AuthPrestadorServicio><AdminServicios/></AuthPrestadorServicio>} />
             <Route path="/agregar-servicio" element={<AuthPrestadorServicio><AgregarServicio/></AuthPrestadorServicio>} />
             <Route path="/editar-servicio/:id" element={<AuthPrestadorServicio><EditarServicio/></AuthPrestadorServicio>} />
+            <Route path="/administrar-turnos/:id" element={<AuthPrestadorServicio><AdministrarTurnosPrestador/></AuthPrestadorServicio>} />
+
+
+{/* Usuario duenio mascotas */}
+            <Route path="/admin-mascotas" element={<AuthUsuario><AdminMascotas/></AuthUsuario>} />
+            <Route path="/agregar-mascota" element={<AuthUsuario><AgregarMascota/></AuthUsuario>} />
 
           </Routes>
          

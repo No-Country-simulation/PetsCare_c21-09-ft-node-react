@@ -1,5 +1,6 @@
 package com.backend.server.entity;
 import com.backend.server.security.entity.Usuario;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -20,7 +21,14 @@ public class Mascota {
     private String breed;
     private int age;
 
+    private String imagePet;
+    private boolean vaccinated;
+    private String personality;
+    private double weight;
+    private String details;
+
     @ManyToOne
     @JoinColumn(name = "idUsuario")
+    @JsonIgnore
     private Usuario usuario;
 }

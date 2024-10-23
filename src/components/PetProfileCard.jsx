@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { urlImage } from '../js/globalApi';
-import VistaEnlacesAdminUserPet from "../components/VistaEnlaceAdminUserPet";
 import VistaEnlaceAdminUserPet from '../components/VistaEnlaceAdminUserPet';
 
 function PetProfileCard({ pet }) {

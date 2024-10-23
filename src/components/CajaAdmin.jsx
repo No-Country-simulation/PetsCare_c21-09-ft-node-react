@@ -22,7 +22,7 @@ export default function CajaAdmin() {
 
         if (userRole === 'PRESTADORSERVICIO') {
           setNombreRol("MIS SERVICIOS");
-          setRedirect('/mis-servicios');
+          setRedirect('/admin-servicios');
           setMostrarAdministracion(true);
         } else if (userRole === 'USUARIO') {
           setNombreRol("MIS MASCOTAS");

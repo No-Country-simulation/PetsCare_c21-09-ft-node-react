@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import { urlImage } from '../js/globalApi';
 
 export default function CardAdminServicioPrestador({ servicio }) {
+
+
   const [nombreServicio, setNombreServicio] = useState(servicio.nombreServicio);
   const [lugarFisico, setLugarFisico] = useState(servicio.lugarFisico);
   const [voyAlLugar, setVoyAlLugar] = useState(servicio.voyAlLugar);
@@ -14,18 +16,20 @@ export default function CardAdminServicioPrestador({ servicio }) {
   const [direccion, setDireccion] = useState(servicio.direccion);
   const [imagenServicio, setImagenServicio] = useState(servicio.imagenServicio);
 
+  const idServicio = servicio.idServicio;
+
   const navigate = useNavigate();
 
   const handleEditarServicio = () => {
-    navigate(`/editar-servicio/${servicio.idServicio}`);
+    navigate(`/editar-servicio/${idServicio}`);
   };
 
   const handleAdministrarTurnos = () => {
-    navigate(`/administrar-turnos/${servicio.idServicio}`);
+    navigate(`/seleccion-admin-turnos/${idServicio}`);
   };
 
   const handleTusReservas = () => {
-    navigate(`/tus-reservas/${servicio.idServicio}`);
+    navigate(`/tus-reservas/${idServicio}`);
   };
 
   return (

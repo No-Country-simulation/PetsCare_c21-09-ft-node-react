@@ -5,7 +5,7 @@ import {jwtDecode} from 'jwt-decode';
 import { apiUrl } from '../js/globalApi';
 import CardAdminServicioPrestador from '../components/CardAdminServicioPrestador';
 
-const MisServicios = () => {
+const AdminServicios = () => {
   const [servicios, setServicios] = useState([]);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
@@ -15,7 +15,7 @@ const MisServicios = () => {
     if (token) {
       try {
         const decodedToken = jwtDecode(token);
-        const userId = decodedToken.idUser;
+        const userId = parseInt(decodedToken.idUser);
 
         // Hacer la llamada a la API para obtener los servicios del usuario
         axios.get(`${apiUrl}api/servicios/usuario/${userId}`)
@@ -68,6 +68,7 @@ const MisServicios = () => {
             <li key={servicio.idServicio} className="mb-2">
               <CardAdminServicioPrestador
               servicio={servicio}
+              
               />
             </li>
           ))}
@@ -77,4 +78,4 @@ const MisServicios = () => {
   );
 };
 
-export default MisServicios;
+export default AdminServicios;

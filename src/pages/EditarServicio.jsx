@@ -4,9 +4,14 @@ import axios from 'axios';
 import {jwtDecode} from 'jwt-decode'; 
 import { apiUrl } from '../js/globalApi';
 
+
 export default function EditarServicio() {
   // el id del servicio se obtiene desde la url
-  const { id } = useParams();
+  const { idServicio } = useParams();
+
+
+
+  
   const navigate = useNavigate();
 
   // Estados para los datos del servicio
@@ -42,7 +47,7 @@ export default function EditarServicio() {
 
     if (token) {
       axios
-        .get(`${apiUrl}api/servicios/buscar/${id}/${idUsuario}`, {
+        .get(`${apiUrl}api/servicios/buscar/${idServicio}/${idUsuario}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -76,7 +81,7 @@ export default function EditarServicio() {
           setLoading(false);
         });
     }
-  }, [id]);
+  }, [idServicio]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -107,7 +112,7 @@ export default function EditarServicio() {
     };
   
     try {
-      const response = await axios.put(`${apiUrl}api/servicios/modificar/${id}`, servicioUsuarioActualizado, {
+      const response = await axios.put(`${apiUrl}api/servicios/modificar/${idServicio}`, servicioUsuarioActualizado, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -118,7 +123,7 @@ export default function EditarServicio() {
 
       // Redirigir después de 3 segundos
       setTimeout(() => {
-        navigate('/mis-servicios');
+        navigate('/admin-servicios');
       }, 3000);
 
     } catch (error) {
@@ -127,7 +132,7 @@ export default function EditarServicio() {
         if (error.response.status === 409) {
           setSuccessMessage('Los cambios se realizaron correctamente, pero ocurrió un error de visualización.');
           setTimeout(() => {
-            navigate('/mis-servicios');
+            navigate('/admin-servicios');
           }, 3000);
         } else {
           console.error('Error al actualizar el servicio:', error.response);
@@ -149,7 +154,7 @@ export default function EditarServicio() {
   }
 
   return (
-    <div className="max-w-4xl mx-auto p-6 bg-white shadow-md rounded-lg">
+    <div className="max-w-4xl mx-auto p-6 bg-white shadow-md rounded-lg pt-12 mt-12 pb-12">
       <h2 className="text-2xl font-bold text-center mb-6">Editar Servicio</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
 

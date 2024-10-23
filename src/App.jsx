@@ -19,7 +19,9 @@ import AgregarServicio from "./pages/AgregarServicio";
 import EditarServicio from "./pages/EditarServicio";
 import AdminMascotas from "./pages/AdminMascotas";
 import AgregarMascota from "./pages/AgregarMascota";
-import AdministrarTurnosPrestador from "./pages/AdministrarTurnosPrestador";
+import MisTurnos from "./pages/MisTurnos";
+import CargarTurno from "./components/CargarTurno";
+import DosBotonesSeleccionPrestador from "./pages/DosBotonesSeleccionPrestador";
 
 function App() {
   
@@ -42,11 +44,14 @@ function App() {
             <Route path="/" element={<Home/>} />
 
             {/* Seccion de administracion Servicios*/}
-            
-            <Route path="/mis-servicios" element={<AuthPrestadorServicio><AdminServicios/></AuthPrestadorServicio>} />
             <Route path="/agregar-servicio" element={<AuthPrestadorServicio><AgregarServicio/></AuthPrestadorServicio>} />
-            <Route path="/editar-servicio/:id" element={<AuthPrestadorServicio><EditarServicio/></AuthPrestadorServicio>} />
-            <Route path="/administrar-turnos/:id" element={<AuthPrestadorServicio><AdministrarTurnosPrestador/></AuthPrestadorServicio>} />
+
+            <Route path="/admin-servicios" element={<AuthPrestadorServicio><AdminServicios/></AuthPrestadorServicio>} />
+            <Route path="/editar-servicio/:idServicio" element={<AuthPrestadorServicio><EditarServicio/></AuthPrestadorServicio>} />
+            <Route path="/seleccion-admin-turnos/:idServicio" element={<AuthPrestadorServicio><DosBotonesSeleccionPrestador/></AuthPrestadorServicio>} />
+            <Route path="/cargar-turnos/:idServicio" element={<AuthPrestadorServicio><CargarTurno/></AuthPrestadorServicio>} />
+
+            <Route path="/mis-turnos/:idServicio" element={<AuthPrestadorServicio><MisTurnos/></AuthPrestadorServicio>} />
 
 
 {/* Usuario duenio mascotas */}

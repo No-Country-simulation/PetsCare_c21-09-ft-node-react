@@ -46,3 +46,11 @@
 .container-home{
   height: 500px;
 }
+
+
+.padding5rembt{
+  padding-top: 5%;
+  padding-bottom: 5%;
+  margin-top: 5rem;
+  margin-bottom: 7rem;
+}

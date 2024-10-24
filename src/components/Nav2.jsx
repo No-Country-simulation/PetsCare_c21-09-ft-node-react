@@ -61,13 +61,13 @@ const NavBar = () => {
             {!user && (
               <div className="flex gap-2">
                 <button
-                  className="hover:bg-secondary text-secondary font-semibold hover:text-white rounded-lg border-2 border-secondary transition duration-300 ease-in-out px-6 py-2"
+                  className="hover:bg-secondary text-secondary font-semibold hover:text-white rounded-lg border-2 border-secondary transition duration-300 ease-in-out px-6 py-2 w-32 h-16"
                   onClick={() => navigate("/register")}
                 >
                   Registrarse
                 </button>
                 <button
-                  className="hover:bg-secondary text-secondary font-semibold hover:text-white rounded-lg border-2 border-secondary transition duration-300 ease-in-out px-6 py-2"
+                  className="hover:bg-secondary text-secondary font-semibold hover:text-white rounded-lg border-2 border-secondary transition duration-300 ease-in-out px-6 py-2 w-32 h-16"
                   onClick={() => navigate("/signin")}
                 >
                   Iniciar Sesión

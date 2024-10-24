@@ -22,6 +22,7 @@ import AgregarMascota from "./pages/AgregarMascota";
 import MisTurnos from "./pages/MisTurnos";
 import CargarTurno from "./components/CargarTurno";
 import DosBotonesSeleccionPrestador from "./pages/DosBotonesSeleccionPrestador";
+import SobreNosotros from "./pages/SobreNosotros";
 
 function App() {
   
@@ -41,6 +42,7 @@ function App() {
           <Route path="/signin" element={<SignIn/>} />
           <Route path="/register" element={<Register/>} />
           <Route path="/verify" element={<VerifyCode/>} />
+          <Route path="/sobreNosotros" element={<SobreNosotros/>} />
             <Route path="/" element={<Home/>} />
 
             {/* Seccion de administracion Servicios*/}

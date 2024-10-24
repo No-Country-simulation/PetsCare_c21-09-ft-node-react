@@ -31,16 +31,16 @@ function Services({ onSelectService }) {
   return (
     <div className="p-4 bg-gray-100">
       <div className="container mx-auto">
-        <h2 className="text-3xl font-bold text-center mb-12">Busca el servicio que necesitas</h2>
+        <h2 className="text-3xl font-semibold text-center mb-12 text-primary">Busca el servicio que necesitas</h2>
         <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-6 gap-8">
           {services.map((service, index) => (
             <div
               key={index}
-              className="border bg-white p-6 cursor-pointer hover:text-main-blue transition duration-300 hover:border-main-blue rounded-lg shadow-md"
+              className="border bg-white p-2 size-44 cursor-pointer hover:text-main-blue transition duration-300 hover:border-main-blue rounded-lg shadow-md"
               onClick={() => onSelectService(service.title)} // Llama a la función de selección
             >
-              <img src={service.image} alt={service.title} className='w-full h-48 object-contain mb-4' />
-              <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
+              <img src={service.image} alt={service.title} className='w-full h-28 object-contain mb-4 items-center ' />
+              <h3 className="text-lg font-semibold mb-2 text-center text-primary hover:text-secondary">{service.title}</h3>
             </div>
           ))}
         </div>

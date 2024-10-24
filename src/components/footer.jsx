@@ -9,9 +9,9 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-secondary text-white py-8  flex flex-col">
+    <footer className="bg-secondary w-full h-40 fixed bottom-0 text-white py-8 flex flex-col z-50">
       <div className="w-full px-4">
-        <div className="flex md:flex-row md:justify-between p-10 ">
+        <div className="flex md:flex-row md:justify-between p-1 ">
           <div className="flex flex-wrap w-full md:w-1/3 mb-6 md:mb-0">
             <img src={Dog} alt="" srcset="" className="size-32 "/>
             <h3 className="text-2xl font-bold mb-2 m-10">Cuidados Peludos</h3>

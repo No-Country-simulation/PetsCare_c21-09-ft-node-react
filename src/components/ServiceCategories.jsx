@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import exampleImage from '../assets/images/educacion.jpeg';
+import exampleImage from '../assets/educacion.jpeg';
 import Mapa from './Mapa';
-import paseoImage from '../assets/images/paseo-2.jpeg';
-import cuidadoImage from '../assets/images/cuidado.jpeg';
-import peluqueriaImage from '../assets/images/peluqueria-2.jpeg';
-import saludImage from '../assets/images/salud.jpeg';
-import ejercicioImage from '../assets/images/ejercicio.jpeg';
-import educacionImage from '../assets/images/educacion.jpeg';
+import paseoImage from '../assets/paseo-2.jpeg';
+import cuidadoImage from '../assets/cuidado.jpeg';
+import peluqueriaImage from '../assets/peluqueria-2.jpeg';
+import saludImage from '../assets/salud.jpeg';
+import ejercicioImage from '../assets/ejercicio.jpeg';
+import educacionImage from '../assets/educacion.jpeg';
 
 // Array con las ofertas de servicio
 const serviceOffer = [

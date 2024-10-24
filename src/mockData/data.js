@@ -29,4 +29,9 @@ export const NavBarMenu = [
         title: "Cuidados",
         link: "/"
     },
+    {
+        id:7,
+        title: "Nosotros",
+        link: "/sobreNosotros"
+    },
 ]

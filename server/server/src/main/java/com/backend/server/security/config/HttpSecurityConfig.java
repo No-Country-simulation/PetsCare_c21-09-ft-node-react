@@ -78,6 +78,7 @@ public class HttpSecurityConfig {
                     authConfig.requestMatchers(HttpMethod.DELETE, "/api/servicios/eliminar/{id}").hasRole("PRESTADORSERVICIO");
                     authConfig.requestMatchers(HttpMethod.GET, "/api/servicios/buscarpornombreservicioyfecha").permitAll();
                     authConfig.requestMatchers(HttpMethod.GET, "/api/servicios/usuario/**").permitAll();
+                    authConfig.requestMatchers(HttpMethod.GET, "/api/servicios/enum/**").permitAll();
 
 
                     authConfig.requestMatchers(HttpMethod.GET, "/api/turnos/todos").permitAll();

@@ -1,4 +1,5 @@
 package com.backend.server.controller;
+import com.backend.server.DTO.ServicioCardReservaDTO;
 import com.backend.server.DTO.ServicioUsuarioDTO;
 import com.backend.server.entity.Servicio;
 import com.backend.server.exceptionHandler.InvalidDataException;
@@ -7,6 +8,7 @@ import com.backend.server.security.entity.Usuario;
 import com.backend.server.security.service.impl.UsuarioService;
 import com.backend.server.service.serviceServicio.ServicioServiceInterface;
 import com.backend.server.subidaArchivos.service.Impl.UploadFilesServiceImpl;
+import com.backend.server.subidaArchivos.util.EnumNombreServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
@@ -36,6 +38,22 @@ public class ServicioController {
     public ResponseEntity<List<Servicio>> getAllServicios() {
         List<Servicio> servicios = servicioService.getAllServicios();
         return new ResponseEntity<>(servicios, HttpStatus.OK);
+    }
+
+    @GetMapping("/enum/{nombreServicio}")
+    public ResponseEntity<List<ServicioCardReservaDTO>> getServiciosPorNombreServicio(@PathVariable EnumNombreServicio nombreServicio) {
+        try {
+            // Llamar al servicio que va a devolver un DTO
+            List<ServicioCardReservaDTO> serviciosDTO = servicioService.findServicioByNombreServicio(nombreServicio);
+
+            if (serviciosDTO.isEmpty()) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+            }
+
+            return ResponseEntity.ok(serviciosDTO);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        }
     }
 
     @GetMapping("/buscar/{id}/{idUsuario}")
@@ -77,7 +95,8 @@ public class ServicioController {
     }
     @PostMapping("/crearservicio")
     public ResponseEntity<?> createServicio(
-            @RequestParam("nombreServicio") String nombreServicio,
+            @RequestParam("nombreServicio") EnumNombreServicio nombreServicio,
+            @RequestParam("nombreComercio") String nombreComercio,
             @RequestParam("observacion") String observacion,
             @RequestParam("lugarFisico") boolean lugarFisico,
             @RequestParam("voyAlLugar") boolean voyAlLugar,
@@ -88,45 +107,54 @@ public class ServicioController {
             @RequestParam("latitud") double latitud,
             @RequestParam("longitud") double longitud,
             @RequestParam("idUsuario") Long idUsuario,
-            @RequestParam("imagenServicio") MultipartFile imagenServicio) throws Exception {
+            @RequestParam("imagenServicio") MultipartFile imagenServicio) {
 
-//        se busca el usuario que creo el servicio para asignarselo
-        Optional<Usuario> usuario = usuarioService.findUsuario(idUsuario);
-        if (!usuario.isPresent()) {
-            throw new NotFoundException("Usuario no encontrado con ID: " + idUsuario);
+        try {
+            // Verificar si el usuario existe
+            Optional<Usuario> usuario = usuarioService.findUsuario(idUsuario);
+            if (!usuario.isPresent()) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                        .body("Usuario no encontrado con ID: " + idUsuario);
+            }
+
+            // Validar la imagen
+            if (imagenServicio == null || imagenServicio.isEmpty()) {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                        .body("La imagen del servicio es requerida.");
+            }
+
+            // Subir la imagen del servicio
+            String rutaImagen = uploadFilesService.handleFileUpload(imagenServicio);
+
+            // Crear el nuevo servicio
+            Servicio nuevoServicio = new Servicio();
+            nuevoServicio.setNombreServicio(nombreServicio);
+            nuevoServicio.setNombreComercio(nombreComercio);
+            nuevoServicio.setObservacion(observacion);
+            nuevoServicio.setLugarFisico(lugarFisico);
+            nuevoServicio.setVoyAlLugar(voyAlLugar);
+            nuevoServicio.setPais(pais);
+            nuevoServicio.setProvincia(provincia);
+            nuevoServicio.setEstadoDepartamento(estadoDepartamento);
+            nuevoServicio.setDireccion(direccion);
+            nuevoServicio.setLatitud(latitud);
+            nuevoServicio.setLongitud(longitud);
+            nuevoServicio.setImagenServicio(rutaImagen);
+            nuevoServicio.setPrestadorServicio(usuario.get());
+
+            // Guardar
+            Servicio servicioGuardado = servicioService.saveServicio(nuevoServicio);
+
+
+            return new ResponseEntity<>(servicioGuardado, HttpStatus.CREATED);
+
+        } catch (Exception e) {
+
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Ocurrió un error al crear el servicio: " + e.getMessage());
         }
-
-
-//       se verifica que la imagen llegue
-        if (imagenServicio.isEmpty()) {
-            throw new InvalidDataException("La imagen del servicio es requerida.");
-        }
-
-        String rutaImagen = uploadFilesService.handleFileUpload(imagenServicio);
-
-
-
-
-
-        Servicio nuevoServicio = new Servicio();
-        nuevoServicio.setNombreServicio(nombreServicio);
-        nuevoServicio.setObservacion(observacion);
-        nuevoServicio.setLugarFisico(lugarFisico);
-        nuevoServicio.setVoyAlLugar(voyAlLugar);
-        nuevoServicio.setPais(pais);
-        nuevoServicio.setProvincia(provincia);
-        nuevoServicio.setEstadoDepartamento(estadoDepartamento);
-        nuevoServicio.setDireccion(direccion);
-        nuevoServicio.setLatitud(latitud);
-        nuevoServicio.setLongitud(longitud);
-        nuevoServicio.setImagenServicio(rutaImagen);
-
-        nuevoServicio.setPrestadorServicio(usuario.get());
-
-        Servicio servicioGuardado = servicioService.saveServicio(nuevoServicio);
-
-        return new ResponseEntity<>(servicioGuardado, HttpStatus.CREATED);
     }
+
 
     @PutMapping("/modificar/{id}")
     public ResponseEntity<String> updateServicio(@PathVariable Long id, @RequestBody ServicioUsuarioDTO dto) {

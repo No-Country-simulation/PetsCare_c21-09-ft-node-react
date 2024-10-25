@@ -10,6 +10,7 @@ export default function AgregarServicio() {
   const navigate = useNavigate();
 
   const [nombreServicio, setNombreServicio] = useState('');
+  const [nombreComercio, setNombreComercio] = useState('');
   const [observacion, setObservacion] = useState('');
   const [lugarFisico, setLugarFisico] = useState(false);
   const [voyAlLugar, setVoyAlLugar] = useState(false);
@@ -35,6 +36,7 @@ export default function AgregarServicio() {
 
     const formData = new FormData();
     formData.append('nombreServicio', nombreServicio);
+    formData.append('nombreComercio', nombreComercio);
     formData.append('observacion', observacion);
     formData.append('lugarFisico', lugarFisico);
     formData.append('voyAlLugar', voyAlLugar);
@@ -118,14 +120,26 @@ export default function AgregarServicio() {
     required
   >
     <option value="">Selecciona un tipo de servicio</option>
-    <option value="VETERINARIA">VETERINARIA</option>
-    <option value="PASEO DE MASCOTAS">PASEO DE MASCOTAS</option>
-    <option value="CUIDADO DE MASCOTAS">CUIDADO DE MASCOTAS</option>
-    <option value="TRANSPORTE DE MASCOTAS">TRANSPORTE DE MASCOTAS</option>
+    <option value="VETERINARIA">Veterinaria</option>
+  <option value="PASEO_DE_MASCOTAS">Paseo de Mascotas</option>
+  <option value="CUIDADO_DE_MASCOTAS">Cuidado de Mascotas</option>
+  <option value="TRANSPORTE_DE_MASCOTAS">Transporte de Mascotas</option>
   </select>
 </div>
 
         <div className="flex flex-col">
+        <div className="flex flex-col">
+            <label htmlFor="nombreComercio" className="text-gray-700">Nombre del Comercio</label>
+            <input
+              type="text"
+              id="nombreComercio"
+              className="p-2 border border-gray-300 rounded"
+              value={nombreComercio}
+              onChange={(e) => setNombreComercio(e.target.value)}
+              required
+            />
+          </div>
+
           <label htmlFor="observacion" className="text-gray-700">Observaciones</label>
           <textarea
             id="observacion"

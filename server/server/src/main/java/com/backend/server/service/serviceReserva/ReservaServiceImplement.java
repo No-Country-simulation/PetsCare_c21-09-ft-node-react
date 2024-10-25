@@ -14,12 +14,14 @@ import com.backend.server.repository.ReservaRepository;
 import com.backend.server.repository.TurnoRepository;
 import com.backend.server.security.entity.Usuario;
 import com.backend.server.security.repository.UsuarioRepository;
+import jakarta.transaction.Transactional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -68,38 +70,53 @@ public class ReservaServiceImplement implements ReservaServiceInterface{
     }
 
     @Override
+    @Transactional
     public Reserva createReserva(Reserva reserva) {
         try {
-
             if (reserva == null || reserva.getUsuarioQueReserva() == null || reserva.getTurnos() == null || reserva.getTurnos().isEmpty()) {
                 log.warn("Datos inválidos para crear la reserva. Reserva o sus datos son nulos.");
                 throw new InvalidDataException("Datos inválidos para crear la reserva.");
             }
 
-            // Logs de validación
+            // Logs de validación inicial
             log.info("Creando reserva para usuario con ID: {}", reserva.getUsuarioQueReserva().getIdUsuario());
             log.info("Validando turnos seleccionados para la reserva.");
 
+            // Validar y marcar cada turno como reservado
+            List<Turno> turnosReservados = new ArrayList<>();
             for (Turno turno : reserva.getTurnos()) {
                 Optional<Turno> turnoExistente = turnoRepository.findById(turno.getIdTurno());
                 if (turnoExistente.isPresent()) {
-                    log.info("Turno ID: {}, reservadoTurno: {}", turnoExistente.get().getIdTurno(), turnoExistente.get().isReservadoTurno());
-                    if (turnoExistente.get().isReservadoTurno()) {
-                        log.warn("El turno {} ya está reservado.", turnoExistente.get().getHoraTurno());
-                        throw new InvalidDataException("El turno " + turnoExistente.get().getHoraTurno() + " ya está reservado.");
+                    Turno turnoActual = turnoExistente.get();
+                    log.info("Turno ID: {}, reservadoTurno: {}", turnoActual.getIdTurno(), turnoActual.isReservadoTurno());
+
+                    // Verificar si el turno ya está reservado
+                    if (turnoActual.isReservadoTurno()) {
+                        log.warn("El turno {} ya está reservado.", turnoActual.getHoraTurno());
+                        throw new InvalidDataException("El turno " + turnoActual.getHoraTurno() + " ya está reservado.");
                     }
+
+                    // Marcar el turno como reservado y añadirlo a la lista
+                    turnoActual.setReservadoTurno(true);
+                    turnosReservados.add(turnoActual);
+                    log.info("Turno ID {} marcado como reservado.", turnoActual.getIdTurno());
+                } else {
+                    throw new NotFoundException("Turno no encontrado con ID: " + turno.getIdTurno());
                 }
             }
 
             // Guardar la reserva
             Reserva nuevaReserva = reservaRepository.save(reserva);
-            log.info("Reserva creada exitosamente con ID: ", nuevaReserva.getIdReserva());
+            log.info("Reserva creada exitosamente con ID: {}", nuevaReserva.getIdReserva());
 
-            // Actualizar los turnos como reservados
-            for (Turno turno : reserva.getTurnos()) {
-                turno.setReservadoTurno(true);
-                turnoRepository.save(turno);
-                log.info("Turno {} marcado como reservado.", turno.getHoraTurno());
+            // Guardar los turnos actualizados en bloque para asegurar la consistencia
+            turnoRepository.saveAll(turnosReservados);
+
+            // Confirmar que los turnos están guardados correctamente en la base de datos
+            for (Turno turno : turnosReservados) {
+                Turno turnoActualizado = turnoRepository.findById(turno.getIdTurno())
+                        .orElseThrow(() -> new NotFoundException("Turno no encontrado tras actualización"));
+                log.info("Estado en BD - Turno ID: {}, reservadoTurno: {}", turnoActualizado.getIdTurno(), turnoActualizado.isReservadoTurno());
             }
 
             return nuevaReserva;
@@ -112,6 +129,7 @@ public class ReservaServiceImplement implements ReservaServiceInterface{
             throw new DatabaseException("Error al crear la reserva.", e);
         }
     }
+
 
 
 
@@ -224,7 +242,6 @@ public Reserva convertToEntity(ReservaDTO reservaDTO) {
             responseDTO.setEspecieMascota(reserva.getMascotaReserva().getSpecies());
         }
 
-        // turnos
         List<String> turnosDetalles = reserva.getTurnos().stream()
                 .map(turno -> "Fecha: " + turno.getFechaTurno() + " Hora: " + turno.getHoraTurno())
                 .collect(Collectors.toList());

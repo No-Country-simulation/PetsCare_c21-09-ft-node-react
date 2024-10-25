@@ -1,4 +1,6 @@
 package com.backend.server.service.serviceServicio;
+import com.backend.server.DTO.ServicioCardReservaDTO;
+import com.backend.server.DTO.ServicioMapper.MapServicioCardReservaDTO;
 import com.backend.server.repository.ServicioRepository;
 import com.backend.server.entity.Servicio;
 import com.backend.server.exceptionHandler.DatabaseException;
@@ -6,6 +8,7 @@ import com.backend.server.exceptionHandler.InvalidDataException;
 import com.backend.server.exceptionHandler.NotFoundException;
 import com.backend.server.security.entity.Usuario;
 import com.backend.server.security.repository.UsuarioRepository;
+import com.backend.server.subidaArchivos.util.EnumNombreServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +25,9 @@ public class ServicioServiceImplement implements ServicioServiceInterface {
 
     @Autowired
     private UsuarioRepository usuarioRepository;
+
+    @Autowired
+    private MapServicioCardReservaDTO mapServicioCardReservaDTO;
 
     @Override
     public List<Servicio> getAllServicios() {
@@ -111,5 +117,20 @@ public class ServicioServiceImplement implements ServicioServiceInterface {
             throw new DatabaseException("Error al buscar el servicio por usuario", e);
         }
     }
+
+    @Override
+    public List<ServicioCardReservaDTO> findServicioByNombreServicio(EnumNombreServicio nombreServicio) {
+        try {
+            // Obtener la lista de servicios por nombre
+            List<Servicio> servicios = servicioRepository.findByNombreServicio(nombreServicio);
+
+            // mapear la lista de servicios a DTOs
+            return mapServicioCardReservaDTO.mapServiciosToDTO(servicios);
+        } catch (Exception e) {
+            throw new DatabaseException("Error al buscar los servicios por nombre de servicio", e);
+        }
+    }
+
+
 
 }

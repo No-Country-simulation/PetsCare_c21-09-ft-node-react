@@ -1,20 +1,20 @@
-import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { urlImage } from '../js/globalApi';
 
 export default function CardAdminServicioPrestador({ servicio }) {
 
-
-  const [nombreServicio, setNombreServicio] = useState(servicio.nombreServicio);
-  const [lugarFisico, setLugarFisico] = useState(servicio.lugarFisico);
-  const [voyAlLugar, setVoyAlLugar] = useState(servicio.voyAlLugar);
-  const [observacion, setObservacion] = useState(servicio.observacion);
-  const [pais, setPais] = useState(servicio.pais);
-  const [provincia, setProvincia] = useState(servicio.provincia);
-  const [estadoDepartamento, setEstadoDepartamento] = useState(servicio.estadoDepartamento);
-  const [direccion, setDireccion] = useState(servicio.direccion);
-  const [imagenServicio, setImagenServicio] = useState(servicio.imagenServicio);
+  const { 
+    nombreServicio, 
+    lugarFisico, 
+    voyAlLugar, 
+    observacion, 
+    pais, 
+    provincia, 
+    estadoDepartamento, 
+    direccion, 
+    imagenServicio 
+  } = servicio;
 
   const idServicio = servicio.idServicio;
 
@@ -106,4 +106,3 @@ CardAdminServicioPrestador.propTypes = {
     ),
   }).isRequired,
 };
-

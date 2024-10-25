@@ -1,10 +1,12 @@
 package com.backend.server.entity;
 import com.backend.server.security.entity.Usuario;
+import com.backend.server.subidaArchivos.util.EnumNombreServicio;
 import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,11 +17,14 @@ import java.util.List;
 @JsonIgnoreProperties({"prestadorServicio"})
 public class Servicio {
 
-    @Id
+   @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long idServicio;
 
-    private String nombreServicio;
+    private String nombreComercio;
+
+    @Enumerated(EnumType.STRING)
+    private EnumNombreServicio nombreServicio;
 
     private boolean lugarFisico;
 

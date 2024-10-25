@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -14,7 +16,7 @@ import java.time.LocalTime;
 @Entity
 public class Turno {
 
-    @Id
+   @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long idTurno;
 

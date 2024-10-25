@@ -1,4 +1,4 @@
-import React from "react";
+
 import ErrorImage from "../assets/Error404.png"
 
 function Error404(){

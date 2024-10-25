@@ -1,6 +1,8 @@
 package com.backend.server.entity;
 
 import com.backend.server.security.entity.Usuario;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -16,7 +18,7 @@ import java.util.List;
 public class Reserva {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idReserva;
 
     private LocalDate fechaReserva;
@@ -31,9 +33,8 @@ public class Reserva {
             joinColumns = @JoinColumn(name = "idReserva"),
             inverseJoinColumns = @JoinColumn(name = "idTurno")
     )
+    @JsonManagedReference // Maneja la serialización de turnos
     private List<Turno> turnos;
-
-
 
     @ManyToOne
     @JoinColumn(name = "idUsuarioPrestaServicio")
@@ -43,11 +44,6 @@ public class Reserva {
     @JoinColumn(name = "idMascota")
     private Mascota mascotaReserva;
 
-
-    @Transient // se obtiene el servicio del turno
-    private Servicio servicio;
-
-
     public Servicio getServicio() {
         if (this.turnos != null && !this.turnos.isEmpty()) {
             return this.turnos.get(0).getServicio(); // Tomar el servicio del primer turno
@@ -55,3 +51,4 @@ public class Reserva {
         return null;
     }
 }
+

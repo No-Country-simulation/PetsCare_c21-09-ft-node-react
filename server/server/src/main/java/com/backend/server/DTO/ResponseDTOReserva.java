@@ -1,5 +1,6 @@
 package com.backend.server.DTO;
 
+import com.backend.server.subidaArchivos.util.EnumNombreServicio;
 import lombok.Data;
 import java.util.List;
 
@@ -22,7 +23,7 @@ public class ResponseDTOReserva {
     private String nombreMascota;
     private String especieMascota;
 
-    private String tipoServicio;
+    private EnumNombreServicio tipoServicio;
 
 
     private List<String> turnosDetalles;

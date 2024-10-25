@@ -23,6 +23,8 @@ import MisTurnos from "./pages/MisTurnos";
 import CargarTurno from "./components/CargarTurno";
 import DosBotonesSeleccionPrestador from "./pages/DosBotonesSeleccionPrestador";
 import SobreNosotros from "./pages/SobreNosotros";
+import ContenedorServicios from "./pages/ContenedorServicios";
+import MisReservasCliente from "./pages/MisReservasCliente";
 
 function App() {
   
@@ -52,14 +54,22 @@ function App() {
             <Route path="/editar-servicio/:idServicio" element={<AuthPrestadorServicio><EditarServicio/></AuthPrestadorServicio>} />
             <Route path="/seleccion-admin-turnos/:idServicio" element={<AuthPrestadorServicio><DosBotonesSeleccionPrestador/></AuthPrestadorServicio>} />
             <Route path="/cargar-turnos/:idServicio" element={<AuthPrestadorServicio><CargarTurno/></AuthPrestadorServicio>} />
-
             <Route path="/mis-turnos/:idServicio" element={<AuthPrestadorServicio><MisTurnos/></AuthPrestadorServicio>} />
+
+{/* Traer servicios */}
+
+<Route path="/servicios/veterinaria" element={<ContenedorServicios
+titulo="Veterinaria"
+enumNombreServicio="VETERINARIA"
+/>} />
 
 
 {/* Usuario duenio mascotas */}
             <Route path="/admin-mascotas" element={<AuthUsuario><AdminMascotas/></AuthUsuario>} />
             <Route path="/agregar-mascota" element={<AuthUsuario><AgregarMascota/></AuthUsuario>} />
+            <Route path="/misreservas-user" element={<AuthUsuario><MisReservasCliente/></AuthUsuario>} />
 
+            
           </Routes>
          
 

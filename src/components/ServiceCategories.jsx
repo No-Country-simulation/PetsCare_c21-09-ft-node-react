@@ -36,11 +36,11 @@ function Services({ onSelectService }) {
           {services.map((service, index) => (
             <div
               key={index}
-              className="border bg-white p-2 size-44 cursor-pointer hover:text-main-blue transition duration-300 hover:border-main-blue rounded-lg shadow-md"
+              className="border bg-white p-2 size-44 cursor-pointer hover:text-secondary transition duration-300 hover:border-secondary hover:shadow-xl hover:shadow-secondary rounded-lg shadow-md"
               onClick={() => onSelectService(service.title)} // Llama a la función de selección
             >
               <img src={service.image} alt={service.title} className='w-full h-28 object-contain mb-4 items-center ' />
-              <h3 className="text-lg font-semibold mb-2 text-center text-primary hover:text-secondary">{service.title}</h3>
+              <h3 className="text-lg font-semibold mb-2 text-center text-primary ">{service.title}</h3>
             </div>
           ))}
         </div>
@@ -91,30 +91,30 @@ function ServiceCategories() {
       <Services onSelectService={handleSelectService} />
       
       <div className='flex flex-row p-4 w-full h-screen'>
-        <div className='flex flex-col p-4 w-1/2 h-full overflow-y-auto gap-6'>
+        <div className='flex flex-col p-1 w-1/3 h-full overflow-y-auto gap-6'>
           {filteredServices.map((service, index) => (
-            <div key={index} className='container mx-auto p-4 flex self-start flex-row border-4 rounded w-full h-74 cursor-pointer hover:border-light-blue transition duration-300'>
+            <div key={index} className='container mx-auto p-2 flex self-start flex-row border-4 rounded-xl  h-72 w-full cursor-pointer hover:border-secondary transition duration-300'>
               <div className='h-full w-2/6'>
                 <img src={service.image} alt={service.activity} className="w-full h-full object-cover" />
               </div>
 
-              <div className="md:w-4/6 p-6 flex flex-col justify-between">
+              <div className="md:w-4/6 p-1 flex flex-col justify-between px-4">
                 <div>
-                  <h2 className="text-2xl font-bold text-gray-900 mb-2">{service.activity}</h2>
-                  <p className="text-gray-900 mb-4">{service.address}</p>
-                  <p className="text-gray-900 mb-4">Horarios: {service.horario}</p>
-                  <p className="text-xl font-semibold text-green-600 mb-4">ARS {service.price}</p>
+                  <h2 className="text-2xl font-bold text-primary mb-2">{service.activity}</h2>
+                  <p className="text-primary mb-4">{service.address}</p>
+                  <p className="text-primary mb-4">Horarios: {service.horario}</p>
+                  <p className="text-xl font-semibold text-secondary mb-4">ARS {service.price}</p>
                 </div>
-                <div className='flex flex-row justify-between'>
-                  <button className='bg-main-blue px-2 py-1 border-2 rounded cursor-pointer border-gray-500 hover:bg-light-blue transition duration-300'>Contactar</button>
-                  <button className='bg-main-blue px-2 py-1 border-2 rounded cursor-pointer border-gray-500 hover:bg-light-blue transition duration-300'>Reservar</button>
+                <div className='flex flex-row justify-between px-4'>
+                  <button className='bg-secondary px-2 py-1 border-2 rounded cursor-pointer border-white text-white hover:scale-125 transition duration-300'>Contactar</button>
+                  <button className='bg-secondary px-2 py-1 border-2 rounded cursor-pointer border-white text-white hover:scale-125 transition duration-300'>Reservar</button>
                 </div>
               </div>
             </div>
           ))}
         </div>
 
-        <div className='w-1/2 h-full p-8'>
+        <div className='w-1/2 h-full p-8 z-0'>
           <Mapa position={position} /> {/* Pasar las coordenadas al mapa */}
         </div>
       </div>

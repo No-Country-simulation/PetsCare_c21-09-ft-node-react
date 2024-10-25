@@ -36,7 +36,7 @@ function Services({ onSelectService }) {
           {services.map((service, index) => (
             <div
               key={index}
-              className="border bg-white p-2 size-44 cursor-pointer hover:text-secondary transition duration-300 hover:border-secondary hover:shadow-xl hover:shadow-secondary rounded-lg shadow-md"
+              className="border bg-white p-2 size-44 cursor-pointer hover:text-secondary transition duration-300 hover:border-secondary hover:shadow-xl hover:shadow-secondary hover:scale-110 rounded-lg shadow-md"
               onClick={() => onSelectService(service.title)} // Llama a la función de selección
             >
               <img src={service.image} alt={service.title} className='w-full h-28 object-contain mb-4 items-center ' />

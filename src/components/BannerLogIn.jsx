@@ -4,7 +4,7 @@ import servicesWork from "../assets/servicesWork.png";
 
 const BannerLogIn = () => {
   return (
-    <div className="flex justify-center space-x-4">
+    <div className="flex justify-center space-x-4 py-4">
         <div className="card bg-secondary shadow-md rounded-md flex font-semibold p-4">
             <div className="flex flex-col mt-7">
                 <h2 className="text-white">¿Queres empezar a ser parte de nuestra comunidad?</h2>

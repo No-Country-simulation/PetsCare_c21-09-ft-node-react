@@ -34,6 +34,8 @@ public class MapServicioCardReservaDTO {
             dto.setDireccionServicio(servicio.getDireccion());
             dto.setImagenServicio(servicio.getImagenServicio());
             dto.setNombreComercio(servicio.getNombreComercio());
+            dto.setLatitud(servicio.getLatitud());
+            dto.setLongitud(servicio.getLongitud());
 
             // Buscar el usuario
             Long idPrestador = servicio.getPrestadorServicio() != null ? servicio.getPrestadorServicio().getIdUsuario() : null;
@@ -49,6 +51,7 @@ public class MapServicioCardReservaDTO {
                     dto.setEmail(prestador.getEmail());
                     dto.setPhone(prestador.getPhone());
                     dto.setDireccionUsuario(prestador.getDireccion());
+
                 } else {
                     // Manejar el caso donde el prestador no se encuentra
                     System.out.println("Prestador con ID " + idPrestador + " no encontrado.");

@@ -14,8 +14,10 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class ServicioServiceImplement implements ServicioServiceInterface {
@@ -126,6 +128,33 @@ public class ServicioServiceImplement implements ServicioServiceInterface {
 
             // mapear la lista de servicios a DTOs
             return mapServicioCardReservaDTO.mapServiciosToDTO(servicios);
+        } catch (Exception e) {
+            throw new DatabaseException("Error al buscar los servicios por nombre de servicio", e);
+        }
+    }
+
+    @Override
+    public List<ServicioCardReservaDTO> findServicioramdom() {
+        try {
+            // Obtener la lista de servicios
+            List<Servicio> servicios = servicioRepository.findAll();
+
+            // Si no hay servicios, devolver una lista vacía
+            if (servicios.isEmpty()) {
+                return new ArrayList<>();
+            }
+
+            // Mezclar aleatoriamente la lista de servicios
+            Collections.shuffle(servicios);
+
+            // Limitar la lista a un máximo de 10 servicios
+            List<Servicio> serviciosLimitados = servicios.stream()
+                    .limit(10)
+                    .collect(Collectors.toList());
+
+            // Mapear la lista de servicios a DTOs
+            return mapServicioCardReservaDTO.mapServiciosToDTO(serviciosLimitados);
+
         } catch (Exception e) {
             throw new DatabaseException("Error al buscar los servicios por nombre de servicio", e);
         }

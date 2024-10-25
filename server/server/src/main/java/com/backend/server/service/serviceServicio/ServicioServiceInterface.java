@@ -24,4 +24,7 @@ public interface ServicioServiceInterface {
 
     List<ServicioCardReservaDTO> findServicioByNombreServicio(EnumNombreServicio nombreServicio);
 
+
+    List<ServicioCardReservaDTO> findServicioramdom();
+
 }

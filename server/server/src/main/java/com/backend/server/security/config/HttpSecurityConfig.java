@@ -79,6 +79,7 @@ public class HttpSecurityConfig {
                     authConfig.requestMatchers(HttpMethod.GET, "/api/servicios/buscarpornombreservicioyfecha").permitAll();
                     authConfig.requestMatchers(HttpMethod.GET, "/api/servicios/usuario/**").permitAll();
                     authConfig.requestMatchers(HttpMethod.GET, "/api/servicios/enum/**").permitAll();
+                    authConfig.requestMatchers(HttpMethod.GET, "/api/servicios/allserviciosramdom").permitAll();
 
 
                     authConfig.requestMatchers(HttpMethod.GET, "/api/turnos/todos").permitAll();

@@ -40,6 +40,25 @@ public class ServicioController {
         return new ResponseEntity<>(servicios, HttpStatus.OK);
     }
 
+
+    @GetMapping("/allserviciosramdom")
+    public ResponseEntity<List<ServicioCardReservaDTO>> getAllServiciosRamdom() {
+        try {
+            // Llamar al servicio que va a devolver un DTO
+            List<ServicioCardReservaDTO> serviciosDTO = servicioService.findServicioramdom();
+
+            if (serviciosDTO.isEmpty()) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+            }
+
+            return ResponseEntity.ok(serviciosDTO);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        }
+    }
+
+
+
     @GetMapping("/enum/{nombreServicio}")
     public ResponseEntity<List<ServicioCardReservaDTO>> getServiciosPorNombreServicio(@PathVariable EnumNombreServicio nombreServicio) {
         try {

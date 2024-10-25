@@ -25,6 +25,7 @@ import DosBotonesSeleccionPrestador from "./pages/DosBotonesSeleccionPrestador";
 import SobreNosotros from "./pages/SobreNosotros";
 import ContenedorServicios from "./pages/ContenedorServicios";
 import MisReservasCliente from "./pages/MisReservasCliente";
+import All10ServiciosRamdom from "./pages/All10ServiciosRamdom";
 
 function App() {
   
@@ -63,6 +64,8 @@ titulo="Veterinaria"
 enumNombreServicio="VETERINARIA"
 />} />
 
+<Route path="/ramdom" element={<All10ServiciosRamdom/>} />
+
 
 {/* Usuario duenio mascotas */}
             <Route path="/admin-mascotas" element={<AuthUsuario><AdminMascotas/></AuthUsuario>} />
@@ -77,7 +80,7 @@ enumNombreServicio="VETERINARIA"
 
         
           
-          <Footer />
+          {/* <Footer /> */}
         </AuthProvider>
       </BrowserRouter>
     

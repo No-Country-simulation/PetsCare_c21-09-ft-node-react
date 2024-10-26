@@ -4,57 +4,91 @@ import { NavBarMenu } from "../mockData/data";
 import { SiDatadog } from "react-icons/si";
 import CajaSesion from "./CajaSesion";
 import CajaAdmin from "./CajaAdmin";
-import { MdMenu, MdClose } from "react-icons/md"; // Iconos para abrir/cerrar el menú hamburguesa
+import { MdMenu, MdClose } from "react-icons/md"; 
 import { useNavigate } from "react-router-dom";
 
 const NavBar = () => {
   const { user, force } = useContext(AuthContext);
-  const [open, setOpen] = useState(false); // Estado para controlar el menú hamburguesa
+  const [open, setOpen] = useState(false); //controlar el menú hamburguesa
+  const [isSubmenuOpen, setIsSubmenuOpen] = useState(false); // submenú de Servicios
 
   const navigate = useNavigate();
 
   useEffect(() => {}, [force]);
 
- 
   const handleMenuClick = (path) => {
-    setOpen(false);  // Cerrar el menú
-    navigate(path);  // Redirigir a la ruta 
+    setOpen(false); 
+    setIsSubmenuOpen(false); 
+    navigate(path); 
   };
+
+  
+  const mainMenuItems = NavBarMenu.filter((item) => !item.enumServicio);
+  const subMenuItems = NavBarMenu.filter((item) => item.enumServicio);
 
   return (
     <>
-      <nav className="bg-white shadow-lg fixed z-50">
-        <div className="container flex justify-between items-center py-4">
+      <nav className="bg-white shadow-lg fixed top-0 left-0 w-full z-50">
+        <div className="flex justify-between items-center py-4 px-4 md:px-8 lg:px-16">
           {/* Logo */}
-          <div className="text-2xl flex items-center gap-2 font-bold uppercase">
+          <div
+            className="text-2xl flex items-center gap-2 font-bold uppercase cursor-pointer"
+            onClick={() => navigate("/")}
+          >
             <SiDatadog />
             <p>Cuidados</p>
             <p className="text-secondary">Peludos</p>
           </div>
 
-          {/* Botón hamburg */}
+          {/* Botón hamburguesa */}
           <div className="md:hidden">
             <button
               onClick={() => setOpen(!open)}
               className="text-3xl focus:outline-none"
             >
-              {open ? <MdClose /> : <MdMenu />} {/* Cambia entre abrir y cerrar */}
+              {open ? <MdClose /> : <MdMenu />}
             </button>
           </div>
 
-          {/*visible en desktop y oculto en móviles */}
+          {/* visible en desktop y oculto en móviles */}
           <div className="hidden md:flex items-center gap-6 text-primary">
-            <ul className="flex items-center gap-6">
-              {NavBarMenu.map((item) => (
+            <ul className="flex items-center gap-12 mr-8">
+              {/* Renderiza elementos del menú principal */}
+              {mainMenuItems.map((item) => (
                 <li key={item.id}>
                   <a
-                    href={item.link}
-                    className="inline-block py-1 px-3 transition duration-300 ease-in-out hover:text-secondary hover:scale-125 font-semibold"
+                    onClick={() => handleMenuClick(item.link)}
+                    className="inline-block py-1 px-3 transition duration-300 ease-in-out hover:text-secondary hover:scale-110 font-semibold cursor-pointer"
                   >
                     {item.title}
                   </a>
                 </li>
               ))}
+
+              {/* Menú desplegable de Servicios */}
+              <li className="relative">
+                <span
+                  className="inline-block py-1 px-3 transition duration-300 ease-in-out hover:text-secondary hover:scale-110 font-semibold cursor-pointer"
+                  onClick={() => setIsSubmenuOpen(!isSubmenuOpen)}
+                >
+                  Servicios
+                </span>
+                {/* Submenú de Servicios */}
+                {isSubmenuOpen && (
+                  <ul className="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-lg p-2">
+                    {subMenuItems.map((item) => (
+                      <li key={item.id}>
+                        <a
+                          onClick={() => handleMenuClick(item.link)}
+                          className="block px-4 py-2 text-primary hover:bg-secondary hover:text-white rounded transition duration-300 ease-in-out"
+                        >
+                          {item.title}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </li>
             </ul>
 
             {/* Botones de autenticación solo si no está autenticado */}
@@ -90,10 +124,11 @@ const NavBar = () => {
           } md:hidden bg-white shadow-lg`}
         >
           <ul className="flex flex-col items-center gap-4 py-4">
-            {NavBarMenu.map((item) => (
+            {/* Renderiza el menú principal en móviles */}
+            {mainMenuItems.map((item) => (
               <li key={item.id}>
                 <a
-                  onClick={() => handleMenuClick(item.link)} 
+                  onClick={() => handleMenuClick(item.link)}
                   className="inline-block py-1 px-3 transition duration-300 ease-in-out hover:text-secondary hover:scale-110 font-semibold cursor-pointer"
                 >
                   {item.title}
@@ -101,18 +136,44 @@ const NavBar = () => {
               </li>
             ))}
 
-           
+            {/* Menú desplegable de Servicios en móviles */}
+            <li>
+              <div className="flex flex-col items-center">
+                <span
+                  onClick={() => setIsSubmenuOpen(!isSubmenuOpen)}
+                  className="font-semibold cursor-pointer"
+                >
+                  Servicios
+                </span>
+                {isSubmenuOpen && (
+                  <ul className="bg-white shadow-lg rounded-lg mt-2 w-full text-center">
+                    {subMenuItems.map((item) => (
+                      <li key={item.id}>
+                        <a
+                          onClick={() => handleMenuClick(item.link)}
+                          className="block px-4 py-2 text-primary hover:bg-secondary hover:text-white rounded transition duration-300 ease-in-out"
+                        >
+                          {item.title}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            </li>
+
+            {/* Botones de autenticación y CajaAdmin/CajaSesion en móviles */}
             {!user && (
               <div className="flex flex-col gap-4">
                 <button
                   className="rounded-lg border-2 bg-white text-secondary border-secondary transition duration-300 ease-in-out px-6 py-2"
-                  onClick={() => handleMenuClick("/register")} 
+                  onClick={() => handleMenuClick("/register")}
                 >
                   Registrarse
                 </button>
                 <button
                   className="rounded-lg border-2 bg-white text-secondary border-secondary transition duration-300 ease-in-out px-6 py-2"
-                  onClick={() => handleMenuClick("/signin")} 
+                  onClick={() => handleMenuClick("/signin")}
                 >
                   Iniciar Sesión
                 </button>

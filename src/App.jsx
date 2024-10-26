@@ -26,6 +26,7 @@ import SobreNosotros from "./pages/SobreNosotros";
 import ContenedorServicios from "./pages/ContenedorServicios";
 import MisReservasCliente from "./pages/MisReservasCliente";
 import All10ServiciosRamdom from "./pages/All10ServiciosRamdom";
+import Contacto from "./pages/Contacto";
 
 function App() {
   
@@ -46,6 +47,7 @@ function App() {
               <Route path="/register" element={<Register/>} />
               <Route path="/verify" element={<VerifyCode/>} />
               <Route path="/sobreNosotros" element={<SobreNosotros/>} />
+              <Route path="/contacto" element={<Contacto/>} />
               <Route path="/" element={<Home/>} />
 
               {/* Seccion de administracion Servicios*/}
@@ -77,7 +79,7 @@ function App() {
 
         
           
-          <Footer /> 
+          {/* <Footer />  */}
         </AuthProvider>
       </BrowserRouter>
     

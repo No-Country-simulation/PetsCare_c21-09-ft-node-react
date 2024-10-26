@@ -1,8 +1,8 @@
-
+import { useNavigate } from "react-router-dom";
 import ErrorImage from "../assets/Error404.png"
 
 function Error404(){
-
+    const navigate = useNavigate();
     return (
         <div className="">
             <div className="flex flex-col justify-center items-center bg-secondary h-2/3 min-w-full py-4 mt-8 mb-8">
@@ -11,8 +11,12 @@ function Error404(){
                 <p className="text-white font-bold text-lg px-2 md:text-xl">Pero no te preocupes, aqui tienes algunas opciones para volver al camino correcto:</p>
             </div>
             <div className="flex flex-row justify-center gap-12 w-full">
-                <a href=""><button className="bg-secondary rounded border-2 font-bold border-white text-base  text-white p-3 hover:bg-primary transition duration-500 md:p-5 md:text-lg">Regresa a la página de inicio</button></a>
-                <a href=""><button className=" bg-secondary rounded border-2 font-bold border-white text-base  text-white p-3 hover:bg-primary transition duration-500 md:p-5 md:text-lg">Regresa a la página de servicios</button></a>
+                <a href=""><button className="bg-secondary rounded border-2 font-bold border-white text-base  text-white p-3 hover:bg-primary transition duration-500 md:p-5 md:text-lg"
+                onClick={() => navigate("/")} 
+                >Regresa a la página de inicio</button></a>
+                <a href=""><button className=" bg-secondary rounded border-2 font-bold border-white text-base  text-white p-3 hover:bg-primary transition duration-500 md:p-5 md:text-lg"
+                onClick={() => navigate("/misservicios")} 
+                >Regresa a la página de servicios</button></a>
             </div>
         </div>
         

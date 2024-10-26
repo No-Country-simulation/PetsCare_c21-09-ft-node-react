@@ -27,6 +27,8 @@ import ContenedorServicios from "./pages/ContenedorServicios";
 import MisReservasCliente from "./pages/MisReservasCliente";
 import All10ServiciosRamdom from "./pages/All10ServiciosRamdom";
 import Contacto from "./pages/Contacto";
+import Error404 from "./pages/Error404";
+import ServiceCategories from "./components/ServiceCategories";
 
 function App() {
   
@@ -48,6 +50,8 @@ function App() {
               <Route path="/verify" element={<VerifyCode/>} />
               <Route path="/sobreNosotros" element={<SobreNosotros/>} />
               <Route path="/contacto" element={<Contacto/>} />
+              <Route path="/misservicios" element={<ServiceCategories/>} />
+
               <Route path="/" element={<Home/>} />
 
               {/* Seccion de administracion Servicios*/}
@@ -71,7 +75,9 @@ function App() {
               <Route path="/agregar-mascota" element={<AuthUsuario><AgregarMascota/></AuthUsuario>} />
               <Route path="/misreservas-user" element={<AuthUsuario><MisReservasCliente/></AuthUsuario>} />
 
-              
+{/* Paginas no existentes */}
+<Route path="*" element={<Error404/>} />
+
             </Routes>
          
 

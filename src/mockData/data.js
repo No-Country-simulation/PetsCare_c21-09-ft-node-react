@@ -19,9 +19,9 @@ export const NavBarMenu = [
     },
     {
         id: 4,
-        title: "Transporte",
-        enumServicio: "TRANSPORTE_DE_MASCOTAS",
-        link: `/servicios/${"TRANSPORTE_DE_MASCOTAS".toLowerCase().replace(/\s+/g, '')}`
+        title: "Educacion",
+        enumServicio: "EDUCACION",
+        link: `/servicios/${"EDUCACION".toLowerCase().replace(/\s+/g, '')}`
     },
     {
         id: 5,
@@ -31,14 +31,15 @@ export const NavBarMenu = [
     },
     {
         id: 6,
-        title: "Cuidados",
-        enumServicio: "CUIDADO_DE_MASCOTAS",
-        link: `/servicios/${"CUIDADO_DE_MASCOTAS".toLowerCase().replace(/\s+/g, '')}`
-    },
-    {
-        id: 7,
         title: "Paseos",
         enumServicio: "PASEO_DE_MASCOTAS",
         link: `/servicios/${"PASEO_DE_MASCOTAS".toLowerCase().replace(/\s+/g, '')}`
     },
+    {
+        id: 6,
+        title: "Peluqueria",
+        enumServicio: "PELUQUERIA",
+        link: `/servicios/${"PELUQUERIA".toLowerCase().replace(/\s+/g, '')}`
+    },
+
 ];

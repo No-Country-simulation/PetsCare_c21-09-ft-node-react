@@ -1,7 +1,7 @@
 package com.backend.server.service.serviceServicio;
 import com.backend.server.DTO.ServicioCardReservaDTO;
 import com.backend.server.entity.Servicio;
-import com.backend.server.subidaArchivos.util.EnumNombreServicio;
+import com.backend.server.util.EnumNombreServicio;
 
 import java.time.LocalDate;
 import java.util.List;

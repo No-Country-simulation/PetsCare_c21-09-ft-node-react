@@ -65,7 +65,7 @@ export default function ContenedorServicios({ titulo, enumNombreServicio }) {
   }
 
   return (
-    <div className="max-w-6xl mx-auto p-6 mt-12 bg-white shadow-md rounded-lg">
+    <div className="max-w-6xl mx-auto p-6 mt-12 bg-white shadow-md rounded-lg pt-40">
       <h1 className="text-3xl font-bold text-center mb-4">{titulo}</h1>
       <div className="bg-white p-6 rounded-lg shadow-md mb-6 text-center">
         <p className="text-lg font-semibold text-gray-800 mb-4">

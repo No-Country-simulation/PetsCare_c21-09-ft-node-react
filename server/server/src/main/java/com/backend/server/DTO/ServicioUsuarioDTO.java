@@ -1,5 +1,5 @@
 package com.backend.server.DTO;
-import com.backend.server.subidaArchivos.util.EnumNombreServicio;
+import com.backend.server.util.EnumNombreServicio;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

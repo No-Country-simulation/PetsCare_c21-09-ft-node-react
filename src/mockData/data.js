@@ -36,7 +36,7 @@ export const NavBarMenu = [
         link: `/servicios/${"PASEO_DE_MASCOTAS".toLowerCase().replace(/\s+/g, '')}`
     },
     {
-        id: 6,
+        id: 7,
         title: "Peluqueria",
         enumServicio: "PELUQUERIA",
         link: `/servicios/${"PELUQUERIA".toLowerCase().replace(/\s+/g, '')}`

@@ -4,9 +4,12 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { urlImage, apiUrl } from '../js/globalApi';
 import axios from 'axios';
-import {jwtDecode} from 'jwt-decode'; // Importar jwt-decode
+import {jwtDecode} from 'jwt-decode';
+import { useNavigate } from 'react-router-dom';
 
-export default function ServicesCard({ servicio, mascotas }) {
+export default function ServicesCard({ servicio, mascotas, tieneToken }) {
+  const navigate = useNavigate();
+
   const {
     idUsuarioPrestador,
     nombreServicio,
@@ -18,60 +21,58 @@ export default function ServicesCard({ servicio, mascotas }) {
     pais,
     provincia,
     estadoDepartamento,
-    turnosDisponiblesNoReservados
+    turnosDisponiblesNoReservados,
   } = servicio;
 
-console.log(idUsuarioPrestador)
+  const [showCalendar, setShowCalendar] = useState(false);
+  const [selectedDate, setSelectedDate] = useState(null);
+  const [turnosDisponibles, setTurnosDisponibles] = useState([]);
+  const [selectedTurnos, setSelectedTurnos] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+  const [showNoMascotasModal, setShowNoMascotasModal] = useState(false);
+  const [selectedMascota, setSelectedMascota] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [showConfirmation, setShowConfirmation] = useState(false); 
 
-  const [showCalendar, setShowCalendar] = useState(false); // Controla la visibilidad del calendario
-  const [selectedDate, setSelectedDate] = useState(null); // Fecha seleccionada por el usuario
-  const [turnosDisponibles, setTurnosDisponibles] = useState([]); // Turnos disponibles para la fecha seleccionada
-  const [selectedTurnos, setSelectedTurnos] = useState([]); // Turnos seleccionados para reserva
-  const [showModal, setShowModal] = useState(false); // Modal de selección de mascota
-  const [showNoMascotasModal, setShowNoMascotasModal] = useState(false); // Modal para cuando no hay mascotas registradas
-  const [selectedMascota, setSelectedMascota] = useState(null); // Mascota seleccionada para la reserva
-
-  //  mostrar/ocultar el calendario
   const handleShowCalendar = () => {
     setShowCalendar(!showCalendar);
   };
 
-  // manejar la selección de la fecha
   const handleDateChange = (date) => {
     setSelectedDate(date);
 
-    // Filtrar turnos disponibles por la fecha seleccionada
-    const turnosFiltrados = turnosDisponiblesNoReservados.filter(turno =>
-      turno.fechaTurno === date.toISOString().split('T')[0]
+    const turnosFiltrados = turnosDisponiblesNoReservados.filter(
+      (turno) => turno.fechaTurno === date.toISOString().split('T')[0]
     );
 
     setTurnosDisponibles(turnosFiltrados);
   };
 
-  // Función para manejar la selección de un turno
   const handleTurnoSelect = (turnoId) => {
     setSelectedTurnos((prevSelected) =>
       prevSelected.includes(turnoId)
-        ? prevSelected.filter(id => id !== turnoId) // Deseleccionar si ya está seleccionado
-        : [...prevSelected, turnoId] // Agregar si no está seleccionado
+        ? prevSelected.filter((id) => id !== turnoId)
+        : [...prevSelected, turnoId]
     );
   };
 
-  // Mostrar el modal para seleccionar la mascota o mensaje si no hay mascotas
   const handleReservar = () => {
-    if (mascotas.length === 0) {
-      setShowNoMascotasModal(true); // Mostrar modal si no hay mascotas registradas
+    if (!tieneToken) {
+      setShowNoMascotasModal(true);
+    } else if (mascotas.length === 0) {
+      setShowNoMascotasModal(true);
     } else {
-      setShowModal(true); // Mostrar modal de selección de mascotas si hay
+      setShowModal(true);
     }
   };
 
-  // Función para enviar la reserva
   const handleSubmitReserva = async () => {
     if (!selectedMascota || selectedTurnos.length === 0) {
       alert('Por favor selecciona una mascota y turnos para reservar.');
       return;
     }
+
+    setIsLoading(true);
 
     const token = localStorage.getItem('token');
     const decodedToken = jwtDecode(token);
@@ -85,9 +86,6 @@ console.log(idUsuarioPrestador)
       fechaReserva: selectedDate.toISOString().split('T')[0],
     };
 
-    console.log('Datos de la reserva:', reservaDTO);
-
-
     try {
       const response = await axios.post(`${apiUrl}api/reserva/nueva`, reservaDTO, {
         headers: {
@@ -97,26 +95,33 @@ console.log(idUsuarioPrestador)
       });
 
       if (response.status === 201) {
-        alert('Reserva realizada exitosamente');
-        setShowModal(false);
+        setShowModal(false); // Cerrar modal de selección de mascota
+        setIsLoading(false); // Ocultar modal de carga
+        setShowConfirmation(true); // Mostrar modal de confirmación
+
+        // Después de 3 segundos, ocultar el modal de confirmación y redirigir
+        setTimeout(() => {
+          setShowConfirmation(false);
+          navigate('/mis-reservas'); // Redirigir a la página de "Mis Reservas"
+        }, 3000);
       }
     } catch (error) {
       console.error('Error al realizar la reserva:', error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
-  // Formatear fecha en español sin desfase
   const formatDate = (date) => {
     return new Date(date).toLocaleDateString('es-ES', {
       weekday: 'long',
       year: 'numeric',
       month: 'long',
       day: 'numeric',
-      timeZone: 'UTC', // Añadir zona horaria UTC para evitar desfase
+      timeZone: 'UTC',
     });
   };
 
-  // Formatear la hora a "17:00 hs"
   const formatTime = (time) => {
     return time.substring(0, 5) + ' hs';
   };
@@ -211,7 +216,7 @@ console.log(idUsuarioPrestador)
               <button
                 className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
                 onClick={handleSubmitReserva}
-                disabled={mascotas.length === 0} // Deshabilitar si no hay mascotas
+                disabled={mascotas.length === 0}
               >
                 Confirmar Reserva
               </button>
@@ -220,15 +225,26 @@ console.log(idUsuarioPrestador)
         </div>
       )}
 
-      {/* Modal para mostrar cuando no hay mascotas registradas */}
+      {/* Modal de "No tienes mascotas registradas" o "No estás logueado" */}
       {showNoMascotasModal && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
           <div className="bg-white p-6 rounded-lg shadow-lg max-w-md w-full text-center">
-            <h2 className="text-2xl font-bold text-red-600 mb-4">No tienes mascotas registradas</h2>
-            <p className="text-gray-700 mb-4">
-              Los servicios de la plataforma están destinados a mascotas. 
-              No puedes realizar una reserva si no tienes mascotas registradas.
-            </p>
+            {tieneToken ? (
+              <>
+                <h2 className="text-2xl font-bold text-red-600 mb-4">No tienes mascotas registradas</h2>
+                <p className="text-gray-700 mb-4">
+                  Los servicios de la plataforma están destinados a mascotas. 
+                  No puedes realizar una reserva si no tienes mascotas registradas.
+                </p>
+              </>
+            ) : (
+              <>
+                <h2 className="text-2xl font-bold text-red-600 mb-4">Usuario no logueado</h2>
+                <p className="text-gray-700 mb-4">
+                  Para poder reservar un turno, necesitas iniciar sesión.
+                </p>
+              </>
+            )}
             <button
               className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
               onClick={() => setShowNoMascotasModal(false)}
@@ -238,31 +254,34 @@ console.log(idUsuarioPrestador)
           </div>
         </div>
       )}
+
+      {/* Modal de carga "Realizando Reserva de servicio" */}
+      {isLoading && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+          <div className="bg-white p-6 rounded-lg shadow-lg max-w-md w-full text-center">
+            <h2 className="text-2xl font-bold text-blue-600 mb-4">Realizando Reserva de servicio</h2>
+            <p className="text-gray-700 mb-4">
+              Aguarde la confirmación...
+            </p>
+          </div>
+        </div>
+      )}
+
+      {/* Modal de confirmación de reserva exitosa */}
+      {showConfirmation && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+          <div className="bg-white p-6 rounded-lg shadow-lg max-w-md w-full text-center">
+            <h2 className="text-2xl font-bold text-green-600 mb-4">Reserva Confirmada</h2>
+            <p className="text-gray-700 mb-4">¡Reserva realizada con éxito!</p>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
 
 ServicesCard.propTypes = {
-  servicio: PropTypes.shape({
-    idUsuarioPrestador: PropTypes.number.isRequired,
-    nombreServicio: PropTypes.string.isRequired,
-    nombreComercio: PropTypes.string.isRequired,
-    imagenServicio: PropTypes.string.isRequired,
-    lugarFisico: PropTypes.bool.isRequired,
-    voyAlLugar: PropTypes.bool.isRequired,
-    observacion: PropTypes.string.isRequired,
-    pais: PropTypes.string.isRequired,
-    provincia: PropTypes.string.isRequired,
-    estadoDepartamento: PropTypes.string.isRequired,
-    turnosDisponiblesNoReservados: PropTypes.arrayOf(
-      PropTypes.shape({
-        idTurno: PropTypes.number.isRequired,
-        fechaTurno: PropTypes.string.isRequired,
-        horaTurno: PropTypes.string.isRequired,
-      })
-    ).isRequired,
-  }).isRequired,
-  mascotas: PropTypes.array.isRequired, // Recibiendo las mascotas desde props
+  servicio: PropTypes.object.isRequired,
+  mascotas: PropTypes.array.isRequired,
+  tieneToken: PropTypes.bool.isRequired,
 };
-
-

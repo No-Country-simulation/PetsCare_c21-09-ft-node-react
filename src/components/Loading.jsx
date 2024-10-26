@@ -1,4 +1,4 @@
-import React from 'react';
+import PropTypes from 'prop-types';
 
 //Para usar esto invoquenlo y utilizen una propiedad de "size" para el tamaño: sm(pequeño), md(medio), lg(largo), xl(grande);  y utilizen un color: blue, darkBlue, green, violet. Gaston
 
@@ -26,6 +26,11 @@ const LoadingSpinner = ({ size = 'md', color = 'blue' }) => {
       />
     </div>
   );
+};
+
+LoadingSpinner.propTypes = {
+  size: PropTypes.oneOf(['sm', 'md', 'lg', 'xl']),
+  color: PropTypes.oneOf(['blue', 'darkBlue', 'green', 'violet']),
 };
 
 export default LoadingSpinner;

@@ -3,45 +3,72 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 import { apiUrl } from '../js/globalApi'; 
 import ServicesCard from '../components/ServicesCard';
-import {jwtDecode} from 'jwt-decode'; // Importar correctamente jwt-decode
+import {jwtDecode} from 'jwt-decode'; 
+import LoadingSpinner from '../components/Loading';
 
 export default function ContenedorServicios({ titulo, enumNombreServicio }) {
   const [servicios, setServicios] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
-  const [mascotas, setMascotas] = useState([]); // Mascotas del usuario
+  const [mascotas, setMascotas] = useState([]); 
+  const [idUsuario, setIdUsuario] = useState(null); 
+  const [tieneToken, setTieneToken] = useState(false);
 
-  // Obtener el id del usuario desde el token
   const token = localStorage.getItem('token');
-  const decodedToken = jwtDecode(token);
-  const idUsuario = decodedToken.idUser;// Verifica cuál es el campo correcto
 
-  // Función para obtener las mascotas del usuario
-  const fetchMascotas = async () => {
-    try {
-      const response = await axios.get(`${apiUrl}api/mascotas/usuario/${idUsuario}`, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-          'Authorization': `Bearer ${token}`,
-        },
-      });
-      setMascotas(response.data);
-    } catch (error) {
-      console.error('Error al obtener las mascotas:', error);
+  // Obtener el ID del usuario desde el token
+  useEffect(() => {
+    if (token) {
+      try {
+        const decodedToken = jwtDecode(token);
+        setIdUsuario(decodedToken.idUser); // Guardar el ID del usuario en el estado
+        setTieneToken(true);
+      } catch (error) {
+        console.error("Error al decodificar el token:", error);
+        setError("Error al decodificar el token. Por favor, inicia sesión.");
+      }
+    } else {
+      console.warn("No se encontró token, no se puede obtener el ID del usuario");
     }
-  };
+  }, [token]);
+
+  // Obtener las mascotas del usuario
+  useEffect(() => {
+    const fetchMascotas = async () => {
+      if (!token || !idUsuario) {
+        console.warn("El usuario no está logueado o el ID de usuario no esta disponible");
+        return;
+      }
+      
+      try {
+        const response = await axios.get(`${apiUrl}api/mascotas/usuario/${idUsuario}`, {
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`,
+          },
+        });
+        setMascotas(response.data);
+      } catch (error) {
+        console.error('Error al obtener las mascotas:', error);
+      }
+    };
+
+    if (idUsuario) {
+      fetchMascotas();
+    }
+  }, [idUsuario, token]); 
 
   // Función para obtener los servicios desde el back-end
   useEffect(() => {
     const fetchServicios = async () => {
       try {
         const response = await axios.get(`${apiUrl}api/servicios/enum/${enumNombreServicio}`,
-          {headers: {
-            'Content-Type': 'multipart/form-data',
-            'Authorization': `Bearer ${token}`,
-          }},
+          // {headers: {
+          //   'Content-Type': 'multipart/form-data',
+          //   'Authorization': `Bearer ${token}`,
+          // }},
         );
-        setServicios(response.data); // Almacena los servicios
+        setServicios(response.data); 
         setLoading(false);
       } catch (error) {
         setError('Error al cargar los servicios.');
@@ -51,12 +78,16 @@ export default function ContenedorServicios({ titulo, enumNombreServicio }) {
     };
 
     fetchServicios();
-    fetchMascotas();
   }, [enumNombreServicio]);
 
   // Si está cargando, mostrar mensaje de carga
   if (loading) {
-    return <p>Cargando servicios...</p>;
+    return <>
+    <LoadingSpinner
+    size = 'md'
+    color = 'blue'
+    />
+    </>;
   }
 
   // Si ocurre un error, mostrar el mensaje de error
@@ -87,7 +118,7 @@ export default function ContenedorServicios({ titulo, enumNombreServicio }) {
           <p>No hay servicios disponibles para esta categoría.</p>
         ) : (
           servicios.map((servicio) => (
-            <ServicesCard key={servicio.idServicio} servicio={servicio} mascotas={mascotas} />
+            <ServicesCard key={servicio.idServicio} servicio={servicio} mascotas={mascotas} tieneToken={tieneToken}/>
           ))
         )}
       </div>

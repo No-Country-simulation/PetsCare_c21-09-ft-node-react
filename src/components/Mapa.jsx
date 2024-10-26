@@ -15,7 +15,7 @@ const Mapa = ({ position }) => {
   const zoom = 13; // Puedes ajustar el nivel de zoom
 
   return (
-    <div className='w-72 h-72 border-4 border-blue-500 shadow-lg rounded-md overflow-hidden z-0'>
+    <div className='w-full h-96 border-4 border-blue-500 shadow-lg rounded-md overflow-hidden z-0'>
       <MapContainer center={position} zoom={zoom} className='h-full w-full'>
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

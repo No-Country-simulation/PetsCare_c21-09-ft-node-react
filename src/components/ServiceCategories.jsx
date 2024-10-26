@@ -90,7 +90,7 @@ function ServiceCategories() {
     <div>
       <Services onSelectService={handleSelectService} />
       
-      <div className='flex flex-row p-4 w-full h-screen'>
+      <div className='flex flex-row p-4 w-full h-screen flex-grow'>
         <div className='flex flex-col p-1 w-1/3 h-full overflow-y-auto gap-6'>
           {filteredServices.map((service, index) => (
             <div key={index} className='container mx-auto p-2 flex self-start flex-row border-4 rounded-xl  h-72 w-full cursor-pointer hover:border-secondary transition duration-300'>

@@ -34,53 +34,50 @@ function App() {
   return (
 
     <>
-        <BrowserRouter>
+      <BrowserRouter>
         <AuthProvider>
          
         <Nav2 />  
          
           <div    className="main-content"/>
          
-          <Routes>
-          <Route path="/signin" element={<SignIn/>} />
-          <Route path="/register" element={<Register/>} />
-          <Route path="/verify" element={<VerifyCode/>} />
-          <Route path="/sobreNosotros" element={<SobreNosotros/>} />
-            <Route path="/" element={<Home/>} />
+            <Routes>
+              <Route path="/signin" element={<SignIn/>} />
+              <Route path="/register" element={<Register/>} />
+              <Route path="/verify" element={<VerifyCode/>} />
+              <Route path="/sobreNosotros" element={<SobreNosotros/>} />
+              <Route path="/" element={<Home/>} />
 
-            {/* Seccion de administracion Servicios*/}
-            <Route path="/agregar-servicio" element={<AuthPrestadorServicio><AgregarServicio/></AuthPrestadorServicio>} />
+              {/* Seccion de administracion Servicios*/}
+              <Route path="/agregar-servicio" element={<AuthPrestadorServicio><AgregarServicio/></AuthPrestadorServicio>} />
 
-            <Route path="/admin-servicios" element={<AuthPrestadorServicio><AdminServicios/></AuthPrestadorServicio>} />
-            <Route path="/editar-servicio/:idServicio" element={<AuthPrestadorServicio><EditarServicio/></AuthPrestadorServicio>} />
-            <Route path="/seleccion-admin-turnos/:idServicio" element={<AuthPrestadorServicio><DosBotonesSeleccionPrestador/></AuthPrestadorServicio>} />
-            <Route path="/cargar-turnos/:idServicio" element={<AuthPrestadorServicio><CargarTurno/></AuthPrestadorServicio>} />
-            <Route path="/mis-turnos/:idServicio" element={<AuthPrestadorServicio><MisTurnos/></AuthPrestadorServicio>} />
+              <Route path="/admin-servicios" element={<AuthPrestadorServicio><AdminServicios/></AuthPrestadorServicio>} />
+              <Route path="/editar-servicio/:idServicio" element={<AuthPrestadorServicio><EditarServicio/></AuthPrestadorServicio>} />
+              <Route path="/seleccion-admin-turnos/:idServicio" element={<AuthPrestadorServicio><DosBotonesSeleccionPrestador/></AuthPrestadorServicio>} />
+              <Route path="/cargar-turnos/:idServicio" element={<AuthPrestadorServicio><CargarTurno/></AuthPrestadorServicio>} />
+              <Route path="/mis-turnos/:idServicio" element={<AuthPrestadorServicio><MisTurnos/></AuthPrestadorServicio>} />
 
-{/* Traer servicios */}
+  {/* Traer servicios */}
 
-<Route path="/servicios/veterinaria" element={<ContenedorServicios
-titulo="Veterinaria"
-enumNombreServicio="VETERINARIA"
-/>} />
+              <Route path="/servicios/veterinaria" element={<ContenedorServicios titulo="Veterinaria" enumNombreServicio="VETERINARIA"/>} />
 
-<Route path="/ramdom" element={<All10ServiciosRamdom/>} />
+              <Route path="/ramdom" element={<All10ServiciosRamdom/>} />
 
 
-{/* Usuario duenio mascotas */}
-            <Route path="/admin-mascotas" element={<AuthUsuario><AdminMascotas/></AuthUsuario>} />
-            <Route path="/agregar-mascota" element={<AuthUsuario><AgregarMascota/></AuthUsuario>} />
-            <Route path="/misreservas-user" element={<AuthUsuario><MisReservasCliente/></AuthUsuario>} />
+  {/* Usuario duenio mascotas */}
+              <Route path="/admin-mascotas" element={<AuthUsuario><AdminMascotas/></AuthUsuario>} />
+              <Route path="/agregar-mascota" element={<AuthUsuario><AgregarMascota/></AuthUsuario>} />
+              <Route path="/misreservas-user" element={<AuthUsuario><MisReservasCliente/></AuthUsuario>} />
 
-            
-          </Routes>
+              
+            </Routes>
          
 
-     
+          <div/>
 
         
           
-          {/* <Footer /> */}
+          <Footer /> 
         </AuthProvider>
       </BrowserRouter>
     

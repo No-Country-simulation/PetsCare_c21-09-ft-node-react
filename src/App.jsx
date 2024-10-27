@@ -1,11 +1,5 @@
  import { BrowserRouter, Routes, Route } from "react-router-dom";
  import { AuthProvider } from "./provider/AuthProvider";
-
-
-// import { div } from "framer-motion/client";
-// import logo from "./assets/logoPets.png";
-// import Banner from "./components/Banner";
-// import NavBar from "./components/Navbar";
 import Nav2 from "./components/Nav2";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
@@ -85,7 +79,7 @@ function App() {
 
         
           
-          {/* <Footer />  */}
+          <Footer /> 
         </AuthProvider>
       </BrowserRouter>
     

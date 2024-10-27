@@ -122,6 +122,7 @@ public class ServicioController {
             @RequestParam("provincia") String provincia,
             @RequestParam("estadoDepartamento") String estadoDepartamento,
             @RequestParam("direccion") String direccion,
+            @RequestParam("pricehour") double pricehour,
             @RequestParam("latitud") double latitud,
             @RequestParam("longitud") double longitud,
             @RequestParam("idUsuario") Long idUsuario,
@@ -155,6 +156,7 @@ public class ServicioController {
             nuevoServicio.setProvincia(provincia);
             nuevoServicio.setEstadoDepartamento(estadoDepartamento);
             nuevoServicio.setDireccion(direccion);
+            nuevoServicio.setPriceHour(pricehour);
             nuevoServicio.setLatitud(latitud);
             nuevoServicio.setLongitud(longitud);
             nuevoServicio.setImagenServicio(rutaImagen);

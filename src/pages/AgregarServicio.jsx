@@ -1,28 +1,29 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
-import { MapContainer, TileLayer, Marker, useMapEvents } from 'react-leaflet';
-import { apiUrl } from '../js/globalApi';
-import { jwtDecode } from 'jwt-decode';
-import 'leaflet/dist/leaflet.css';
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { MapContainer, TileLayer, Marker, useMapEvents } from "react-leaflet";
+import { apiUrl } from "../js/globalApi";
+import { jwtDecode } from "jwt-decode";
+import "leaflet/dist/leaflet.css";
 
 export default function AgregarServicio() {
   const navigate = useNavigate();
 
-  const [nombreServicio, setNombreServicio] = useState('');
-  const [nombreComercio, setNombreComercio] = useState('');
-  const [observacion, setObservacion] = useState('');
+  const [nombreServicio, setNombreServicio] = useState("");
+  const [nombreComercio, setNombreComercio] = useState("");
+  const [observacion, setObservacion] = useState("");
   const [lugarFisico, setLugarFisico] = useState(false);
   const [voyAlLugar, setVoyAlLugar] = useState(false);
-  const [pais, setPais] = useState('');
-  const [provincia, setProvincia] = useState('');
-  const [estadoDepartamento, setEstadoDepartamento] = useState('');
-  const [direccion, setDireccion] = useState('');
-  const [latitud, setLatitud] = useState(-34.6037); 
-  const [longitud, setLongitud] = useState(-58.3816); 
+  const [pais, setPais] = useState("");
+  const [provincia, setProvincia] = useState("");
+  const [estadoDepartamento, setEstadoDepartamento] = useState("");
+  const [direccion, setDireccion] = useState("");
+  const [priceHour, setPriceHour] = useState(0.0);
+  const [latitud, setLatitud] = useState(-34.6037);
+  const [longitud, setLongitud] = useState(-58.3816);
   const [imagenServicio, setImagenServicio] = useState(null);
 
-  const [mensaje, setMensaje] = useState('');
+  const [mensaje, setMensaje] = useState("");
   const [mostrarMensaje, setMostrarMensaje] = useState(false);
   const [esError, setEsError] = useState(false);
 
@@ -35,62 +36,68 @@ export default function AgregarServicio() {
     e.preventDefault();
 
     const formData = new FormData();
-    formData.append('nombreServicio', nombreServicio);
-    formData.append('nombreComercio', nombreComercio);
-    formData.append('observacion', observacion);
-    formData.append('lugarFisico', lugarFisico);
-    formData.append('voyAlLugar', voyAlLugar);
-    formData.append('pais', pais);
-    formData.append('provincia', provincia);
-    formData.append('estadoDepartamento', estadoDepartamento);
-    formData.append('direccion', direccion);
-    formData.append('latitud', latitud);
-    formData.append('longitud', longitud);
-    formData.append('imagenServicio', imagenServicio);
+    formData.append("nombreServicio", nombreServicio);
+    formData.append("nombreComercio", nombreComercio);
+    formData.append("observacion", observacion);
+    formData.append("lugarFisico", lugarFisico);
+    formData.append("voyAlLugar", voyAlLugar);
+    formData.append("pais", pais);
+    formData.append("provincia", provincia);
+    formData.append("estadoDepartamento", estadoDepartamento);
+    formData.append("direccion", direccion);
+    formData.append("priceHour", priceHour);
+    formData.append("latitud", latitud);
+    formData.append("longitud", longitud);
+    formData.append("imagenServicio", imagenServicio);
 
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem("token");
     const decodedToken = jwtDecode(token);
     const idUsuario = decodedToken.idUser;
 
-    formData.append('idUsuario', idUsuario);
+    formData.append("idUsuario", idUsuario);
 
     try {
-      const response = await axios.post(`${apiUrl}api/servicios/crearservicio`, formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-          'Authorization': `Bearer ${token}`,
-        },
-      });
+      const response = await axios.post(
+        `${apiUrl}api/servicios/crearservicio`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
       console.log(response);
       setEsError(false);
-      setMensaje('Servicio agregado exitosamente');
+      setMensaje("Servicio agregado exitosamente");
       setMostrarMensaje(true);
 
       // Redirigir a /mis-servicios después de 3 segundos
       setTimeout(() => {
         setMostrarMensaje(false);
-        navigate('/mis-servicios');
+        navigate("/mis-servicios");
       }, 3000);
-
     } catch (error) {
       // Mostrar mensaje de error si hay conflicto
       if (error.response && error.response.status === 409) {
         setEsError(true);
         setMensaje(error.response.data); //m enviado desde el backend
         setTimeout(() => {
-            setEsError(false);
-            navigate('/mis-servicios');
-          }, 3000);
+          setEsError(false);
+          navigate("/mis-servicios");
+        }, 3000);
       } else {
-        console.error('Error al agregar el servicio:', error);
+        console.error("Error al agregar el servicio:", error);
         setEsError(true);
-        setMensaje('Error al agregar el servicio. Por favor, inténtalo de nuevo.');
+        setMensaje(
+          "Error al agregar el servicio. Por favor, inténtalo de nuevo."
+        );
 
         setTimeout(() => {
-            setEsError(false);
-            navigate('/mis-servicios');
-          }, 3000);
+          setEsError(false);
+          navigate("/mis-servicios");
+        }, 3000);
       }
       setMostrarMensaje(true);
     }
@@ -108,28 +115,36 @@ export default function AgregarServicio() {
 
   return (
     <div className="max-w-4xl mx-auto p-6 bg-white shadow-md rounded-lg">
-      <h2 className="text-2xl font-bold text-center mb-6">Agregar Nuevo Servicio</h2>
+      <h2 className="text-2xl font-bold text-center mb-6">
+        Agregar Nuevo Servicio
+      </h2>
       <form onSubmit={handleSubmit} className="space-y-4">
-      <div className="flex flex-col">
-  <label htmlFor="tipoServicio" className="text-gray-700">Tipo de Servicio</label>
-  <select
-    id="tipoServicio"
-    className="p-2 border border-gray-300 rounded"
-    value={nombreServicio}  // Aquí estás usando el mismo estado de `nombreServicio` para simplificar
-    onChange={(e) => setNombreServicio(e.target.value)}
-    required
-  >
-    <option value="">Selecciona un tipo de servicio</option>
-    <option value="VETERINARIA">Veterinaria</option>
-  <option value="PASEO_DE_MASCOTAS">Paseo de Mascotas</option>
-  <option value="CUIDADO_DE_MASCOTAS">Cuidado de Mascotas</option>
-  <option value="TRANSPORTE_DE_MASCOTAS">Transporte de Mascotas</option>
-  </select>
-</div>
+        <div className="flex flex-col">
+          <label htmlFor="tipoServicio" className="text-gray-700">
+            Tipo de Servicio
+          </label>
+          <select
+            id="tipoServicio"
+            className="p-2 border border-gray-300 rounded"
+            value={nombreServicio} // Aquí estás usando el mismo estado de `nombreServicio` para simplificar
+            onChange={(e) => setNombreServicio(e.target.value)}
+            required
+          >
+            <option value="">Selecciona un tipo de servicio</option>
+            <option value="VETERINARIA">Veterinaria</option>
+            <option value="PASEO_DE_MASCOTAS">Paseo de Mascotas</option>
+            <option value="CUIDADO_DE_MASCOTAS">Cuidado de Mascotas</option>
+            <option value="TRANSPORTE_DE_MASCOTAS">
+              Transporte de Mascotas
+            </option>
+          </select>
+        </div>
 
         <div className="flex flex-col">
-        <div className="flex flex-col">
-            <label htmlFor="nombreComercio" className="text-gray-700">Nombre del Comercio</label>
+          <div className="flex flex-col">
+            <label htmlFor="nombreComercio" className="text-gray-700">
+              Nombre del Comercio
+            </label>
             <input
               type="text"
               id="nombreComercio"
@@ -140,7 +155,9 @@ export default function AgregarServicio() {
             />
           </div>
 
-          <label htmlFor="observacion" className="text-gray-700">Observaciones</label>
+          <label htmlFor="observacion" className="text-gray-700">
+            Observaciones
+          </label>
           <textarea
             id="observacion"
             className="p-2 border border-gray-300 rounded"
@@ -158,7 +175,9 @@ export default function AgregarServicio() {
               checked={lugarFisico}
               onChange={(e) => setLugarFisico(e.target.checked)}
             />
-            <label htmlFor="lugarFisico" className="ml-2 text-gray-700">¿Tiene lugar físico?</label>
+            <label htmlFor="lugarFisico" className="ml-2 text-gray-700">
+              ¿Tiene lugar físico?
+            </label>
           </div>
           <div className="flex items-center">
             <input
@@ -167,13 +186,17 @@ export default function AgregarServicio() {
               checked={voyAlLugar}
               onChange={(e) => setVoyAlLugar(e.target.checked)}
             />
-            <label htmlFor="voyAlLugar" className="ml-2 text-gray-700">¿Voy al lugar?</label>
+            <label htmlFor="voyAlLugar" className="ml-2 text-gray-700">
+              ¿Voy al lugar?
+            </label>
           </div>
         </div>
 
         <div className="grid grid-cols-2 gap-4">
           <div className="flex flex-col">
-            <label htmlFor="pais" className="text-gray-700">País</label>
+            <label htmlFor="pais" className="text-gray-700">
+              País
+            </label>
             <input
               type="text"
               id="pais"
@@ -185,7 +208,9 @@ export default function AgregarServicio() {
           </div>
 
           <div className="flex flex-col">
-            <label htmlFor="provincia" className="text-gray-700">Provincia</label>
+            <label htmlFor="provincia" className="text-gray-700">
+              Provincia
+            </label>
             <input
               type="text"
               id="provincia"
@@ -197,7 +222,9 @@ export default function AgregarServicio() {
           </div>
 
           <div className="flex flex-col">
-            <label htmlFor="estadoDepartamento" className="text-gray-700">Partido/Departamento</label>
+            <label htmlFor="estadoDepartamento" className="text-gray-700">
+              Partido/Departamento
+            </label>
             <input
               type="text"
               id="estadoDepartamento"
@@ -209,7 +236,9 @@ export default function AgregarServicio() {
           </div>
 
           <div className="flex flex-col">
-            <label htmlFor="direccion" className="text-gray-700">Dirección</label>
+            <label htmlFor="direccion" className="text-gray-700">
+              Dirección
+            </label>
             <input
               type="text"
               id="direccion"
@@ -222,7 +251,24 @@ export default function AgregarServicio() {
         </div>
 
         <div className="flex flex-col">
-          <label htmlFor="imagenServicio" className="text-gray-700">Imagen del Servicio</label>
+          <label htmlFor="priceHour" className="text-gray-700">
+            Precio por Hora en $
+          </label>
+          <input
+            type="number"
+            step="0.01"
+            id="priceHour"
+            className="p-2 border border-gray-300 rounded"
+            value={priceHour}
+            onChange={(e) => setPriceHour(parseFloat(e.target.value))}
+            required
+          />
+        </div>
+
+        <div className="flex flex-col">
+          <label htmlFor="imagenServicio" className="text-gray-700">
+            Imagen del Servicio
+          </label>
           <input
             type="file"
             id="imagenServicio"
@@ -233,7 +279,11 @@ export default function AgregarServicio() {
         </div>
 
         <div className="h-64 mt-4">
-          <MapContainer center={[-34.6037, -58.3816]} zoom={13} style={{ height: '100%', width: '100%' }}>
+          <MapContainer
+            center={[-34.6037, -58.3816]}
+            zoom={13}
+            style={{ height: "100%", width: "100%" }}
+          >
             <TileLayer
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -242,17 +292,23 @@ export default function AgregarServicio() {
           </MapContainer>
         </div>
 
-        <button type="submit" className="w-full bg-main-blue text-white py-2 px-4 rounded-md">
+        <button
+          type="submit"
+          className="w-full bg-main-blue text-white py-2 px-4 rounded-md"
+        >
           Agregar Servicio
         </button>
       </form>
 
       {mostrarMensaje && (
-        <div className={`mt-4 p-4 rounded-md text-center ${esError ? 'text-red-700 bg-red-100' : 'text-green-700 bg-green-100'}`}>
+        <div
+          className={`mt-4 p-4 rounded-md text-center ${
+            esError ? "text-red-700 bg-red-100" : "text-green-700 bg-green-100"
+          }`}
+        >
           {mensaje}
         </div>
       )}
     </div>
   );
 }
-

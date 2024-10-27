@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import  { useState } from 'react';
 import exampleImage from '../assets/images/educacion.jpeg';
 import Mapa from './Mapa2';
 import paseoImage from '../assets/images/paseo-2.jpeg';

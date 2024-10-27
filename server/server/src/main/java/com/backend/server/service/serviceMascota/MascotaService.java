@@ -40,6 +40,30 @@ public class MascotaService implements MascotaServiceInterface {
     }
 
     @Override
+    public Mascota updateMascota(Long id, Mascota mascota) {
+        try {
+            Mascota existingMascota = mascotaRepository.findById(id)
+                    .orElseThrow(() -> new NotFoundException("Mascota no encontrada con ID: " + id));
+
+            existingMascota.setName(mascota.getName());
+            existingMascota.setSpecies(mascota.getSpecies());
+            existingMascota.setBreed(mascota.getBreed());
+            existingMascota.setAge(mascota.getAge());
+            existingMascota.setImagePet(mascota.getImagePet());
+            existingMascota.setVaccinated(mascota.isVaccinated());
+            existingMascota.setPersonality(mascota.getPersonality());
+            existingMascota.setWeight(mascota.getWeight());
+            existingMascota.setDetails(mascota.getDetails());
+
+            return mascotaRepository.save(existingMascota);
+        } catch (NotFoundException e) {
+            throw e;
+        } catch (Exception e) {
+            throw new DatabaseException("Error al actualizar la mascota", e);
+        }
+    }
+
+    @Override
     public Mascota saveMascota(Mascota mascota) {
         try {
 

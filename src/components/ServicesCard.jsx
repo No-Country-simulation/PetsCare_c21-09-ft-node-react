@@ -99,10 +99,10 @@ export default function ServicesCard({ servicio, mascotas, tieneToken }) {
         setIsLoading(false); // Ocultar modal de carga
         setShowConfirmation(true); // Mostrar modal de confirmación
 
-        // Después de 3 segundos, ocultar el modal de confirmación y redirigir
+        //  ocultar el modal de confirmación y redirigir
         setTimeout(() => {
           setShowConfirmation(false);
-          navigate('/mis-reservas'); // Redirigir a la página de "Mis Reservas"
+          navigate('/misreservas-user'); // Redirigir a la página de "Mis Reservas"
         }, 3000);
       }
     } catch (error) {

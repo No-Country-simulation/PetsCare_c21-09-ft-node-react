@@ -8,6 +8,8 @@ public interface MascotaServiceInterface {
 
     Optional<Mascota> findMascotaById(Long id);
 
+    Mascota updateMascota(Long id, Mascota mascota);
+
     Mascota saveMascota(Mascota mascota);
 
     void deleteMascota(Long id);

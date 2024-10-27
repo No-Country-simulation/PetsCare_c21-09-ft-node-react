@@ -15,7 +15,7 @@ function Error404(){
                 onClick={() => navigate("/")} 
                 >Regresa a la página de inicio</button></a>
                 <a href=""><button className=" bg-secondary rounded border-2 font-bold border-white text-base  text-white p-3 hover:bg-primary transition duration-500 md:p-5 md:text-lg"
-                onClick={() => navigate("/misservicios")} 
+                onClick={() => navigate("/serviciosdisponibles")} 
                 >Regresa a la página de servicios</button></a>
             </div>
         </div>

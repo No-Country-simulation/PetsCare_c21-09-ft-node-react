@@ -50,7 +50,7 @@ function App() {
               <Route path="/verify" element={<VerifyCode/>} />
               <Route path="/sobreNosotros" element={<SobreNosotros/>} />
               <Route path="/contacto" element={<Contacto/>} />
-              <Route path="/misservicios" element={<ServiceCategories/>} />
+              <Route path="/serviciosdisponibles" element={<ServiceCategories/>} />
 
               <Route path="/" element={<Home/>} />
 

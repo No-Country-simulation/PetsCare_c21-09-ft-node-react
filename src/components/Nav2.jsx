@@ -29,7 +29,7 @@ const NavBar = () => {
   return (
     <>
       <nav className="bg-white shadow-lg fixed top-0 left-0 w-full z-50">
-        <div className="flex justify-between items-center py-4 px-4 md:px-8 lg:px-16">
+        <div className="flex justify-between items-center py-4 px-0 md:px-8 lg:px-16">
           {/* Logo */}
           <div
             className="text-2xl flex items-center gap-2 font-bold uppercase cursor-pointer"
@@ -51,8 +51,8 @@ const NavBar = () => {
           </div>
 
           {/* visible en desktop y oculto en móviles */}
-          <div className="hidden md:flex items-center gap-6 text-primary">
-            <ul className="flex items-center gap-12 mr-8">
+          <div className="hidden md:flex items-center gap-6 text-primary h-10 ">
+            <ul className="flex items-center gap-12 mr-8 mr-48">
               {/* Renderiza elementos del menú principal */}
               {mainMenuItems.map((item) => (
                 <li key={item.id}>
@@ -68,7 +68,7 @@ const NavBar = () => {
               {/* Menú desplegable de Servicios */}
               <li className="relative">
                 <span
-                  className="inline-block py-1 px-3 transition duration-300 ease-in-out hover:text-secondary hover:scale-110 font-semibold cursor-pointer"
+                  className="inline-block py-1 px-0 transition duration-300 ease-in-out hover:text-secondary hover:scale-110 font-semibold cursor-pointer"
                   onClick={() => setIsSubmenuOpen(!isSubmenuOpen)}
                 >
                   Servicios
@@ -95,13 +95,13 @@ const NavBar = () => {
             {!user && (
               <div className="flex gap-2">
                 <button
-                  className="hover:bg-secondary text-secondary font-semibold hover:text-white rounded-lg border-2 border-secondary transition duration-300 ease-in-out px-6 py-2 w-32 h-16"
+                  className="hover:bg-secondary text-secondary font-semibold hover:text-white rounded-lg border-2 border-secondary transition duration-300 ease-in-out w-40 h-10"
                   onClick={() => navigate("/register")}
                 >
                   Registrarse
                 </button>
                 <button
-                  className="hover:bg-secondary text-secondary font-semibold hover:text-white rounded-lg border-2 border-secondary transition duration-300 ease-in-out px-6 py-2 w-32 h-16"
+                  className="hover:bg-secondary text-secondary font-semibold hover:text-white rounded-lg border-2 border-secondary transition duration-300 ease-in-out w-40 h-10"
                   onClick={() => navigate("/signin")}
                 >
                   Iniciar Sesión

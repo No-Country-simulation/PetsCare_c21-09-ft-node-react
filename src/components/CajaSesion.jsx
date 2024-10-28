@@ -64,16 +64,16 @@ export default function CajaSesion() {
 
   return (
     <>
-      <div className="cajaSesion flex items-center justify-end p-4">
+      <div className="cajaSesion justify-end p-4">
         {user ? (
-          <div className="cajaSesion__nombre flex items-center space-x-2">
-            <span className="helloUser text-gray-700">
+          <div className="cajaSesion__nombre">
+            <span className="helloUser text-primary">
               {user}.
               <span>
                 <IoMdLogOut
                   onClick={handleLogoutClick}
-                  style={{width: "40px", height: "40px"}}
-                  className="logoSesion text-xl cursor-pointer text-red-600 hover:text-red-800"
+                  style={{width: "30px", height: "30px"}}
+                  className="logoSesion text-xl cursor-pointer text-secondary hover:scale-110 transition duration-300 ease-in-out justify-end"
                 />
               </span>
             </span>
@@ -81,7 +81,7 @@ export default function CajaSesion() {
         ) : (
           <div>
             <Link to="/signin" aria-current="page">
-              <VscAccount className="logoSesion text-xl text-gray-500 hover:text-gray-700" />
+              <VscAccount className="logoSesion text-xl text-primary hover:text-secondary" />
             </Link>
           </div>
         )}

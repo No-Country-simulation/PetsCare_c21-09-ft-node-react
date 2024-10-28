@@ -62,7 +62,7 @@ const SobreNosotros = () => {
           <p className="text-lg text-gray-700 max-w-2xl mx-auto">
             Bienvenido a nuestra aplicación de servicios para mascotas, diseñada para facilitar el cuidado integral de tus animales
             queridos. Ofrecemos soluciones confiables y amorosas para todas sus necesidades, desde atención veterinaria hasta paseos
-            diarios. Nos enorgullece contar con un equipo experimentado y apasionado por el bienestar de las mascotas.
+            diarios. Nos enorgullece contar con un equipo experimentado y apasionado por el bienestar de nuestras mascotas.
           </p>
         </section>
   

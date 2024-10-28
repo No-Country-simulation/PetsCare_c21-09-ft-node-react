@@ -49,7 +49,7 @@ export default function CajaAdmin() {
       <div className="inline-block">
         <span 
           onClick={() => navigate(redirect)}
-          className="cursor-pointer font-bold text-black px-4 py-2 border border-gray-300 rounded-md bg-gray-100 mt-1 inline-block"
+            className="cursor-pointer font-semibold text-primary px-4 py-2 border-2 border-secondary rounded-md mt-1 inline-block hover:scale-110 hover:bg-secondary hover:text-white transition duration-300 ease-in-out"
         >
           {nombreRol}
         </span>

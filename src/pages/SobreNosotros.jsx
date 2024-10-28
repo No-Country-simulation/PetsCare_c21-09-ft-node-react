@@ -61,7 +61,7 @@ const SobreNosotros = () => {
           <h1 className="text-4xl font-bold text-primary mb-4">About Us</h1>
           <p className="text-lg text-gray-700 max-w-2xl mx-auto">
             Bienvenido a nuestra aplicación de servicios para mascotas, diseñada para facilitar el cuidado integral de tus animales
-            queridos. Ofrecemos soluciones confiables y amorosas para todas sus necesidades, desde atención veterinaria hasta paseos
+            queridos. Ofrecemos soluciones confiables, responsables y amorosas para todas sus necesidades, desde atención veterinaria hasta paseos
             diarios. Nos enorgullece contar con un equipo experimentado y apasionado por el bienestar de nuestras mascotas.
           </p>
         </section>

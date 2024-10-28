@@ -14,16 +14,16 @@ export default function VistaEnlaceAdminUserPet() {
 
       <button
         className="bg-main-blue text-white py-2 px-4 rounded hover:bg-blue-600 w-64"
-        onClick={() => navigate('/buscar-servicios')}
+        onClick={() => navigate('/serviciosdisponibles')}
       >
         Buscar Servicios
       </button>
 
       <button
         className="bg-main-blue text-white py-2 px-4 rounded hover:bg-blue-600 w-64"
-        onClick={() => navigate('/administrar-mascotas')}
+        onClick={() => navigate('/agregar-mascota')}
       >
-        Administrar Mascotas
+        Agregar Mascota
       </button>
     </div>
   );

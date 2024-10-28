@@ -8,12 +8,14 @@ import com.backend.server.security.service.impl.UsuarioService;
 import com.backend.server.service.serviceMascota.MascotaServiceInterface;
 import com.backend.server.subidaArchivos.service.Impl.UploadFilesServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 
@@ -43,6 +45,20 @@ public class MascotaController {
             return ResponseEntity.ok(mascotaOpt.get());
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Mascota no encontrada");
+        }
+    }
+
+    @PutMapping("/update/{id}")
+    public ResponseEntity<Mascota> updateMascota(@PathVariable Long id, @RequestBody Mascota mascota) {
+        try {
+            Mascota updatedMascota = mascotaService.updateMascota(id, mascota);
+            return ResponseEntity.ok(updatedMascota);
+        } catch (NotFoundException e) {
+            return ResponseEntity.status(404).body(null);
+        } catch (InvalidDataException e) {
+            return ResponseEntity.status(400).body(null);
+        } catch (DatabaseException e) {
+            return ResponseEntity.status(500).body(null);
         }
     }
 
@@ -96,14 +112,19 @@ public class MascotaController {
 
     @DeleteMapping("/eliminar/{id}")
     public ResponseEntity<?> eliminarMascota(@PathVariable Long id) {
-        if (mascotaService.findMascotaById(id).isPresent()) {
-            mascotaService.deleteMascota(id);
-            return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Mascota eliminada");
-        } else {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Mascota no encontrada");
+        try {
+            if (mascotaService.findMascotaById(id).isPresent()) {
+                mascotaService.deleteMascota(id);
+                return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Mascota eliminada");
+            } else {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Mascota no encontrada");
+            }
+        } catch (DataIntegrityViolationException e) { // Error de restricción de clave externa. mascota con reservas no se elimina
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("Error: Mascota tiene reservas asignadas");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error al eliminar la mascota");
         }
     }
-
 
     @GetMapping("/usuario/{userId}")
     public ResponseEntity<List<Mascota>> getMascotasByUsuarioId(@PathVariable Long userId) {

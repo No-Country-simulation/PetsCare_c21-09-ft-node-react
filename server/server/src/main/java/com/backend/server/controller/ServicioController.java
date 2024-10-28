@@ -2,13 +2,12 @@ package com.backend.server.controller;
 import com.backend.server.DTO.ServicioCardReservaDTO;
 import com.backend.server.DTO.ServicioUsuarioDTO;
 import com.backend.server.entity.Servicio;
-import com.backend.server.exceptionHandler.InvalidDataException;
 import com.backend.server.exceptionHandler.NotFoundException;
 import com.backend.server.security.entity.Usuario;
 import com.backend.server.security.service.impl.UsuarioService;
 import com.backend.server.service.serviceServicio.ServicioServiceInterface;
 import com.backend.server.subidaArchivos.service.Impl.UploadFilesServiceImpl;
-import com.backend.server.subidaArchivos.util.EnumNombreServicio;
+import com.backend.server.util.EnumNombreServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
@@ -123,6 +122,7 @@ public class ServicioController {
             @RequestParam("provincia") String provincia,
             @RequestParam("estadoDepartamento") String estadoDepartamento,
             @RequestParam("direccion") String direccion,
+            @RequestParam("pricehour") double pricehour,
             @RequestParam("latitud") double latitud,
             @RequestParam("longitud") double longitud,
             @RequestParam("idUsuario") Long idUsuario,
@@ -156,6 +156,7 @@ public class ServicioController {
             nuevoServicio.setProvincia(provincia);
             nuevoServicio.setEstadoDepartamento(estadoDepartamento);
             nuevoServicio.setDireccion(direccion);
+            nuevoServicio.setPriceHour(pricehour);
             nuevoServicio.setLatitud(latitud);
             nuevoServicio.setLongitud(longitud);
             nuevoServicio.setImagenServicio(rutaImagen);

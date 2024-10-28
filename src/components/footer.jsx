@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Dog from "../assets/dog.png"
+import Dog from "../assets/dog.png";
 
 const Footer = () => {
   const [showTerms, setShowTerms] = useState(false);
@@ -9,18 +9,18 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-secondary w-full h-40 fixed bottom-0 text-white py-8 flex flex-col z-50">
+    <footer className="bg-secondary w-full h-auto relative text-white py-8 flex flex-col z-50">
       <div className="w-full px-4">
-        <div className="flex md:flex-row md:justify-between p-1 ">
+        <div className="flex md:flex-row md:justify-between p-1">
           <div className="flex flex-wrap w-full md:w-1/3 mb-6 md:mb-0">
-            <img src={Dog} alt="" srcset="" className="size-32 "/>
+            <img src={Dog} alt="" className="size-32" />
             <h3 className="text-2xl font-bold mb-2 m-10">Cuidados Peludos</h3>
           </div>
 
-          <div className='flex flex-col md:mx-auto'> 
-            <h3 className='text-2xl font-bold mb-2'>Contacto</h3>
-            <p  className='text-white font-bold  '>Email: contacto@cuidadospeludos.com</p>
-            <p  className='text-white font-bold  '>Telefono: +54 9 55555555</p>
+          <div className="flex flex-col md:mx-auto">
+            <h3 className="text-2xl font-bold mb-2">Contacto</h3>
+            <p className="text-white font-bold">Email: contacto@cuidadospeludos.com</p>
+            <p className="text-white font-bold">Telefono: +54 9 55555555</p>
           </div>
           
           <div className="mt-6 w-full md:w-1/3 md:mx-auto">
@@ -57,3 +57,4 @@ const Footer = () => {
 };
 
 export default Footer;
+

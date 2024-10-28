@@ -27,8 +27,8 @@ export default function DosBotonesSeleccionPrestador() {
   };
 
   return (
-    <div className="max-w-4xl mx-auto p-6 bg-white shadow-md rounded-lg padding5rembt">
-      <h2 className="text-2xl font-bold text-center mb-6">Administrar Turnos</h2>
+    <div className="max-w-4xl mx-auto p-6 bg-white shadow-md rounded-lg padding5rembt pt-60">
+      <h2 className="text-2xl font-bold text-center mb-6 mt-40">Administrar Turnos</h2>
 
       <div className="flex flex-col items-center space-y-4">
         <button

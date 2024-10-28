@@ -1,6 +1,6 @@
 package com.backend.server.entity;
 import com.backend.server.security.entity.Usuario;
-import com.backend.server.subidaArchivos.util.EnumNombreServicio;
+import com.backend.server.util.EnumNombreServicio;
 import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -36,6 +36,8 @@ public class Servicio {
     private String provincia;
     private String estadoDepartamento;
     private String direccion;
+
+    private double priceHour;
 
     private String imagenServicio;
 

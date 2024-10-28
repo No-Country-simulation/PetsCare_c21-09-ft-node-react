@@ -1,4 +1,5 @@
 package com.backend.server.service.serviceReserva;
+import com.backend.server.DTO.VerReservasDTO;
 import com.backend.server.entity.Reserva;
 import com.backend.server.entity.Turno;
 import com.backend.server.security.entity.Usuario;
@@ -15,9 +16,9 @@ public interface ReservaServiceInterface {
 
     void deleteReserva(Long idReserva);
 
-    List<Reserva> getReservasByUsuario(Usuario usuario);
+    List<VerReservasDTO> getReservasByUsuario(Usuario usuario);
 
-    List<Reserva> getReservasByPrestador(Usuario prestadorServicio);
+    List<VerReservasDTO> getReservasByPrestador(Usuario prestadorServicio);
 
     List<Reserva> getReservasByTurno(Turno turno);
 

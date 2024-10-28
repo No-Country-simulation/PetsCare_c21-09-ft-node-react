@@ -1,11 +1,11 @@
-import React from "react";
-import veterinary from "../assets/veterinary.png";
+
+import veterinary from "../assets/dog.png";
 import { CgProfile } from "react-icons/cg";
 import { IoCardSharp } from "react-icons/io5";
 import { TiMessages } from "react-icons/ti";
 import { IoNotificationsCircle } from "react-icons/io5";
 import { MdDelete } from "react-icons/md";
-import { FaRegUser } from "react-icons/fa";
+// import { FaRegUser } from "react-icons/fa";
 
 const UserSideMenu = () => {
   return (

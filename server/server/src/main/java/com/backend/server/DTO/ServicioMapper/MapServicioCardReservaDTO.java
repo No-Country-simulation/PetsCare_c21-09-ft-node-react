@@ -34,6 +34,7 @@ public class MapServicioCardReservaDTO {
             dto.setDireccionServicio(servicio.getDireccion());
             dto.setImagenServicio(servicio.getImagenServicio());
             dto.setNombreComercio(servicio.getNombreComercio());
+            dto.setPricehour(servicio.getPriceHour());
             dto.setLatitud(servicio.getLatitud());
             dto.setLongitud(servicio.getLongitud());
 

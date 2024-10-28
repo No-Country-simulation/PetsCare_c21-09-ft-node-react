@@ -63,6 +63,8 @@ public class HttpSecurityConfig {
                     authConfig.requestMatchers(HttpMethod.POST, "/api/auth/login").permitAll();
 
                     authConfig.requestMatchers(HttpMethod.GET, "/api/mascotas/listar").permitAll();
+                    authConfig.requestMatchers(HttpMethod.PUT, "/api/mascotas/update/**").hasRole("USUARIO");
+
                     authConfig.requestMatchers(HttpMethod.GET, "/api/mascotas/buscar/{id}").permitAll();
                     authConfig.requestMatchers(HttpMethod.GET, "/api/mascotas/usuario/{userId}").hasRole("USUARIO");
 
@@ -93,6 +95,8 @@ public class HttpSecurityConfig {
                     authConfig.requestMatchers(HttpMethod.DELETE, "/api/turnos/delete/{idTurno}").hasRole("PRESTADORSERVICIO");
 
                     authConfig.requestMatchers(HttpMethod.POST, "/api/reserva/nueva").hasRole("USUARIO");
+                    authConfig.requestMatchers(HttpMethod.GET, "/api/reserva/usuarioquereserva/**").hasRole("USUARIO");
+                    authConfig.requestMatchers(HttpMethod.GET, "/api/reserva/usuarioqueprestaservicio/**").hasRole("USUARIO");
 
 
                     authConfig.requestMatchers(HttpMethod.PUT, "/api/usuario/admin/update").hasRole("ADMINISTRADOR");

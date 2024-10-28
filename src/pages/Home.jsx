@@ -1,5 +1,3 @@
-import BannerLogIn from "../components/BannerLogIn"
-import ServiceCategories from "../components/ServiceCategories"
 import { useEffect, useState } from "react";
 import BannerLogIn from "../components/BannerLogIn";
 import ServiceCategories from "../components/ServiceCategories";
@@ -11,6 +9,7 @@ export default function Home() {
 <<<<<<< HEAD
   return (
     <>
+        <div className="container-home">
          
          <BannerLogIn />
          <ServiceCategories />
@@ -42,9 +41,6 @@ export default function Home() {
 
       <All10ServiciosRamdom/>
 
-        
-    </>
-  )
       <UserSideMenu/>
      
     </div>

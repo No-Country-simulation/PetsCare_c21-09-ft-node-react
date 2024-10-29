@@ -54,6 +54,10 @@ function App() {
               <Route path="/mis-turnos/:idServicio" element={<AuthPrestadorServicio><MisTurnos /></AuthPrestadorServicio>} />
               {/* Traer servicios */}
               <Route path="/servicios/veterinaria" element={<ContenedorServicios titulo="Veterinaria" enumNombreServicio="VETERINARIA" />} />
+              <Route path="/servicios/guarderias" element={<ContenedorServicios titulo="Guarderia de Mascotas" enumNombreServicio="CUIDADO_DE_MASCOTAS" />} />
+              <Route path="/servicios/educacion" element={<ContenedorServicios titulo="Educación" enumNombreServicio="EDUCACION" />} />
+              <Route path="/servicios/paseo_de_mascotas" element={<ContenedorServicios titulo="Paseo de Mascotas" enumNombreServicio="PASEO_DE_MASCOTAS" />} />
+              <Route path="/servicios/peluqueria" element={<ContenedorServicios titulo="Peluqueria" enumNombreServicio="PELUQUERIA" />} />
               <Route path="/ramdom" element={<All10ServiciosRamdom />} />
               {/* Usuario dueño mascotas */}
               <Route path="/admin-mascotas" element={<AuthUsuario><AdminMascotas /></AuthUsuario>} />

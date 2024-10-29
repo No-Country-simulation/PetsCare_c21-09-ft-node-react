@@ -1,5 +1,5 @@
 export const apiUrl = import.meta.env.MODE === 'development'
-  ? 'http://localhost:8080/'
+  ? 'http://localhost:8081/'
   : '';
 
 export const urlImage = import.meta.env.MODE === 'development'

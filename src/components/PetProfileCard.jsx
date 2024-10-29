@@ -88,7 +88,7 @@ const handleDelete = async () => {
 };
 
   return (
-    <div className="bg-white rounded-lg shadow-lg transition-all duration-300 w-full max-w-md mx-auto hover:shadow-xl cursor-pointer transform hover:scale-105 pt-20 mt-10">
+    <div className="bg-white rounded-lg shadow-lg transition-all border-4 p-4 border-secondary duration-300 w-full max-w-md mx-auto hover:shadow-xl hover:shadow-secondary cursor-pointer transform hover:scale-105 mt-10 h-1/2">
       {/* Modal de éxito al guardar */}
       {showSuccessModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
@@ -131,7 +131,7 @@ const handleDelete = async () => {
           className="w-full h-48 object-contain rounded-t-lg"
         />
      <button
-          className="absolute  top-2 right-0 bg-red-600 bg-opacity-75 text-white p-1 rounded-full hover:bg-opacity-90"
+          className="absolute  top-2 right-0 bg-white bg-opacity-75 text-red-600 p-1 border-secondary border-2 w-24 font-semibold rounded-full hover:bg-opacity-90 hover:shadow-lg hover:shadow-secondary hover:scale-110 transition duration-300"
           onClick={(e) => {
             e.stopPropagation();
             handleDelete();
@@ -140,7 +140,7 @@ const handleDelete = async () => {
           Eliminar
         </button>
         <button
-          className="absolute top-10 right-2 bg-gray-800 bg-opacity-75 text-white p-1 rounded-full hover:bg-opacity-90 mt-8"
+          className="absolute top-10 right-1 bg-white bg-opacity-75 text-primary border-secondary border-2 w-24 font-semibold p-1 rounded-full hover:bg-opacity-90 mt-8 hover:shadow-lg hover:shadow-secondary hover:scale-110 transition duration-300"
           onClick={(e) => {
             e.stopPropagation();
             setIsEditing(!isEditing);

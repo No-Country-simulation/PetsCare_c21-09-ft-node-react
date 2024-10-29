@@ -76,7 +76,7 @@ export default function AgregarServicio() {
       // Redirigir a /mis-servicios después de 3 segundos
       setTimeout(() => {
         setMostrarMensaje(false);
-        navigate("/mis-servicios");
+        navigate("/admin-servicios");
       }, 3000);
     } catch (error) {
       // Mostrar mensaje de error si hay conflicto

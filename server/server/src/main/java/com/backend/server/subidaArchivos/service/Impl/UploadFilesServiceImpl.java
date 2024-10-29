@@ -1,7 +1,5 @@
 package com.backend.server.subidaArchivos.service.Impl;
 import com.backend.server.subidaArchivos.service.IUploadFilesService;
-import com.backend.server.subidaArchivos.util.StorageFileUtil;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
@@ -13,8 +11,8 @@ import java.util.UUID;
 @Service
 public class UploadFilesServiceImpl implements IUploadFilesService {
 
-    @Autowired
-    private StorageFileUtil storageFileUtil;
+//    @Autowired
+//    private StorageFileUtil storageFileUtil;
 
 
     @Override
@@ -40,7 +38,7 @@ public class UploadFilesServiceImpl implements IUploadFilesService {
             String fileExtension = fileOriginalName.substring(fileOriginalName.lastIndexOf("."));
             String newFileName = fileName + fileExtension;
 
-            File folder = new File(storageFileUtil.getStorageLocation().toString());
+            File folder = new File("/var/www/cupeProyect/storage");
             if (!folder.exists()) {
                 folder.mkdirs();
             }
@@ -63,7 +61,7 @@ public class UploadFilesServiceImpl implements IUploadFilesService {
 
         // Construir la ruta completa de la imagen en el sistema de archivos
         try {
-            String imgPath = storageFileUtil.getStorageLocation() + File.separator + imagenComercio;
+            String imgPath = "/var/www/cupeProyect/storage" + File.separator + imagenComercio;
             Path path = Paths.get(imgPath);
 
             // Verificar si el archivo existe y eliminarlo

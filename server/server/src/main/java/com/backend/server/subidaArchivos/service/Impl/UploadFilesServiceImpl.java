@@ -19,7 +19,6 @@ public class UploadFilesServiceImpl implements IUploadFilesService {
 
     @Override
     public String handleFileUpload(MultipartFile file) throws Exception {
-
         try {
             String fileName = UUID.randomUUID().toString();
             byte[] bytes = file.getBytes();
@@ -27,50 +26,33 @@ public class UploadFilesServiceImpl implements IUploadFilesService {
             long fileSize = file.getSize();
             long maxFileSize = 5 * 1024 * 1024;
 
-            if (fileSize > maxFileSize){
-                return ("Superado size the img, more 5MB");
+            if (fileSize > maxFileSize) {
+                throw new Exception("El tamaño de la imagen supera los 5 MB.");
             }
 
-            if (
-                    !fileOriginalName.endsWith(".jpg") &&
-                            !fileOriginalName.endsWith(".jpeg") &&
-                            !fileOriginalName.endsWith(".png") &&
-                            !fileOriginalName.endsWith(".webp")
-            ){
-
-                return "Only .jpg, .jpeg , .png , .webp";
+            if (!fileOriginalName.endsWith(".jpg") &&
+                    !fileOriginalName.endsWith(".jpeg") &&
+                    !fileOriginalName.endsWith(".png") &&
+                    !fileOriginalName.endsWith(".webp")) {
+                throw new Exception("Formato de imagen no soportado. Solo se permiten .jpg, .jpeg, .png, .webp.");
             }
 
             String fileExtension = fileOriginalName.substring(fileOriginalName.lastIndexOf("."));
-
             String newFileName = fileName + fileExtension;
 
             File folder = new File(storageFileUtil.getStorageLocation().toString());
-
-
-            if(!folder.exists()){
+            if (!folder.exists()) {
                 folder.mkdirs();
             }
-            String absolutePath = folder.getAbsolutePath();
-
-            Path path = Paths.get(absolutePath + File.separator + newFileName);
-            System.out.println("Ruta del archivo: " + path.toString());
+            Path path = Paths.get(folder.getAbsolutePath() + File.separator + newFileName);
             Files.write(path, bytes);
 
+            return newFileName;
 
-                    return newFileName;
-
-
-
-        }catch (Exception e){
-            e.printStackTrace();
-            return "Error al manejar la carga del archivo: " + e.getMessage();
-
-
+        } catch (Exception e) {
+            throw new Exception("Error al manejar la carga del archivo: " + e.getMessage(), e);
         }
     }
-
-
     @Override
     public void deleteFile(String imagenComercio) {
         // Verificar si la imagen es nula o vacía

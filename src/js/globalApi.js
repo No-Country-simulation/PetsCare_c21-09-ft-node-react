@@ -1,6 +1,8 @@
 export const apiUrl = import.meta.env.MODE === 'development'
-  ? 'http://localhost:8080/'
-  : '';
+? 'http://localhost:8080/' // en desarrollo, apunta directamente al back-end local
+: '/'; 
+
+
 
 export const urlImage = import.meta.env.MODE === 'development'
   ? 'http://localhost:5001/'

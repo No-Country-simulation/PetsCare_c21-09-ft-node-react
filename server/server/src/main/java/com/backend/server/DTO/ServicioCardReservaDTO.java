@@ -24,7 +24,7 @@ public class ServicioCardReservaDTO {
     private String provincia;
     private String estadoDepartamento;
     private String direccionServicio;
-    private double pricehour;
+    private String pricehour;
     private double latitud;
     private double longitud;
 

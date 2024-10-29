@@ -3,6 +3,7 @@ import axios from 'axios';
 import { jwtDecode } from 'jwt-decode';
 import { useNavigate } from 'react-router-dom';
 import { apiUrl } from '../js/globalApi';
+import VerReservaCardClient from '../components/VerReservaCardClient';
 
 const MisReservasCliente = () => {
   const navigate = useNavigate();
@@ -58,21 +59,21 @@ const MisReservasCliente = () => {
     }, [idUsuario, token]);
 
     return (
-      <></>
-        // <div>
-        //     <h2>Mis Reservas</h2>
-        //     {reservas.length === 0 ? (
-        //         <p>No tienes reservas realizadas.</p>
-        //     ) : (
-        //         reservas.map((reserva) => (
-        //             <div key={reserva.idReserva}>
-        //                 <p>Fecha: {reserva.fechaReserva}</p>
-        //                 <p>Servicio: {reserva.getServicio().nombre}</p>
-        //                 {/* Otros detalles de la reserva */}
-        //             </div>
-        //         ))
-        //     )}
-        // </div>
+      <>
+         <div className="p-4">
+            <h2 className="text-2xl font-bold text-center mb-6">Mis Reservas</h2>
+            {error && <p className="text-red-500">{error}</p>}
+            {reservas.length === 0 ? (
+                <p className="text-center text-gray-500">No tienes reservas realizadas.</p>
+            ) : (
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {reservas.map((reserva) => (
+                  <VerReservaCardClient key={reserva.idReserva} reserva={reserva} />
+              ))}
+          </div>
+            )}
+        </div>
+        </>
     );
 };
 

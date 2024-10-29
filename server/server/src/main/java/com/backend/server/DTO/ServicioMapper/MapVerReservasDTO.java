@@ -1,14 +1,22 @@
 package com.backend.server.DTO.ServicioMapper;
 import com.backend.server.DTO.VerReservasDTO;
 import com.backend.server.entity.Reserva;
+import com.backend.server.entity.Servicio;
 import com.backend.server.entity.Turno;
+import com.backend.server.repository.ServicioRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.stream.Collectors;
 
 @Component
 public class MapVerReservasDTO {
+
+    @Autowired
+    private ServicioRepository servicioRepository;
     public  VerReservasDTO toVerReservaDTO(Reserva reserva) {
+//                Saco id servicio desde el turno
+
         return new VerReservasDTO(
                 // Datos de la reserva
                 reserva.getIdReserva(),
@@ -39,6 +47,10 @@ public class MapVerReservasDTO {
                 reserva.getTurnos().stream().map(Turno::getIdTurno).collect(Collectors.toList()),
                 reserva.getTurnos().stream().map(Turno::getFechaTurno).collect(Collectors.toList()),
                 reserva.getTurnos().stream().map(Turno::getHoraTurno).collect(Collectors.toList())
+
+
+
+
         );
     }
 }

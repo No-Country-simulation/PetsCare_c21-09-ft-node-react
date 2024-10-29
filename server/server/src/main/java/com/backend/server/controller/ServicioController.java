@@ -21,7 +21,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/servicios")
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = "*")
 public class ServicioController {
 
     @Autowired
@@ -122,7 +122,7 @@ public class ServicioController {
             @RequestParam("provincia") String provincia,
             @RequestParam("estadoDepartamento") String estadoDepartamento,
             @RequestParam("direccion") String direccion,
-            @RequestParam("pricehour") double pricehour,
+            @RequestParam("priceHour") String priceHour,
             @RequestParam("latitud") double latitud,
             @RequestParam("longitud") double longitud,
             @RequestParam("idUsuario") Long idUsuario,
@@ -145,6 +145,11 @@ public class ServicioController {
             // Subir la imagen del servicio
             String rutaImagen = uploadFilesService.handleFileUpload(imagenServicio);
 
+            if (rutaImagen.startsWith("Error")) {
+                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                        .body("Error en la subida de la imagen: " + rutaImagen);
+            }
+
             // Crear el nuevo servicio
             Servicio nuevoServicio = new Servicio();
             nuevoServicio.setNombreServicio(nombreServicio);
@@ -156,7 +161,7 @@ public class ServicioController {
             nuevoServicio.setProvincia(provincia);
             nuevoServicio.setEstadoDepartamento(estadoDepartamento);
             nuevoServicio.setDireccion(direccion);
-            nuevoServicio.setPriceHour(pricehour);
+            nuevoServicio.setPriceHour(priceHour);
             nuevoServicio.setLatitud(latitud);
             nuevoServicio.setLongitud(longitud);
             nuevoServicio.setImagenServicio(rutaImagen);

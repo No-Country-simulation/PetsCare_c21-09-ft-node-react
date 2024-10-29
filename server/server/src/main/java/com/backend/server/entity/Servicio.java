@@ -37,7 +37,7 @@ public class Servicio {
     private String estadoDepartamento;
     private String direccion;
 
-    private double priceHour;
+    private String priceHour;
 
     private String imagenServicio;
 

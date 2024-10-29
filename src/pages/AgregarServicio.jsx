@@ -18,7 +18,7 @@ export default function AgregarServicio() {
   const [provincia, setProvincia] = useState("");
   const [estadoDepartamento, setEstadoDepartamento] = useState("");
   const [direccion, setDireccion] = useState("");
-  const [priceHour, setPriceHour] = useState(0.0);
+  const [priceHour, setPriceHour] = useState("");
   const [latitud, setLatitud] = useState(-34.6037);
   const [longitud, setLongitud] = useState(-58.3816);
   const [imagenServicio, setImagenServicio] = useState(null);
@@ -255,8 +255,7 @@ export default function AgregarServicio() {
             Precio por Hora en $
           </label>
           <input
-            type="number"
-            step="0.01"
+            type="text"
             id="priceHour"
             className="p-2 border border-gray-300 rounded"
             value={priceHour}

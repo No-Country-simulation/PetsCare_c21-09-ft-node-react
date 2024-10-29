@@ -52,7 +52,7 @@ const NavBar = () => {
 
           {/* visible en desktop y oculto en móviles */}
           <div className="hidden md:flex items-center gap-6 text-primary h-10 ">
-            <ul className="flex items-center gap-12 mr-64">
+            <ul className="flex items-center gap-12 mr-72">
               {/* Renderiza elementos del menú principal */}
               {mainMenuItems.map((item) => (
                 <li key={item.id}>

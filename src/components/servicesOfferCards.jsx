@@ -7,6 +7,9 @@ import peluqueriaImage from '../assets/images/peluqueria-2.jpeg';
 import saludImage from '../assets/images/salud.jpeg';
 import ejercicioImage from '../assets/images/ejercicio.jpeg';
 import educacionImage from '../assets/images/educacion.jpeg';
+import Calendar from 'react-calendar';
+import 'react-calendar/dist/Calendar.css';
+// Recuerden instalar react-calendar npm install react-calendar
 
 // Array con las ofertas de servicio
 const serviceOffer = [
@@ -52,6 +55,8 @@ function Services({ onSelectService }) {
 function ServiceOffer() {
   const [selectedService, setSelectedService] = useState(null);
   const [position, setPosition] = useState([-34.6037, -58.3816]); // Estado inicial del mapa (Buenos Aires)
+  const [visibleCalendarId, setVisibleCalendarId] = useState(null); // Controla la visibilidad del calendario
+  const [selectedDate, setSelectedDate] = useState(null);
   const [error, setError] = useState(null);
 
   const handleClickService = (latitud, longitud) => {
@@ -67,6 +72,19 @@ function ServiceOffer() {
       setPosition([selected.latitud, selected.longitud]);
       setSelectedService(serviceTitle);
     }
+  };
+  
+  const handleToggleCalendar = (id) => {
+    setVisibleCalendarId(visibleCalendarId === id ? null : id);
+  };
+
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
+  };
+
+  const handleConfirmReservation = () => {
+    alert(`Reserva confirmada para ${selectedDate.toLocaleDateString()}`);
+    setVisibleCalendarId(null); // Ocultar el calendario después de confirmar
   };
 
   // Filtrar servicios según el servicio seleccionado
@@ -97,10 +115,20 @@ function ServiceOffer() {
               <p className="text-gray-900 mb-4">Horarios: {service.horario}</p>
               <p className="text-xl font-semibold text-green-600 mb-4">ARS {service.price}</p>
               <p className="hidden">{service.latitud} {service.longitud}</p>
+              {visibleCalendarId === service.id && (
+                    <div className="calendar-container w-5/6 h-6/8 text-sm gap-4 p-2 border rounded-lg shadow-md bg-gray-100 transition-all duration-300 ">
+                      <Calendar onChange={handleDateChange} value={selectedDate} className={'h-full w-full'} />
+                      <button
+                        onClick={handleConfirmReservation}
+                        className=" w-full bg-primary text-white mt-4 py-2 rounded-lg hover:bg-secondary transition duration-300"
+                      >
+                        Confirmar Reserva
+                      </button>
+                    </div>
+                  )}
             </div>
-            <div className='flex flex-row justify-between'>
-              <button className='bg-main-blue px-2 py-1 border-2 rounded cursor-pointer border-gray-500 hover:bg-light-blue transition duration-300'>Contactar</button>
-              <button className='bg-main-blue px-2 py-1 border-2 rounded cursor-pointer border-gray-500 hover:bg-light-blue transition duration-300'>Reservar</button>
+            <div className='flex flex-row justify-center'>
+              <button onClick={() => handleToggleCalendar(service.id)} className='mt-12 mb-4 bg-main-blue px-2 py-1 border-2 rounded cursor-pointer border-gray-500 hover:bg-light-blue transition duration-300'>{visibleCalendarId === service.id ? "Cerrar" : "Reservar"}</button>
             </div>
           </div>
         </div>

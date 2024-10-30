@@ -1,5 +1,11 @@
 
-import { FaLinkedin, FaGithub } from 'react-icons/fa';
+import { FaLinkedin, FaGithub } from "react-icons/fa";
+import aleImg from "../assets/ale.jpeg"
+import mauroImg from "../assets/mauro.jpeg"
+import fedeImg from "../assets/fede.jpeg"
+import mariaImg from "../assets/maria.jpeg"
+import walterImg from "../assets/walter.jpeg"
+import gastonImage from "../assets/gaston.jpeg";
 // URL de fotos de perfil y banderas
 const photo = 'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png';
 const argentinaFlag = 'https://upload.wikimedia.org/wikipedia/commons/1/1a/Flag_of_Argentina.svg';
@@ -9,73 +15,84 @@ const boliviaFlag = 'https://upload.wikimedia.org/wikipedia/commons/d/de/Flag_of
 const developers = [
   {
     name: "Walter",
-    photo: photo,
+    photo: walterImg,
     specialty: "Front-End Developer",
     country: argentinaFlag,
     description: "Apasionado del diseño de interfaces y experiencia de usuario.",
+    linkedin: "https://www.linkedin.com/in/walter-mersing?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+    github: "https://github.com/walter",
   },
   {
     name: "Mauro",
-    photo: photo,
+    photo: mauroImg,
     specialty: "Back-End Developer",
     country: argentinaFlag,
     description: "Especialista en bases de datos y desarrollo del lado del servidor.",
+    linkedin: "https://www.linkedin.com/in/mauro-rosales-rocfar/",
+    github: "https://github.com/mauro",
   },
   {
     name: "Fede",
-    photo: photo,
+    photo: fedeImg,
     specialty: "UI/UX Designer",
     country: argentinaFlag,
     description: "Diseñador dedicado a mejorar la usabilidad y estética de interfaces.",
+    linkedin: "https://www.linkedin.com/in/fedemerediz?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+    github: "https://github.com/fede",
   },
   {
     name: "María",
-    photo: photo,
+    photo: mariaImg,
     specialty: "Back-End Developer",
     country: costaRicaFlag,
     description: "Experta en lógica de negocios y seguridad en el desarrollo.",
+    linkedin: "https://www.linkedin.com/in/mar%C3%ADa-villalobos-chaves/",
+    github: "https://github.com/maria",
   },
   {
     name: "Gaston",
-    photo: photo,
+    photo: gastonImage,
     specialty: "Front-End Developer",
     country: argentinaFlag,
     description: "Desarrollador enfocado en la creación de interfaces interactivas.",
+    linkedin: "https://www.linkedin.com/in/gaston-gomez1997",
+    github: "https://github.com/gaston",
   },
   {
     name: "Alejandro",
-    photo: photo,
+    photo: aleImg,
     specialty: "Front-End Developer",
     country: boliviaFlag,
     description: "Creador de experiencias de usuario dinámicas y modernas.",
+    linkedin: "https://www.linkedin.com/in/alejandro-camacho19/",
+    github: "https://github.com/alejandro",
   },
 ];
 
+
 const SobreNosotros = () => {
   return (
-    <div className="min-h-screen bg-light-blue py-12">
-      <div className="container mx-auto px-4 space-y-16">
+    <div className="min-h-screen bg-light-blue py-16">
+      <div className="container mx-auto px-6 space-y-16">
         
         {/* About Us Section */}
         <section className="text-center">
-          <h1 className="text-4xl font-bold text-primary mb-4">About Us</h1>
-          <p className="text-lg text-gray-700 max-w-2xl mx-auto">
-            Bienvenido a nuestra aplicación de servicios para mascotas, diseñada para facilitar el cuidado integral de tus animales
-            queridos. Ofrecemos soluciones confiables, responsables y amorosas para todas sus necesidades, desde atención veterinaria hasta paseos
-            diarios. Nos enorgullece contar con un equipo experimentado y apasionado por el bienestar de nuestras mascotas.
+          <h1 className="text-5xl font-bold text-primary mb-6">About</h1>
+          <p className="text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed">
+          A platform designed to connect pet owners in Argentina with specialized pet care services, making it easier to find and book services such as dog walking, daycare, transport, veterinary care, training, and general pet care.
           </p>
         </section>
   
         {/* Our Services Section */}
         <section className="text-center">
-          <h2 className="text-4xl font-bold text-primary mb-8">Our Services</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 text-center">
+          <h2 className="text-5xl font-bold text-primary mb-12">Our Services</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 text-center">
             {["Guardería", "Educación", "Veterinaria", "Paseo de Perros", "Peluquería"].map((service, index) => (
               <div
                 key={index}
-                className="bg-white p-4 rounded-lg shadow-md border border-light-violet hover:shadow-lg transition-shadow duration-300"
+                className="bg-white p-6 rounded-xl shadow-lg border border-light-violet hover:shadow-2xl transition-shadow duration-300"
               >
-                <h3 className="text-lg font-semibold text-secondary">{service}</h3>
+                <h3 className="text-xl font-semibold text-secondary">{service}</h3>
               </div>
             ))}
           </div>
@@ -83,41 +100,41 @@ const SobreNosotros = () => {
   
         {/* Meet Our Team Section */}
         <section>
-          <h1 className="text-4xl font-bold text-center text-primary mb-12">Meet Our Team</h1>
+          <h1 className="text-5xl font-bold text-center text-primary mb-16">Meet Our Team</h1>
     
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12">
             {developers.map((developer, index) => (
               <div
                 key={index}
-                className="bg-white p-6 rounded-lg shadow-lg text-center border-2 border-main-blue transform transition-transform hover:scale-105 hover:shadow-2xl"
+                className="bg-white p-8 rounded-2xl shadow-xl text-center border-2 border-main-blue transform transition-transform hover:scale-105 hover:shadow-3xl"
               >
                 <img
-                  className="w-24 h-24 rounded-full mx-auto mb-4 border-4 border-secondary"
+                  className="w-32 h-32 rounded-full mx-auto mb-6 border-4 border-secondary"
                   src={developer.photo}
                   alt={developer.name}
                 />
-                <h3 className="text-xl font-bold text-secondary">{developer.name}</h3>
-                <p className="text-main-blue mb-4">{developer.specialty}</p>
+                <h3 className="text-2xl font-bold text-secondary">{developer.name}</h3>
+                <p className="text-main-blue mb-4 text-lg">{developer.specialty}</p>
                 
                 {/* Short Description */}
-                <p className="text-gray-600 text-sm italic mb-4">
+                <p className="text-gray-600 text-sm italic mb-6 leading-relaxed">
                   {developer.description}
                 </p>
     
                 {/* Social Media Links */}
-                <div className="flex justify-center space-x-4 mt-2">
+                <div className="flex justify-center space-x-6 mt-4">
                   <a href={developer.linkedin} target="_blank" rel="noopener noreferrer" className="text-blue-700 hover:text-blue-800">
-                    <FaLinkedin size={20} />
+                    <FaLinkedin size={24} />
                   </a>
                   <a href={developer.github} target="_blank" rel="noopener noreferrer" className="text-gray-800 hover:text-gray-900">
-                    <FaGithub size={20} />
+                    <FaGithub size={24} />
                   </a>
                 </div>
     
                 {/* Country Flag */}
-                <div className="mt-4">
+                <div className="mt-6">
                   <img
-                    className="w-12 h-8 mx-auto border border-light-violet rounded"
+                    className="w-16 h-10 mx-auto border border-light-violet rounded-lg"
                     src={developer.country}
                     alt={`Flag of ${developer.name}`}
                   />
@@ -130,6 +147,7 @@ const SobreNosotros = () => {
       </div>
     </div>
   );
+
   
 };
 

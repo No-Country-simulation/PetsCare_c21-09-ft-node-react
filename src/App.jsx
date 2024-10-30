@@ -23,6 +23,7 @@ import All10ServiciosRamdom from "./pages/All10ServiciosRamdom";
 import Contacto from "./pages/Contacto";
 import Error404 from "./pages/Error404";
 import ServiceCategories from "./components/ServiceCategories";
+import ServiciosPorUbicacion from "./pages/ServiciosPorUbicacion";
 
 function App() {
   
@@ -59,6 +60,7 @@ function App() {
               <Route path="/servicios/paseo_de_mascotas" element={<ContenedorServicios titulo="Paseo de Mascotas" enumNombreServicio="PASEO_DE_MASCOTAS" />} />
               <Route path="/servicios/peluqueria" element={<ContenedorServicios titulo="Peluqueria" enumNombreServicio="PELUQUERIA" />} />
               <Route path="/ramdom" element={<All10ServiciosRamdom />} />
+              <Route path="/servicessearch" element={<AuthUsuario><ServiciosPorUbicacion/></AuthUsuario>} />
               {/* Usuario dueño mascotas */}
               <Route path="/admin-mascotas" element={<AuthUsuario><AdminMascotas /></AuthUsuario>} />
               <Route path="/agregar-mascota" element={<AuthUsuario><AgregarMascota /></AuthUsuario>} />

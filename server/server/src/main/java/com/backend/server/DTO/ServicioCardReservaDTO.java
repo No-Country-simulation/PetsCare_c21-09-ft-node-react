@@ -14,7 +14,7 @@ import java.util.List;
 public class ServicioCardReservaDTO {
 
     private Long idServicio;
-    private EnumNombreServicio nombreServicio;
+    private String nombreServicio;
     private  String nombreComercio;
     private String imagenServicio;
     private boolean lugarFisico;

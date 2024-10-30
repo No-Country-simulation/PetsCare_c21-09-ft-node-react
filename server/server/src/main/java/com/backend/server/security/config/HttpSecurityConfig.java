@@ -101,6 +101,7 @@ public class HttpSecurityConfig {
 
                     authConfig.requestMatchers(HttpMethod.PUT, "/api/usuario/admin/update").hasRole("ADMINISTRADOR");
                     authConfig.requestMatchers(HttpMethod.GET, "/api/usuario/**").hasRole("ADMINISTRADOR");
+                    authConfig.requestMatchers(HttpMethod.PUT, "/api/usuario/marcarverify/**").hasRole("ADMINISTRADOR");
                     authConfig.requestMatchers(HttpMethod.DELETE, "/api/usuario/**").hasRole("ADMINISTRADOR");
                     authConfig.requestMatchers(HttpMethod.POST, "/api/auth/setpassword1").permitAll();
                     authConfig.requestMatchers(HttpMethod.POST, "/api/auth/setpassword2").permitAll();

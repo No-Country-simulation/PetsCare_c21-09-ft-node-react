@@ -74,10 +74,10 @@ export default function ServiciosPorUbicacion() {
                 // ESTE ES UN LLAMADO QUE SE PENSABA HACER, FALTA MODIFICAR APP SPRING BOOT PARA LA FUNCIONALIDAD
                 // AHORA TRAE 10 SERVICIOS RAMDOM PARA PRUEBA 
         //   const response = await axios.get(`${apiUrl}api/servicios/search/${latitud}/${longitud}`, {
-            headers: {
-              'Content-Type': 'application/json',
-              'Authorization': `Bearer ${token}`,
-            },
+            // headers: {
+            //   'Content-Type': 'application/json',
+            //   'Authorization': `Bearer ${token}`,
+            // },
           });
           setServicios(response.data); 
           setLoading(false);

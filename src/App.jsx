@@ -8,6 +8,7 @@ import Register from "./components/Register";
 import VerifyCode from "./components/VerifyCode";
 import AdminServicios from "./pages/AdminServicios";
 import AuthPrestadorServicio from "./auth/AuthPrestadorServicio";
+import AuthAdministrador from "./auth/AuthAdministrador";
 import AuthUsuario from "./auth/AuthUsuario";
 import AgregarServicio from "./pages/AgregarServicio";
 import EditarServicio from "./pages/EditarServicio";
@@ -24,6 +25,7 @@ import Contacto from "./pages/Contacto";
 import Error404 from "./pages/Error404";
 import ServiceCategories from "./components/ServiceCategories";
 import ServiciosPorUbicacion from "./pages/ServiciosPorUbicacion";
+import AdministracionVistaPrincipal from "./pages/AdministracionVistaPrincipal";
 
 function App() {
   
@@ -65,6 +67,12 @@ function App() {
               <Route path="/admin-mascotas" element={<AuthUsuario><AdminMascotas /></AuthUsuario>} />
               <Route path="/agregar-mascota" element={<AuthUsuario><AgregarMascota /></AuthUsuario>} />
               <Route path="/misreservas-user" element={<AuthUsuario><MisReservasCliente /></AuthUsuario>} />
+             
+             {/* Administracion usuarios  */}
+
+             
+             <Route path="/admin-administrador" element={<AuthAdministrador><AdministracionVistaPrincipal /></AuthAdministrador>} />
+
               {/* Páginas no existentes */}
               <Route path="*" element={<Error404 />} />
             </Routes>

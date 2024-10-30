@@ -37,9 +37,9 @@ export default function BusquedaServiciosPorUbicacion() {
   }
 
   return (
-    <div className="w-full lg:w-5/6 mx-auto p-6 bg-white rounded-lg shadow-lg">
+    <div className="w-full lg:w-5/6 mx-auto p-6 bg-white rounded-lg shadow-lg z-0">
       <h2 className="text-2xl font-bold text-gray-800 mb-4">Buscar Servicios Cercanos por Ubicación</h2>
-      <div className="h-64 mb-4">
+      <div className="h-64 mb-4 z-10">
         <MapContainer
           center={[-34.6037, -58.3816]} // Coordenadas iniciales (ajusta según prefieras)
           zoom={13}
@@ -50,7 +50,7 @@ export default function BusquedaServiciosPorUbicacion() {
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           />
           <LocationMarker />
-        </MapContainer>
+        </MapContainer >
       </div>
       
       <button

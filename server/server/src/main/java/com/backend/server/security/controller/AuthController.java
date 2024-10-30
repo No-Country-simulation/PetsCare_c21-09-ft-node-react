@@ -86,6 +86,8 @@ public class AuthController {
         String codeVerify = codeVerifyService.generarCodigoVerificacion();
         usuario.setCodigoVerificacion(codeVerify);
 
+        log.info("Este es el codigo de email", codeVerify);
+
         // se envia por email el código de verificación
         String subject = "Código de Verificación";
         String message = "Tu código de verificación es: " + codeVerify;

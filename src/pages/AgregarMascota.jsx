@@ -18,6 +18,7 @@ export default function AgregarMascota() {
   const [weight, setWeight] = useState('');
   const [details, setDetails] = useState('');
   const [imagenMascota, setImagenMascota] = useState(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const [mensaje, setMensaje] = useState('');
   const [mostrarMensaje, setMostrarMensaje] = useState(false);
@@ -25,6 +26,11 @@ export default function AgregarMascota() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+       // Si ya se está enviando, no hacer nada
+       if (isSubmitting) return;
+
+       setIsSubmitting(true); // Bloquear el botón al iniciar la solicitud
 
     // Creación de FormData para enviar la imagen y otros datos
     const formData = new FormData();
@@ -75,6 +81,8 @@ export default function AgregarMascota() {
         navigate('/mis-mascotas');
       }, 3000);
       setMostrarMensaje(true);
+    }finally {
+      setIsSubmitting(false); 
     }
   };
 
@@ -166,9 +174,10 @@ export default function AgregarMascota() {
         </div>
         <button
           type="submit"
-          className="mt-4 w-full bg-main-blue text-white py-2 px-4 rounded hover:bg-blue-600"
+          className={`mt-4 w-full bg-main-blue text-white py-2 px-4 rounded hover:bg-blue-600 ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}`}
+          disabled={isSubmitting}
         >
-          Agregar Mascota
+          {isSubmitting ? 'Guardando...' : 'Agregar Mascota'}
         </button>
       </form>
 

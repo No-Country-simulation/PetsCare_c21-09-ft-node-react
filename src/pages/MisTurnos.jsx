@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { apiUrl } from '../js/globalApi';
+import LoadingSpinner from "../components/Loading";
 
 export default function MisTurnos() {
   const { idServicio } = useParams(); // Obtener idServicio desde la URL
@@ -103,7 +104,10 @@ export default function MisTurnos() {
   };
 
   if (loading) {
-    return <p>Cargando turnos...</p>;
+    return         <LoadingSpinner
+    size = 'md'
+    color = 'blue'
+    />;
   }
 
   if (error) {
@@ -111,12 +115,12 @@ export default function MisTurnos() {
   }
 
   return (
-    <div className="max-w-4xl mx-auto p-6 bg-white shadow-md rounded-lg mt-8 pt-40 mt-20">
+    <div className="max-w-4xl mx-auto p-6 bg-white shadow-md rounded-lg  pt-40 mt-10">
       <h2 className="text-2xl font-bold text-center mb-6">Mis Turnos</h2>
 
       {successMessage && <p className="text-green-500">{successMessage}</p>}
       {turnos.length === 0 ? (
-        <p>No hay turnos disponibles para este servicio.</p>
+        <p>Aún no tienes turnos disponibles para este servicio. Ve al panel de administración, elige los días y horarios que mejor se ajusten a tu disponibilidad, ¡y prepárate para comenzar a recibir reservas! Brinda lo mejor a la comunidad y marca la diferencia.</p>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
           {turnos.map((turno) => (

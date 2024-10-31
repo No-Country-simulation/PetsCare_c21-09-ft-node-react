@@ -131,7 +131,7 @@ const handleDelete = async () => {
           className="w-full h-48 object-contain rounded-t-lg"
         />
      <button
-          className="absolute  top-2 right-0 bg-white bg-opacity-75 text-red-600 p-1 border-secondary border-2 w-24 font-semibold rounded-full hover:bg-opacity-90 hover:shadow-lg hover:shadow-secondary hover:scale-110 transition duration-300"
+          className="absolute top-2 right-1 bg-white bg-opacity-75 text-red-600 p-1 border-secondary border-2 w-24 font-semibold rounded-full hover:bg-opacity-90 hover:shadow-lg hover:shadow-secondary hover:scale-110 transition duration-300"
           onClick={(e) => {
             e.stopPropagation();
             handleDelete();

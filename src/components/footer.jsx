@@ -26,7 +26,7 @@ const Footer = () => {
           <div className="w-full md:w-1/3 flex justify-center md:justify-end">
             <button
               onClick={toggleTerms}
-              className="bg-white p-2 font-bold text-secondary rounded-xl mt-6 md:mt-0 hover:bg-secondary transition duration-300 ease-in-out hover:text-white hover:border-white border-4 hover:scale-105"
+              className="bg-white p-2 font-bold text-secondary rounded-xl mt-6 md:mt--10 hover:bg-secondary transition duration-300 ease-in-out hover:text-white hover:border-white border-4 hover:scale-105"
             >
               Términos y Condiciones
             </button>

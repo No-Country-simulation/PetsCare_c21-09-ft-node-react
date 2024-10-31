@@ -38,8 +38,8 @@ export default function BusquedaServiciosPorUbicacion() {
 
   return (
     <div className="w-full lg:w-5/6 mx-auto p-6 bg-white rounded-lg shadow-lg z-0">
-      <h2 className="text-2xl font-bold text-gray-800 mb-4">Buscar Servicios Cercanos por Ubicación</h2>
-      <div className="h-64 mb-4 z-10">
+      <h2 className="lg:text-2xl text-xl font-bold text-gray-800 mb-4">Buscar Servicios Cercanos por Ubicación</h2>
+      <div className="h-64 mb-4 z-10 mr-6 lg:mr-0">
         <MapContainer
           center={[-34.6037, -58.3816]} // Coordenadas iniciales (ajusta según prefieras)
           zoom={13}
@@ -54,7 +54,7 @@ export default function BusquedaServiciosPorUbicacion() {
       </div>
       
       <button
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        className="bg-secondary ml-8 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
         onClick={handleBuscarServicios}
       >
         Buscar Servicios Cercanos

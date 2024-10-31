@@ -10,8 +10,8 @@ const BannerLogIn = () => {
   };
 
   return (
-    <div className="flex justify-center space-x-4 py-4 mt-28">
-      <div className="card bg-secondary shadow-md rounded-md flex font-semibold p-4">
+    <div className="container flex justify-center space-x-2 mt-28">
+      <div className="card bg-secondary shadow-md rounded-md flex lg:flex-row flex-col-reverse font-semibold">
         <div className="flex flex-col mt-7">
           <h2 className="text-white">¿Queres empezar a ser parte de nuestra comunidad?</h2>
           <button
@@ -21,11 +21,11 @@ const BannerLogIn = () => {
             Agregar mascota
           </button>
         </div>
-        <div className="mt-4">
-          <img src={dogImage} alt="dog" />
+        <div className="lg:mt-4 ">
+          <img src={dogImage} alt="dog"/>
         </div>
       </div>
-      <div className="card bg-secondary shadow-md rounded-md flex font-semibold p-4">
+      <div className="card bg-secondary shadow-md rounded-md flex lg:flex-row flex-col-reverse font-semibold p-4 mr-3">
         <div className="flex flex-col mt-7">
           <h2 className="text-white">¿Queres empezar a ser parte de nuestra comunidad?</h2>
           <button

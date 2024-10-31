@@ -150,21 +150,21 @@ export default function ServicesCard({ servicio, mascotas, tieneToken }) {
   };
 
   return (
-    <div className="w-full lg:w-5/6 mx-auto bg-white shadow-lg rounded-lg overflow-hidden mb-6">
+    <div className="w-full lg:w-5/6 mx-auto bg-white shadow-lg rounded-lg overflow-hidden mb-6 border-4 border-secondary">
       <img className="w-full h-48 object-contain rounded-t-lg" src={urlImage + imagenServicio} alt={nombreServicio} />
       <div className="p-6 flex flex-col items-center text-center">
-        <h2 className="text-3xl font-bold text-gray-900 mb-2">{nombreServicio}</h2>
-        <p className="text-gray-600 mb-2"><strong>Provincia:</strong> {provincia}</p>
+        <h2 className="text-3xl font-bold text-primary mb-2">{nombreServicio}</h2>
+        <p className="text-primary mb-2"><strong>Provincia:</strong> {provincia}</p>
         {/* <p className="text-gray-700 mb-2"><strong>Comercio:</strong> {nombreComercio}</p>
         <p className="text-gray-600 mb-2"><strong>Pais:</strong> {pais}</p>
         <p className="text-gray-600 mb-2"><strong>Provincia:</strong> {provincia}</p>
         <p className="text-gray-600 mb-2"><strong>Departamento:</strong> {estadoDepartamento}</p>
         <p className="text-gray-600 mb-2"><strong>Lugar físico:</strong> {lugarFisico ? 'Sí' : 'No'}</p> */}
         {/* <p className="text-gray-600 mb-2"><strong>Voy al lugar:</strong> {voyAlLugar ? 'Sí' : 'No'}</p> */}
-        <p className="text-gray-700 mb-4">{observacion}</p>
+        <p className="text-primary mb-4">{observacion}</p>
 
         <button
-        className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded mt-4"
+        className="bg-secondary hover:bg-white hover:text-secondary text-white font-bold py-2 px-4 rounded mt-4 transition duration-300 ease-in-out"
         onClick={handleOpenModal}
       >
         Ver detalles del servicio
@@ -172,7 +172,7 @@ export default function ServicesCard({ servicio, mascotas, tieneToken }) {
         
         {/* boton mapa */}
         <button
-  className="bg-gray-400 hover:bg-gray-600 text-white font-bold rounded-lg mt-4 mb-4 pb-2 flex items-center pl-3 self-start"
+  className="bg-secondary hover:bg-white text-white font-bold hover:text-secondary transition duration-300 ease-in-out rounded-lg mt-4 mb-4 pb-2 flex items-center pl-3 self-start"
   onClick={() => setShowMapModal(true)}
   style={{ width: '48px', height: '48px' }}
 >

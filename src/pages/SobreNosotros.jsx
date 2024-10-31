@@ -75,38 +75,17 @@ const SobreNosotros = () => {
     <div className="min-h-screen bg-light-blue py-16">
       <div className="container mx-auto px-6 space-y-16">
         
-        {/* About Us Section */}
-        <section className="text-center">
-          <h1 className="text-5xl font-bold text-primary mb-6">About</h1>
-          <p className="text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed">
-          A platform designed to connect pet owners in Argentina with specialized pet care services, making it easier to find and book services such as dog walking, daycare, transport, veterinary care, training, and general pet care.
-          </p>
-        </section>
-  
-        {/* Our Services Section */}
-        <section className="text-center">
-          <h2 className="text-5xl font-bold text-primary mb-12">Our Services</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 text-center">
-            {["Guardería", "Educación", "Veterinaria", "Paseo de Perros", "Peluquería"].map((service, index) => (
-              <div
-                key={index}
-                className="bg-white p-6 rounded-xl shadow-lg border border-light-violet hover:shadow-2xl transition-shadow duration-300"
-              >
-                <h3 className="text-xl font-semibold text-secondary">{service}</h3>
-              </div>
-            ))}
-          </div>
-        </section>
+               
   
         {/* Meet Our Team Section */}
         <section>
-          <h1 className="text-5xl font-bold text-center text-primary mb-16">Meet Our Team</h1>
+          <h1 className="text-5xl font-bold text-center text-primary mb-16">Nuestro Equipo</h1>
     
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12">
             {developers.map((developer, index) => (
               <div
                 key={index}
-                className="bg-white p-8 rounded-2xl shadow-xl text-center border-2 border-main-blue transform transition-transform hover:scale-105 hover:shadow-3xl"
+                className="bg-white p-8 rounded-2xl shadow-xl text-center border-2 border-secondary transition duration-300 ease-in-out hover:scale-105 hover:shadow-3xl hover:shadow-secondary"
               >
                 <img
                   className="w-32 h-32 rounded-full mx-auto mb-6 border-4 border-secondary"
@@ -114,19 +93,19 @@ const SobreNosotros = () => {
                   alt={developer.name}
                 />
                 <h3 className="text-2xl font-bold text-secondary">{developer.name}</h3>
-                <p className="text-main-blue mb-4 text-lg">{developer.specialty}</p>
+                <p className="text-primary font-semibold mb-4 text-lg">{developer.specialty}</p>
                 
                 {/* Short Description */}
-                <p className="text-gray-600 text-sm italic mb-6 leading-relaxed">
+                <p className="text-primary text-sm italic mb-6 leading-relaxed">
                   {developer.description}
                 </p>
     
                 {/* Social Media Links */}
                 <div className="flex justify-center space-x-6 mt-4">
-                  <a href={developer.linkedin} target="_blank" rel="noopener noreferrer" className="text-blue-700 hover:text-blue-800">
+                  <a href={developer.linkedin} target="_blank" rel="noopener noreferrer" className="text-primary hover:text-secondary transition duration-300 ease-in-out">
                     <FaLinkedin size={24} />
                   </a>
-                  <a href={developer.github} target="_blank" rel="noopener noreferrer" className="text-gray-800 hover:text-gray-900">
+                  <a href={developer.github} target="_blank" rel="noopener noreferrer" className="text-primary hover:text-secondary transition duration-300 ease-in-out">
                     <FaGithub size={24} />
                   </a>
                 </div>
@@ -134,7 +113,7 @@ const SobreNosotros = () => {
                 {/* Country Flag */}
                 <div className="mt-6">
                   <img
-                    className="w-16 h-10 mx-auto border border-light-violet rounded-lg"
+                    className="w-16 h-10 mx-auto border border-secondary rounded-lg"
                     src={developer.country}
                     alt={`Flag of ${developer.name}`}
                   />

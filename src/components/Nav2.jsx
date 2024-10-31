@@ -4,7 +4,7 @@ import { NavBarMenu } from "../mockData/data";
 import { SiDatadog } from "react-icons/si";
 import CajaSesion from "./CajaSesion";
 import CajaAdmin from "./CajaAdmin";
-import { MdMenu, MdClose } from "react-icons/md"; 
+import { MdMenu, MdClose } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 
 const NavBar = () => {
@@ -17,12 +17,11 @@ const NavBar = () => {
   useEffect(() => {}, [force]);
 
   const handleMenuClick = (path) => {
-    setOpen(false); 
-    setIsSubmenuOpen(false); 
-    navigate(path); 
+    setOpen(false);
+    setIsSubmenuOpen(false);
+    navigate(path);
   };
 
-  
   const mainMenuItems = NavBarMenu.filter((item) => !item.enumServicio);
   const subMenuItems = NavBarMenu.filter((item) => item.enumServicio);
 
@@ -41,7 +40,7 @@ const NavBar = () => {
           </div>
 
           {/* Botón hamburguesa */}
-          <div className="md:hidden">
+          <div className="lg:hidden">
             <button
               onClick={() => setOpen(!open)}
               className="text-3xl focus:outline-none"
@@ -51,7 +50,7 @@ const NavBar = () => {
           </div>
 
           {/* visible en desktop y oculto en móviles */}
-          <div className="hidden md:flex items-center gap-6 text-primary h-10 ">
+          <div className="hidden lg:flex items-center gap-6 text-primary h-10 ">
             <ul className="flex items-center gap-12 mr-72">
               {/* Renderiza elementos del menú principal */}
               {mainMenuItems.map((item) => (
@@ -66,7 +65,7 @@ const NavBar = () => {
               ))}
 
               {/* Menú desplegable de Servicios */}
-              <li className="relative">
+              <li className="relative lg:-mr-[-100px]">
                 <span
                   className="inline-block py-1 px-0 transition duration-300 ease-in-out hover:text-secondary hover:scale-110 font-semibold cursor-pointer"
                   onClick={() => setIsSubmenuOpen(!isSubmenuOpen)}
@@ -90,30 +89,31 @@ const NavBar = () => {
                 )}
               </li>
             </ul>
+            <div className="md:-ml-[300px]">
+              {/* Botones de autenticación solo si no está autenticado */}
+              {!user && (
+                <div className="flex gap-2 ">
+                  <button
+                    className="hover:bg-secondary text-secondary font-semibold hover:text-white rounded-lg border-2 border-secondary transition duration-300 ease-in-out w-40 h-10"
+                    onClick={() => navigate("/register")}
+                  >
+                    Registrarse
+                  </button>
+                  <button
+                    className="hover:bg-secondary text-secondary font-semibold hover:text-white rounded-lg border-2 border-secondary transition duration-300 ease-in-out w-40 h-10"
+                    onClick={() => navigate("/signin")}
+                  >
+                    Iniciar Sesión
+                  </button>
+                </div>
+              )}
 
-            {/* Botones de autenticación solo si no está autenticado */}
-            {!user && (
-              <div className="flex gap-2">
-                <button
-                  className="hover:bg-secondary text-secondary font-semibold hover:text-white rounded-lg border-2 border-secondary transition duration-300 ease-in-out w-40 h-10"
-                  onClick={() => navigate("/register")}
-                >
-                  Registrarse
-                </button>
-                <button
-                  className="hover:bg-secondary text-secondary font-semibold hover:text-white rounded-lg border-2 border-secondary transition duration-300 ease-in-out w-40 h-10"
-                  onClick={() => navigate("/signin")}
-                >
-                  Iniciar Sesión
-                </button>
+              {/* CajaAdmin y CajaSesion */}
+              <div className="flex gap-2 ">
+                <CajaAdmin />
               </div>
-            )}
-
-            {/* CajaAdmin y CajaSesion */}
-            <div className="flex gap-2">
-              <CajaAdmin />
+              {user && <CajaSesion />}
             </div>
-            {user && <CajaSesion />}
           </div>
         </div>
 
@@ -121,7 +121,7 @@ const NavBar = () => {
         <div
           className={`${
             open ? "block" : "hidden"
-          } md:hidden bg-white shadow-lg`}
+          } lg:hidden bg-white shadow-lg`}
         >
           <ul className="flex flex-col items-center gap-4 py-4">
             {/* Renderiza el menú principal en móviles */}

@@ -65,7 +65,7 @@ const NavBar = () => {
               ))}
 
               {/* Menú desplegable de Servicios */}
-              <li className="relative lg:-mr-[-100px]">
+              <li className="relative ">
                 <span
                   className="inline-block py-1 px-0 transition duration-300 ease-in-out hover:text-secondary hover:scale-110 font-semibold cursor-pointer"
                   onClick={() => setIsSubmenuOpen(!isSubmenuOpen)}
@@ -92,7 +92,7 @@ const NavBar = () => {
            
               {/* Botones de autenticación solo si no está autenticado */}
               {!user && (
-                <div className="flex gap-2 ">
+                <div className="flex gap-2 lg:-ml-[100px]">
                   <button
                     className="hover:bg-secondary text-secondary font-semibold hover:text-white rounded-lg border-2 border-secondary transition duration-300 ease-in-out w-40 h-10"
                     onClick={() => navigate("/register")}

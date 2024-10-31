@@ -120,7 +120,9 @@ export default function ServiciosPorUbicacion() {
         <p>No hay servicios cercanos disponibles.</p>
       ) : (
         servicios.map((servicio) => (
-          <ServicesCard key={servicio.idServicio} servicio={servicio} mascotas={mascotas} tieneToken={tieneToken} />
+          <ServicesCard key={servicio.idServicio} servicio={servicio} mascotas={mascotas} tieneToken={tieneToken} 
+          className="h-full"
+          />
         ))
       )}
     </div>

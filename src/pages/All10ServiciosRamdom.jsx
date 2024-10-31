@@ -121,6 +121,7 @@ export default function All10ServiciosRamdom() {
   servicio={servicio} 
   mascotas={Array.isArray(mascotas) ? mascotas : []} 
   tieneToken={tieneToken} 
+  className="h-full"
 />          ))
         )}
       </div>

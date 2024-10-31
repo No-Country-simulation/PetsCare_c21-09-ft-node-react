@@ -61,14 +61,16 @@ const MisReservasCliente = () => {
     return (
       <>
          <div className="p-4">
-            <h2 className="text-2xl font-bold text-center mb-6">Mis Reservas</h2>
+            <h2 className="text-2xl font-bold text-center mb-6 pt-40">MIS RESERVAS</h2>
             {error && <p className="text-red-500">{error}</p>}
             {reservas.length === 0 ? (
                 <p className="text-center text-gray-500">No tienes reservas realizadas.</p>
             ) : (
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {reservas.map((reserva) => (
-                  <VerReservaCardClient key={reserva.idReserva} reserva={reserva} />
+                  <VerReservaCardClient key={reserva.idReserva} reserva={reserva} 
+                  className="h-full"
+                  />
               ))}
           </div>
             )}

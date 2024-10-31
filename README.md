@@ -1,4 +1,4 @@
-# Cuidado Peludo 🐾
+# Cuidado Peludo <img src="https://raw.githubusercontent.com/No-Country-simulation/PetsCare_c21-09-ft-node-react/refs/heads/desarrollo/src/assets/dog.png?token=GHSAT0AAAAAACYBE5IVZGBAAANET2XRQ7TCZZD2K2A" alt="Cuidado Peludo Logo" width="40"/>
 
 A platform designed to connect pet owners in Argentina with specialized pet care services, making it easier to find and book services such as dog walking, daycare, transport, veterinary care, training, and general pet care.
 
@@ -31,7 +31,7 @@ With the significant number of pet-owning households in Argentina, there is a gr
 - **Interactive Map**: A map feature displays nearby providers, enhancing the efficiency of the search and allowing for better planning.
 
 ## Design Process
-The design process involved multiple iterations in Figma. The platform was initially designed for desktop use but is fully responsive for other devices. You can view the design prototype on Figma [here](https://www.figma.com/design/DvdKKnVCzvJcJ0WDmiPZYj/Proyecto-Cuidado-Peludo-1?node-id=2001-571&node-type=canvas).
+The design process involved multiple iterations in Figma. The platform was initially designed for desktop use but is fully responsive for other devices. You can view the design prototype on Figma [here](https://www.figma.com/proto/DvdKKnVCzvJcJ0WDmiPZYj/Proyecto-Cuidado-Peludo-1?node-id=2015-1029&node-type=canvas&t=tfgiYaMGA38A4cRl-1&scaling=min-zoom&content-scaling=fixed&page-id=2001%3A571&starting-point-node-id=2015%3A1029).
 
 ## Technical Stack
 - **Frontend**: React and Tailwind CSS

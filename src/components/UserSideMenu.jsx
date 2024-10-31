@@ -12,29 +12,29 @@ const UserSideMenu = () => {
     <div className="flex justify-start ml-20 mt-10 mb-10 font-semibold">
         <div className="card w-1/5 bg-secondary shadow-md rounded-md p-4 flex flex-col items-start text-white">
             <img src={veterinary} alt="Usuario" className="w-34 h-34 rounded-full object-cover"/>
-            <h2 className="mt-4 text-lg font-semibold">User Name</h2>
+            <h2 className="mt-4 text-lg font-semibold">Nombre</h2>
             <div className="mt-4 space-y-2 text-right">
                 <a href="URL_PROFILE" className="flex items-center space-x-2">
                     <CgProfile />
                     
-                    <span>Profile</span>
+                    <span>Perfil</span>
                 </a>
                 <a href="URL_PUBLICATIONS" className="flex items-center space-x-2">
                     <IoCardSharp/>
-                    <span>Publications</span>
+                    <span>Publicaciones</span>
                 </a>
                 <a href="URL_MESSAGES" className="flex items-center space-x-2">
                     <TiMessages/>
-                    <span>Messages</span>
+                    <span>Mensajes</span>
                 </a>
                 <a href="URL_NOTIFICATIONS" className="flex items-center space-x-2">
                     <IoNotificationsCircle/>
-                    <span>Notifications</span>
+                    <span>Notificaciones</span>
                 </a>
                 
                 <a href="URL_DELETE_PROFILE" className="flex items-center space-x-2">
                 <MdDelete/>
-                <span>Delete profile</span>
+                <span>Borrar Perfil</span>
                 </a>
             </div>
         </div>

@@ -24,7 +24,8 @@ public class MapServicioCardReservaDTO {
         for (Servicio servicio : servicios) {
             ServicioCardReservaDTO dto = new ServicioCardReservaDTO();
             dto.setIdServicio(servicio.getIdServicio());
-            dto.setNombreServicio(servicio.getNombreServicio());
+            String nombreServicioFormateado = servicio.getNombreServicio().name().replace("_", " ");
+            dto.setNombreServicio(nombreServicioFormateado);
             dto.setLugarFisico(servicio.isLugarFisico());
             dto.setVoyAlLugar(servicio.isVoyAlLugar());
             dto.setObservacion(servicio.getObservacion());

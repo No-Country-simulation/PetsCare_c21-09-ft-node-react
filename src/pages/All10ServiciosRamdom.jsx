@@ -116,8 +116,13 @@ export default function All10ServiciosRamdom() {
           <p>No hay servicios disponibles para esta categoría.</p>
         ) : (
           servicios.map((servicio) => (
-            <ServicesCard key={servicio.idServicio} servicio={servicio} mascotas={mascotas} tieneToken={tieneToken}/>
-          ))
+<ServicesCard 
+  key={servicio.idServicio} 
+  servicio={servicio} 
+  mascotas={Array.isArray(mascotas) ? mascotas : []} 
+  tieneToken={tieneToken} 
+  className="h-full"
+/>          ))
         )}
       </div>
     </div>

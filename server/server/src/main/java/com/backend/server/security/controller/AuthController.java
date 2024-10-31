@@ -28,7 +28,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/auth")
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = "*")
 public class AuthController {
 
    private final static Logger log = LogManager.getLogger(AuthController.class);
@@ -85,6 +85,8 @@ public class AuthController {
         // genero 4 digitos para el envio al email
         String codeVerify = codeVerifyService.generarCodigoVerificacion();
         usuario.setCodigoVerificacion(codeVerify);
+
+        log.info("Este es el codigo de email", codeVerify);
 
         // se envia por email el código de verificación
         String subject = "Código de Verificación";

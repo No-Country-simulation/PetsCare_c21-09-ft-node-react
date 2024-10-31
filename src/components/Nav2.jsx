@@ -4,8 +4,9 @@ import { NavBarMenu } from "../mockData/data";
 import { SiDatadog } from "react-icons/si";
 import CajaSesion from "./CajaSesion";
 import CajaAdmin from "./CajaAdmin";
-import { MdMenu, MdClose } from "react-icons/md"; 
+import { MdMenu, MdClose } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
+import Dog from "../assets/dog.png";
 
 const NavBar = () => {
   const { user, force } = useContext(AuthContext);
@@ -17,31 +18,30 @@ const NavBar = () => {
   useEffect(() => {}, [force]);
 
   const handleMenuClick = (path) => {
-    setOpen(false); 
-    setIsSubmenuOpen(false); 
-    navigate(path); 
+    setOpen(false);
+    setIsSubmenuOpen(false);
+    navigate(path);
   };
 
-  
   const mainMenuItems = NavBarMenu.filter((item) => !item.enumServicio);
   const subMenuItems = NavBarMenu.filter((item) => item.enumServicio);
 
   return (
     <>
       <nav className="bg-white shadow-lg fixed top-0 left-0 w-full z-50">
-        <div className="flex justify-between items-center py-4 px-0 md:px-8 lg:px-16">
+        <div className="flex lg:justify-between items-center py-4 px-6 lg:pl-0 pl-4 lg:px-16">
           {/* Logo */}
           <div
-            className="text-2xl flex items-center gap-2 font-bold uppercase cursor-pointer"
+            className="lg:text-2xl flex items-center gap-2 font-bold uppercase md:text-base cursor-pointer"
             onClick={() => navigate("/")}
           >
-            <SiDatadog />
+            <img src={Dog} alt="Dog Logo" className="w-8 h-8 mr-1" />
             <p>Cuidados</p>
             <p className="text-secondary">Peludos</p>
           </div>
 
           {/* Botón hamburguesa */}
-          <div className="md:hidden">
+          <div className="lg:hidden pl-20 pt-2">
             <button
               onClick={() => setOpen(!open)}
               className="text-3xl focus:outline-none"
@@ -51,7 +51,7 @@ const NavBar = () => {
           </div>
 
           {/* visible en desktop y oculto en móviles */}
-          <div className="hidden md:flex items-center gap-6 text-primary h-10 ">
+          <div className="hidden lg:flex items-center gap-6 text-primary h-10 ">
             <ul className="flex items-center gap-12 mr-72">
               {/* Renderiza elementos del menú principal */}
               {mainMenuItems.map((item) => (
@@ -66,7 +66,7 @@ const NavBar = () => {
               ))}
 
               {/* Menú desplegable de Servicios */}
-              <li className="relative">
+              <li className="relative ">
                 <span
                   className="inline-block py-1 px-0 transition duration-300 ease-in-out hover:text-secondary hover:scale-110 font-semibold cursor-pointer"
                   onClick={() => setIsSubmenuOpen(!isSubmenuOpen)}
@@ -90,38 +90,39 @@ const NavBar = () => {
                 )}
               </li>
             </ul>
+           
+              {/* Botones de autenticación solo si no está autenticado */}
+              {!user && (
+                <div className="flex gap-2 lg:-ml-[100px]">
+                  <button
+                    className="hover:bg-secondary text-secondary font-semibold hover:text-white rounded-lg border-2 border-secondary transition duration-300 ease-in-out w-40 h-10"
+                    onClick={() => navigate("/register")}
+                  >
+                    Registrarse
+                  </button>
+                  <button
+                    className="hover:bg-secondary text-secondary font-semibold hover:text-white rounded-lg border-2 border-secondary transition duration-300 ease-in-out w-40 h-10"
+                    onClick={() => navigate("/signin")}
+                  >
+                    Iniciar Sesión
+                  </button>
+                </div>
+              )}
 
-            {/* Botones de autenticación solo si no está autenticado */}
-            {!user && (
-              <div className="flex gap-2">
-                <button
-                  className="hover:bg-secondary text-secondary font-semibold hover:text-white rounded-lg border-2 border-secondary transition duration-300 ease-in-out w-40 h-10"
-                  onClick={() => navigate("/register")}
-                >
-                  Registrarse
-                </button>
-                <button
-                  className="hover:bg-secondary text-secondary font-semibold hover:text-white rounded-lg border-2 border-secondary transition duration-300 ease-in-out w-40 h-10"
-                  onClick={() => navigate("/signin")}
-                >
-                  Iniciar Sesión
-                </button>
+              {/* CajaAdmin y CajaSesion */}
+              <div className="flex gap-2 ">
+                <CajaAdmin />
               </div>
-            )}
-
-            {/* CajaAdmin y CajaSesion */}
-            <div className="flex gap-2">
-              <CajaAdmin />
+              {user && <CajaSesion />}
             </div>
-            {user && <CajaSesion />}
           </div>
-        </div>
+        
 
         {/* desplegable para móviles */}
         <div
           className={`${
             open ? "block" : "hidden"
-          } md:hidden bg-white shadow-lg`}
+          } lg:hidden bg-white shadow-lg`}
         >
           <ul className="flex flex-col items-center gap-4 py-4">
             {/* Renderiza el menú principal en móviles */}

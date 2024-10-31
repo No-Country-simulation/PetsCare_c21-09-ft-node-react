@@ -36,7 +36,7 @@ public class HttpSecurityConfig {
         http
                 .cors(cors -> cors.configurationSource(request -> {
                     CorsConfiguration config = new CorsConfiguration();
-                    config.setAllowedOrigins(List.of("http://localhost:5173"));
+                    config.setAllowedOriginPatterns(List.of("https://cupe.rocfar.com", "http://localhost:5173"));
                     config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
                     config.setAllowedHeaders(List.of("*"));
                     config.setAllowCredentials(true);
@@ -101,6 +101,7 @@ public class HttpSecurityConfig {
 
                     authConfig.requestMatchers(HttpMethod.PUT, "/api/usuario/admin/update").hasRole("ADMINISTRADOR");
                     authConfig.requestMatchers(HttpMethod.GET, "/api/usuario/**").hasRole("ADMINISTRADOR");
+                    authConfig.requestMatchers(HttpMethod.PUT, "/api/usuario/marcarverify/**").hasRole("ADMINISTRADOR");
                     authConfig.requestMatchers(HttpMethod.DELETE, "/api/usuario/**").hasRole("ADMINISTRADOR");
                     authConfig.requestMatchers(HttpMethod.POST, "/api/auth/setpassword1").permitAll();
                     authConfig.requestMatchers(HttpMethod.POST, "/api/auth/setpassword2").permitAll();

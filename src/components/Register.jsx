@@ -2,6 +2,7 @@ import { useState, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { apiUrl } from "../js/globalApi";
+import imagenRegister from "../assets/imagenRegister.svg";
 
 export default function Register() {
   const lastClickTimeRef = useRef(0);
@@ -166,29 +167,35 @@ export default function Register() {
     <div className="flex justify-center items-center min-h-screen bg-gray-100">
       <div className="bg-white shadow-lg rounded-lg p-8 w-full max-w-md">
         {!showForm ? (
-          <div className="text-center space-y-6">
-            <h1 className="text-2xl font-semibold text-gray-700">
-              ¿Qué tipo de usuario eres?
-            </h1>
-            <div className="flex justify-around">
-              <button
-                onClick={() => handleRoleSelection("cliente")}
-                className={`py-2 px-6 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition ${
-                  role === "cliente" ? "bg-blue-500 text-white" : ""
-                }`}
-              >
-                Dueño de Mascota
-              </button>
-              <button
-                onClick={() => handleRoleSelection("prestador")}
-                className={`py-2 px-6 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition ${
-                  role === "prestador" ? "bg-blue-500 text-white" : ""
-                }`}
-              >
-                Prestador de Servicios
-              </button>
-            </div>
-          </div>
+     <div className="flex flex-col justify-center items-center min-h-screen bg-gray-100 ">
+     <img src={imagenRegister} alt="Mascota" className="w-32 h-32" />
+     <div className="text-center  max-w-md mx-auto p-6 bg-gray-100 ">
+       <h1 className="text-3xl font-bold text-gray-800">
+         ¿Qué tipo de usuario eres?
+       </h1>
+       <p className="text-gray-600">
+         Selecciona tu rol para continuar
+       </p>
+       <div className="flex justify-around mt-4 space-x-4">
+         <button
+           onClick={() => handleRoleSelection("cliente")}
+           className={`py-3 px-8 text-lg rounded-lg shadow-md transition transform hover:scale-105 hover:bg-blue-600 hover:text-white ${
+             role === "cliente" ? "bg-blue-500 text-white" : "bg-main-blue text-gray-900"
+           }`}
+         >
+           Dueño de Mascota
+         </button>
+         <button
+           onClick={() => handleRoleSelection("prestador")}
+           className={`py-3 px-8 text-lg rounded-lg shadow-md transition transform hover:scale-105 hover:bg-blue-600 hover:text-white ${
+             role === "prestador" ? "bg-blue-500 text-white" : "bg-main-blue text-gray-900"
+           }`}
+         >
+           Prestador de Servicios
+         </button>
+       </div>
+     </div>
+   </div>
         ) : (
           <form onSubmit={handleSubmit} className="space-y-6">
             <h1 className="text-2xl font-semibold text-gray-700 text-center">

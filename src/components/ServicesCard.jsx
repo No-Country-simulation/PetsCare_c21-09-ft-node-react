@@ -6,10 +6,14 @@ import { urlImage, apiUrl } from '../js/globalApi';
 import axios from 'axios';
 import {jwtDecode} from 'jwt-decode';
 import { useNavigate } from 'react-router-dom';
+import { MapContainer, TileLayer, Marker } from "react-leaflet";
+import "leaflet/dist/leaflet.css";
+import { FaMapMarkerAlt } from 'react-icons/fa';
+import { FaTimes } from 'react-icons/fa';
+
 
 export default function ServicesCard({ servicio, mascotas, tieneToken }) {
   const navigate = useNavigate();
-
   const {
     idUsuarioPrestador,
     nombreServicio,
@@ -21,8 +25,19 @@ export default function ServicesCard({ servicio, mascotas, tieneToken }) {
     pais,
     provincia,
     estadoDepartamento,
+    direccionServicio, 
+    pricehour,         
+    latitud, 
+    longitud,
+    // name,              
+    // lastName,          
+    username,          
+    email,             
+    phone,             
+    // direccionUsuario, 
     turnosDisponiblesNoReservados,
   } = servicio;
+  
 
   const [showCalendar, setShowCalendar] = useState(false);
   const [selectedDate, setSelectedDate] = useState(null);
@@ -33,6 +48,14 @@ export default function ServicesCard({ servicio, mascotas, tieneToken }) {
   const [selectedMascota, setSelectedMascota] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [showConfirmation, setShowConfirmation] = useState(false); 
+  const [showMapModal, setShowMapModal] = useState(false);
+  const [showModalDetails, setShowModalDetails] = useState(false);
+
+  // open close de botones de modales
+
+  const handleOpenModal = () => setShowModalDetails(true);
+  const handleCloseModal = () => setShowModalDetails(false);
+ 
 
   const handleShowCalendar = () => {
     setShowCalendar(!showCalendar);
@@ -127,17 +150,72 @@ export default function ServicesCard({ servicio, mascotas, tieneToken }) {
   };
 
   return (
-    <div className="w-full lg:w-5/6 mx-auto bg-white shadow-lg rounded-lg overflow-hidden mb-6">
-      <img className="w-full h-56 object-cover" src={urlImage + imagenServicio} alt={nombreServicio} />
+    <div className="w-full lg:w-5/6 mx-auto bg-white shadow-lg rounded-lg overflow-hidden mb-6 border-4 border-secondary opacity-60 pt-4">
+      <img className="w-full h-48 object-contain rounded-t-lg" src={urlImage + imagenServicio} alt={nombreServicio} />
       <div className="p-6 flex flex-col items-center text-center">
-        <h2 className="text-3xl font-bold text-gray-900 mb-2">{nombreServicio}</h2>
-        <p className="text-gray-700 mb-2"><strong>Comercio:</strong> {nombreComercio}</p>
+        <h2 className="text-3xl font-bold text-primary mb-2">{nombreServicio}</h2>
+        <p className="text-primary mb-2"><strong>Provincia:</strong> {provincia}</p>
+        {/* <p className="text-gray-700 mb-2"><strong>Comercio:</strong> {nombreComercio}</p>
         <p className="text-gray-600 mb-2"><strong>Pais:</strong> {pais}</p>
         <p className="text-gray-600 mb-2"><strong>Provincia:</strong> {provincia}</p>
         <p className="text-gray-600 mb-2"><strong>Departamento:</strong> {estadoDepartamento}</p>
-        <p className="text-gray-600 mb-2"><strong>Lugar físico:</strong> {lugarFisico ? 'Sí' : 'No'}</p>
-        <p className="text-gray-600 mb-2"><strong>Voy al lugar:</strong> {voyAlLugar ? 'Sí' : 'No'}</p>
-        <p className="text-gray-700 mb-4">{observacion}</p>
+        <p className="text-gray-600 mb-2"><strong>Lugar físico:</strong> {lugarFisico ? 'Sí' : 'No'}</p> */}
+        {/* <p className="text-gray-600 mb-2"><strong>Voy al lugar:</strong> {voyAlLugar ? 'Sí' : 'No'}</p> */}
+        <p className="text-primary mb-4">{observacion}</p>
+
+        <button
+        className="bg-secondary hover:bg-white hover:text-secondary text-white font-bold py-2 px-4 rounded mt-4 transition duration-300 ease-in-out"
+        onClick={handleOpenModal}
+      >
+        Ver detalles del servicio
+      </button>
+        
+        {/* boton mapa */}
+        <button
+  className="bg-secondary hover:bg-white text-white font-bold hover:text-secondary transition duration-300 ease-in-out rounded-lg mt-4 mb-4 pb-2 flex items-center pl-3 self-start"
+  onClick={() => setShowMapModal(true)}
+  style={{ width: '48px', height: '48px' }}
+>
+  <FaMapMarkerAlt size={20} className="mr-2" /> 
+</button>
+
+
+
+      {showModalDetails && (
+  <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+    <div className="bg-white rounded-lg shadow-lg max-w-md w-full p-6 relative">
+      <button
+        className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
+        onClick={handleCloseModal}
+        aria-label="Cerrar modal"
+      >
+        <FaTimes size={20} />
+      </button>
+      
+      <h2 className="text-2xl font-bold text-gray-800 mb-4">Detalles del Servicio</h2>
+      <div className="text-gray-700 space-y-2">
+        <p><strong>Servicio:</strong> {nombreServicio}</p>
+        <p><strong>Comercio:</strong> {nombreComercio}</p>
+        <p><strong>País:</strong> {pais}</p>
+        <p><strong>Provincia:</strong> {provincia}</p>
+        <p><strong>Departamento:</strong> {estadoDepartamento}</p>
+        <p><strong>Lugar físico:</strong> {lugarFisico ? 'Sí' : 'No'}</p>
+        <p><strong>Dirección del Servicio:</strong> {direccionServicio}</p>
+         <p className="text-gray-600 mb-2"><strong>Voy al lugar:</strong> {voyAlLugar ? 'Sí' : 'No'}</p>
+        <p><strong>Precio por Hora:</strong> {pricehour}</p>
+        
+        <h3 className="text-xl font-semibold text-gray-800 mt-4">Información del Prestador</h3>
+        {/* <p><strong>Nombre:</strong> {name} {lastName}</p> */}
+        <p><strong>Nombre de Usuario:</strong> {username}</p>
+        <p><strong>Email:</strong> {email}</p>
+        <p><strong>Teléfono:</strong> {phone}</p>
+        {/* <p><strong>Dirección del Prestador:</strong> {direccionUsuario}</p> */}
+      </div>
+    </div>
+  </div>
+)}
+
+
 
         <button
           className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
@@ -180,6 +258,34 @@ export default function ServicesCard({ servicio, mascotas, tieneToken }) {
             )}
           </div>
         )}
+
+
+
+{showMapModal && (
+  <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+    <div className="bg-white p-6 rounded-lg shadow-lg max-w-md w-full">
+      <button
+        className="text-red-500 hover:text-red-700 font-bold text-lg mb-4"
+        onClick={() => setShowMapModal(false)}
+      >
+        Cerrar
+      </button>
+      <div className="h-64 w-full">
+        <MapContainer
+          center={[latitud, longitud]}
+          zoom={13}
+          style={{ height: "100%", width: "100%" }}
+        >
+          <TileLayer
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          />
+          <Marker position={[latitud, longitud]} />
+        </MapContainer>
+      </div>
+    </div>
+  </div>
+)}
 
         {selectedTurnos.length > 0 && (
           <button

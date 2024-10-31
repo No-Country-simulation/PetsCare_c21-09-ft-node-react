@@ -38,4 +38,6 @@ public class VerReservasDTO {
     private List<Long> turnosId;
     private List<LocalDate> turnosFecha;
     private List<LocalTime> turnosHora;
+
+
 }

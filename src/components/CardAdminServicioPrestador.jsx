@@ -29,7 +29,7 @@ export default function CardAdminServicioPrestador({ servicio }) {
   };
 
   const handleTusReservas = () => {
-    navigate(`/tus-reservas/${idServicio}`);
+    navigate(`/tus-reservas/`);
   };
 
   return (
@@ -39,7 +39,7 @@ export default function CardAdminServicioPrestador({ servicio }) {
         <img
           src={`${urlImage}${imagenServicio}`} 
           alt={nombreServicio}
-          className="w-full h-48 object-cover rounded-lg mb-4"
+          className="w-full h-48 object-contain rounded-lg mb-4"
         />
       )}
 

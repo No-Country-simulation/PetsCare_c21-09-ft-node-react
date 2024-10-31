@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { MapContainer, TileLayer, Marker, useMapEvents } from "react-leaflet";
+
 import { apiUrl } from "../js/globalApi";
 import { jwtDecode } from "jwt-decode";
+import { MapContainer, TileLayer, Marker, useMapEvents } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 
 export default function AgregarServicio() {
@@ -18,7 +19,7 @@ export default function AgregarServicio() {
   const [provincia, setProvincia] = useState("");
   const [estadoDepartamento, setEstadoDepartamento] = useState("");
   const [direccion, setDireccion] = useState("");
-  const [priceHour, setPriceHour] = useState(0.0);
+  const [priceHour, setPriceHour] = useState("");
   const [latitud, setLatitud] = useState(-34.6037);
   const [longitud, setLongitud] = useState(-58.3816);
   const [imagenServicio, setImagenServicio] = useState(null);
@@ -76,7 +77,7 @@ export default function AgregarServicio() {
       // Redirigir a /mis-servicios después de 3 segundos
       setTimeout(() => {
         setMostrarMensaje(false);
-        navigate("/mis-servicios");
+        navigate("/admin-servicios");
       }, 3000);
     } catch (error) {
       // Mostrar mensaje de error si hay conflicto
@@ -137,6 +138,7 @@ export default function AgregarServicio() {
             <option value="TRANSPORTE_DE_MASCOTAS">
               Transporte de Mascotas
             </option>
+            <option value="PELUQUERIA">Peluqueria</option>
           </select>
         </div>
 
@@ -255,8 +257,7 @@ export default function AgregarServicio() {
             Precio por Hora en $
           </label>
           <input
-            type="number"
-            step="0.01"
+            type="text"
             id="priceHour"
             className="p-2 border border-gray-300 rounded"
             value={priceHour}

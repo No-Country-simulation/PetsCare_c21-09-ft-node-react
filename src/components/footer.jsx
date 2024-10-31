@@ -11,29 +11,29 @@ const Footer = () => {
   return (
     <footer className="bg-secondary w-full h-auto relative text-white py-8 flex flex-col z-50">
       <div className="w-full px-4">
-        <div className="flex md:flex-row md:justify-between p-1">
-          <div className="flex flex-wrap w-full md:w-1/3 mb-6 md:mb-0">
-            <img src={Dog} alt="" className="size-32" />
-            <h3 className="text-2xl font-bold mb-2 m-10">Cuidados Peludos</h3>
+        <div className="flex flex-col md:flex-row md:justify-between p-1">
+          <div className="flex items-center w-full md:w-1/3 mb-6 md:mb-0">
+            <img src={Dog} alt="Dog Logo" className="w-8 h-8 mr-4" />
+            <h3 className="text-2xl font-bold">Cuidados Peludos</h3>
           </div>
 
-          <div className="flex flex-col md:mx-auto">
+          <div className="flex flex-col text-center md:text-left md:mx-auto mb-6 md:mb-0">
             <h3 className="text-2xl font-bold mb-2">Contacto</h3>
-            <p className="text-white font-bold">Email: contacto@cuidadospeludos.com</p>
-            <p className="text-white font-bold">Telefono: +54 9 55555555</p>
+            <p className="font-bold">Email: contacto@cuidadospeludos.com</p>
+            <p className="font-bold">Teléfono: +54 9 55555555</p>
           </div>
           
-          <div className="mt-6 w-full md:w-1/3 md:mx-auto">
+          <div className="w-full md:w-1/3 flex justify-center md:justify-end">
             <button
               onClick={toggleTerms}
-              className="bg-white p-2 font-bold text-secondary rounded-xl mt-6 hover:bg-secondary transition duration-300 ease-in-out hover:text-white hover:border-white border-4 hover:scale-105 ml-20"
+              className="bg-white p-2 font-bold text-secondary rounded-xl mt-6 md:mt--10 hover:bg-secondary transition duration-300 ease-in-out hover:text-white hover:border-white border-4 hover:scale-105"
             >
               Términos y Condiciones
             </button>
           </div>
         </div>
         {showTerms && (
-          <div className="mt-8 p-4 bg-primary rounded">
+          <div className="mt-8 p-4 bg-primary rounded w-full md:w-2/3 mx-auto break-words">
             <h4 className="text-lg font-semibold mb-2">Términos y Condiciones</h4>
             <p className="text-sm">
               1. Nuestros servicios están sujetos a disponibilidad.<br />
@@ -57,4 +57,5 @@ const Footer = () => {
 };
 
 export default Footer;
+
 

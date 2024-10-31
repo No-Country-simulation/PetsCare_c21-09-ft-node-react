@@ -1,8 +1,11 @@
 package com.backend.server.security.controller;
+import com.backend.server.DTO.DTOUsuarioAdmin;
+import com.backend.server.DTO.ServicioMapper.MapUsuarioAdminDTO;
 import com.backend.server.security.dto.UsuarioDTO;
 import com.backend.server.security.entity.Usuario;
 import com.backend.server.security.service.UsuarioServiceInterface;
 
+import com.backend.server.security.util.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,16 +14,39 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
 
 
 @RestController
 @RequestMapping("api/usuario")
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = "*")
 public class UsuarioController {
 
     @Autowired
     private UsuarioServiceInterface usuarioServiceInterface;
+
+    @Autowired
+    private MapUsuarioAdminDTO mapUsuarioAdminDTO;
+
+    @GetMapping("/traertodosdto")
+    public ResponseEntity<List<DTOUsuarioAdmin>> getUsuariosDTO() {
+        // Verificar si el usuario está autenticado
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication == null || !authentication.isAuthenticated() || authentication instanceof AnonymousAuthenticationToken) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                    .header("Error-Message", "Usuario no autenticado")
+                    .body(Collections.emptyList());
+        }
+
+        List<Usuario> listaUsuarios = usuarioServiceInterface.getUsuarios();
+
+        List<DTOUsuarioAdmin> listaMapeadaADTO = mapUsuarioAdminDTO.convertEntityToDTO(listaUsuarios);
+        // Si está autenticado, proceder con la operación
+        return ResponseEntity.ok(listaMapeadaADTO);
+    }
+
 
 //    Metodo controller para traer el usuario siendo comerciante
 
@@ -87,6 +113,24 @@ public class UsuarioController {
             // Para cualquier otro tipo de error, como problemas en la base de datos, etc.
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error al actualizar los datos del usuario.");
         }
+    }
+
+    @PutMapping("/marcarverify/{id}")
+    public ResponseEntity<?> marcarUsuario(@PathVariable(name = "id") String id) {
+        // Verificar si el usuario está autenticado
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication == null || !authentication.isAuthenticated() || authentication instanceof AnonymousAuthenticationToken) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Usuario no autenticado");
+        }
+
+        // Si está autenticado, proceder con la operación
+        Usuario usuario = usuarioServiceInterface.findUsuario(Long.parseLong(id)).orElse(null);
+        usuario.setRole(Role.PRESTADORSERVICIO);
+        usuario.setUsuarioVerificado(true);
+
+        usuarioServiceInterface.save(usuario);
+
+        return ResponseEntity.ok(usuario);
     }
 
     @GetMapping("/traer/{id}")

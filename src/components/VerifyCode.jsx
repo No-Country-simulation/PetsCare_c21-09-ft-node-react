@@ -72,7 +72,7 @@ export default function VerifyCode() {
           </div>
 
           <button
-            className={`w-full py-2 bg-primary text-white rounded-md hover:bg-primary-dark transition ${
+            className={`w-full py-2 bg-main-blue text-white rounded-md hover:bg-primary-dark transition ${
               isSubmitting ? "opacity-50 cursor-not-allowed" : ""
             }`}
             type="submit"

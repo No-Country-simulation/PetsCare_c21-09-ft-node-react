@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import BannerLogIn from "../components/BannerLogIn";
 import ServiceCategories from "../components/ServiceCategories";
 import All10ServiciosRamdom from "./All10ServiciosRamdom";
-import UserSideMenu from "../components/UserSideMenu";
+import BusquedaServiciosPorUbicacion from "../components/BusquedaServiciosPorUbicacion";
+// import UserSideMenu from "../components/UserSideMenu";
 
 export default function Home() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -22,8 +23,9 @@ export default function Home() {
       {/* Renderiza BannerLogIn solo si no está logueado */}
       {!isLoggedIn && <BannerLogIn />}
       <ServiceCategories />
+      <BusquedaServiciosPorUbicacion/>
       <All10ServiciosRamdom />
-      <UserSideMenu />
+      {/* <UserSideMenu /> */}
     </div>
   );
 }

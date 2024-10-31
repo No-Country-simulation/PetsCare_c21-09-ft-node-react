@@ -89,7 +89,7 @@ const NavBar = () => {
                 )}
               </li>
             </ul>
-            <div className="md:-ml-[300px]">
+           
               {/* Botones de autenticación solo si no está autenticado */}
               {!user && (
                 <div className="flex gap-2 ">
@@ -115,7 +115,7 @@ const NavBar = () => {
               {user && <CajaSesion />}
             </div>
           </div>
-        </div>
+        
 
         {/* desplegable para móviles */}
         <div

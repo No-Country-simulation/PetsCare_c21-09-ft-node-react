@@ -72,7 +72,7 @@ const developers = [
 
 const SobreNosotros = () => {
   return (
-    <div className="min-h-screen bg-light-blue py-16">
+    <div className="min-h-screen bg-white py-16 mt-12">
       <div className="container mx-auto px-6 space-y-16">
         
                

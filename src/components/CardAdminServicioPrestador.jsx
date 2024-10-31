@@ -29,7 +29,7 @@ export default function CardAdminServicioPrestador({ servicio }) {
   };
 
   const handleTusReservas = () => {
-    navigate(`/tus-reservas/${idServicio}`);
+    navigate(`/tus-reservas/`);
   };
 
   return (

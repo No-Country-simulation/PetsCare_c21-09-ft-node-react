@@ -111,7 +111,7 @@ export default function MisTurnos() {
   }
 
   return (
-    <div className="max-w-4xl mx-auto p-6 bg-white shadow-md rounded-lg mt-8 pt-4">
+    <div className="max-w-4xl mx-auto p-6 bg-white shadow-md rounded-lg mt-8 pt-40 mt-20">
       <h2 className="text-2xl font-bold text-center mb-6">Mis Turnos</h2>
 
       {successMessage && <p className="text-green-500">{successMessage}</p>}

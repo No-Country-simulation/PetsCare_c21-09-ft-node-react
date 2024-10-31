@@ -138,6 +138,7 @@ export default function AgregarServicio() {
             <option value="TRANSPORTE_DE_MASCOTAS">
               Transporte de Mascotas
             </option>
+            <option value="PELUQUERIA">Peluqueria</option>
           </select>
         </div>
 

@@ -26,6 +26,7 @@ import Error404 from "./pages/Error404";
 import ServiceCategories from "./components/ServiceCategories";
 import ServiciosPorUbicacion from "./pages/ServiciosPorUbicacion";
 import AdministracionVistaPrincipal from "./pages/AdministracionVistaPrincipal";
+import TusReservasPrestador from "./pages/TusReservasPrestador";
 
 function App() {
   
@@ -55,6 +56,9 @@ function App() {
               <Route path="/seleccion-admin-turnos/:idServicio" element={<AuthPrestadorServicio><DosBotonesSeleccionPrestador /></AuthPrestadorServicio>} />
               <Route path="/cargar-turnos/:idServicio" element={<AuthPrestadorServicio><CargarTurno /></AuthPrestadorServicio>} />
               <Route path="/mis-turnos/:idServicio" element={<AuthPrestadorServicio><MisTurnos /></AuthPrestadorServicio>} />
+              <Route path="/tus-reservas" element={<AuthPrestadorServicio><TusReservasPrestador/></AuthPrestadorServicio>} />
+
+              
               {/* Traer servicios */}
               <Route path="/servicios/veterinaria" element={<ContenedorServicios titulo="Veterinaria" enumNombreServicio="VETERINARIA" />} />
               <Route path="/servicios/guarderias" element={<ContenedorServicios titulo="Guarderia de Mascotas" enumNombreServicio="CUIDADO_DE_MASCOTAS" />} />

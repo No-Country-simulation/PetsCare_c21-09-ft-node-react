@@ -36,14 +36,14 @@ function Services() {
   return (
     <div className="p-4 bg-gray-100 mt-20">
       <div className="container mx-auto mt-20">
-        <h2 className="lg:text-3xl text-xl font-semibold text-center mb-12 text-primary mt-20">
+        <h2 className="lg:text-3xl text-xl font-semibold text-center mb-12 text-primary mt-20 mr-6 lg:mr-0">
           Busca el servicio que necesitas
         </h2>
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 justify-center">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 justify-center mr-6 lg:mr-0">
           {services.map((service, index) => (
             <div
               key={index}
-              className="border bg-white p-4 w-full max-w-xs mx-auto cursor-pointer hover:text-secondary transition duration-300 hover:border-secondary hover:shadow-xl hover:shadow-secondary hover:scale-110 rounded-lg shadow-md"
+              className="border bg-white p-4 w-full max-w-xs mx-auto cursor-pointer hover:text-secondary transition duration-300 hover:border-secondary hover:shadow-xl hover:shadow-secondary hover:scale-110 rounded-lg shadow-lg"
               onClick={() => navigate(service.link)}
             >
               <img src={service.image} alt={service.title} className="w-full h-28 object-contain mb-4" />

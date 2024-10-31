@@ -6,6 +6,7 @@ import CajaSesion from "./CajaSesion";
 import CajaAdmin from "./CajaAdmin";
 import { MdMenu, MdClose } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
+import Dog from "../assets/dog.png";
 
 const NavBar = () => {
   const { user, force } = useContext(AuthContext);
@@ -28,19 +29,19 @@ const NavBar = () => {
   return (
     <>
       <nav className="bg-white shadow-lg fixed top-0 left-0 w-full z-50">
-        <div className="flex justify-between items-center py-4 px-0 md:px-8 lg:px-16">
+        <div className="flex lg:justify-between items-center py-4 px-6 lg:pl-0 pl-4 lg:px-16">
           {/* Logo */}
           <div
-            className="text-2xl flex items-center gap-2 font-bold uppercase cursor-pointer"
+            className="lg:text-2xl flex items-center gap-2 font-bold uppercase md:text-base cursor-pointer"
             onClick={() => navigate("/")}
           >
-            <SiDatadog />
+            <img src={Dog} alt="Dog Logo" className="w-8 h-8 mr-1" />
             <p>Cuidados</p>
             <p className="text-secondary">Peludos</p>
           </div>
 
           {/* Botón hamburguesa */}
-          <div className="lg:hidden">
+          <div className="lg:hidden pl-20 pt-2">
             <button
               onClick={() => setOpen(!open)}
               className="text-3xl focus:outline-none"

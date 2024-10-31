@@ -36,7 +36,7 @@ function Services() {
   return (
     <div className="p-4 bg-gray-100 mt-20">
       <div className="container mx-auto mt-20">
-        <h2 className="text-3xl font-semibold text-center mb-12 text-primary mt-20">
+        <h2 className="lg:text-3xl text-xl font-semibold text-center mb-12 text-primary mt-20">
           Busca el servicio que necesitas
         </h2>
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 justify-center">

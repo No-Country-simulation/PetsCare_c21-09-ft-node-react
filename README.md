@@ -34,35 +34,35 @@ With the significant number of pet-owning households in Argentina, there is a gr
 - **Personalized Service Search**: Users can choose the type of service needed (walking, daycare, transport, etc.) tailored to their pet's specific needs for fast and efficient searching.
 
   <div align="center">
-    <img src="https://raw.githubusercontent.com/No-Country-simulation/PetsCare_c21-09-ft-node-react/desarrollo/src/assets/busquedaservicios.png" alt="Personalized search service" width="800"/>
+    <img src="https://github.com/No-Country-simulation/PetsCare_c21-09-ft-node-react/blob/3d76af247adb3884935fad4de5bb5710068e2675/src/assets/busquedaservicios.png" alt="Personalized search service" width="800"/>
   </div>
 
 - **Location Filter**: By entering their city or neighborhood, pet owners can find service providers nearby, ensuring convenience and accessibility.
 
   <div align="center">
-    <img src="https://raw.githubusercontent.com/No-Country-simulation/PetsCare_c21-09-ft-node-react/desarrollo/src/assets/filtroubicacion.png" alt="Location filter" width="800"/>
+    <img src="https://github.com/No-Country-simulation/PetsCare_c21-09-ft-node-react/blob/3d76af247adb3884935fad4de5bb5710068e2675/src/assets/filtroubicacion.png" alt="Location filter" width="800"/>
   </div>
 
 - **Service Listing with Reviews**: Each provider displays their profile with photos, service descriptions, prices, and reviews from other users, adding transparency and ease in comparing options.
 
   <div align="center">
-    <img src="https://raw.githubusercontent.com/No-Country-simulation/PetsCare_c21-09-ft-node-react/desarrollo/src/assets/opcionesprestadores.png" alt="Service Listing with Reviews" width="800"/>
+    <img src="https://github.com/No-Country-simulation/PetsCare_c21-09-ft-node-react/blob/3d76af247adb3884935fad4de5bb5710068e2675/src/assets/opcionesprestadores.png" alt="Service Listing with Reviews" width="800"/>
   </div>
 
 - **Service Detail and Booking Options**: Users can view detailed service information and proceed to book or contact the provider, making the process smooth and straightforward.
 
   <div align="center">
-    <img src="https://raw.githubusercontent.com/No-Country-simulation/PetsCare_c21-09-ft-node-react/desarrollo/src/assets/detallesservicio.png" alt="Service Detail" width="800"/>
+    <img src="https://github.com/No-Country-simulation/PetsCare_c21-09-ft-node-react/blob/3d76af247adb3884935fad4de5bb5710068e2675/src/assets/detallesservicio.png" alt="Service Detail" width="800"/>
   </div>
 
   <div align="center">
-    <img src="https://raw.githubusercontent.com/No-Country-simulation/PetsCare_c21-09-ft-node-react/desarrollo/src/assets/disponibilidadservicio.png" alt="Booking Options" width="800"/>
+    <img src="https://github.com/No-Country-simulation/PetsCare_c21-09-ft-node-react/blob/3d76af247adb3884935fad4de5bb5710068e2675/src/assets/disponibilidadservicio.png" alt="Booking Options" width="800"/>
   </div>
 
 - **Interactive Map**: A map feature displays nearby providers, enhancing the efficiency of the search and allowing for better planning.
 
   <div align="center">
-    <img src="https://raw.githubusercontent.com/No-Country-simulation/PetsCare_c21-09-ft-node-react/desarrollo/src/assets/mapa.png" alt="Interactive map" width="800"/>
+    <img src="https://github.com/No-Country-simulation/PetsCare_c21-09-ft-node-react/blob/3d76af247adb3884935fad4de5bb5710068e2675/src/assets/mapa.png" alt="Interactive map" width="800"/>
   </div>
 
 ## Design Process

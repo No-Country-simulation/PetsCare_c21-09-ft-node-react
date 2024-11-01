@@ -150,7 +150,7 @@ export default function ServicesCard({ servicio, mascotas, tieneToken }) {
   };
 
   return (
-    <div className="w-full lg:w-5/6 mx-auto bg-white shadow-lg rounded-lg overflow-hidden mb-6 border-4 border-secondary opacity-60 pt-4">
+    <div className="w-full lg:w-5/6 mx-auto bg-white shadow-lg rounded-lg overflow-hidden mb-6 mt-4 border-4 border-secondary opacity-60 pt-4">
       <img className="w-full h-48 object-contain rounded-t-lg" src={urlImage + imagenServicio} alt={nombreServicio} />
       <div className="p-6 flex flex-col items-center text-center">
         <h2 className="text-3xl font-bold text-primary mb-2">{nombreServicio}</h2>

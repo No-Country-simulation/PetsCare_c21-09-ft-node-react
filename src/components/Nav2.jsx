@@ -29,7 +29,7 @@ const NavBar = () => {
   return (
     <>
       <nav className="bg-white shadow-lg fixed top-0 left-0 w-full z-50">
-        <div className="flex lg:justify-between items-center py-4 px-6 lg:pl-0 pl-4 lg:px-16">
+        <div className="flex lg:justify-between items-center py-4 px-6 lg:pl-2 pl-4 lg:px-16">
           {/* Logo */}
           <div
             className="lg:text-2xl flex items-center gap-2 font-bold uppercase md:text-base cursor-pointer"
@@ -52,7 +52,7 @@ const NavBar = () => {
 
           {/* visible en desktop y oculto en móviles */}
           <div className="hidden lg:flex items-center gap-6 text-primary h-10 ">
-            <ul className="flex items-center gap-12 mr-72">
+            <ul className="flex items-center gap-12 mr-60">
               {/* Renderiza elementos del menú principal */}
               {mainMenuItems.map((item) => (
                 <li key={item.id}>

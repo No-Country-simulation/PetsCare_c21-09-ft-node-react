@@ -150,7 +150,7 @@ export default function ServicesCard({ servicio, mascotas, tieneToken }) {
   };
 
   return (
-    <div className="w-full lg:w-5/6 mx-auto bg-white shadow-lg rounded-lg overflow-hidden mb-6 mt-4 border-4 border-secondary opacity-60 pt-4">
+    <div className="w-full lg:w-5/6 mx-auto bg-white shadow-lg rounded-lg overflow-hidden mb-6 mt-4 border-4 border-secondary pt-4">
       <img className="w-full h-48 object-contain rounded-t-lg" src={urlImage + imagenServicio} alt={nombreServicio} />
       <div className="p-6 flex flex-col items-center text-center">
         <h2 className="text-3xl font-bold text-primary mb-2">{nombreServicio}</h2>
@@ -182,7 +182,7 @@ export default function ServicesCard({ servicio, mascotas, tieneToken }) {
 
 
       {showModalDetails && (
-  <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+  <div className="fixed inset-0 bg-black flex items-center justify-center z-50">
     <div className="bg-white rounded-lg shadow-lg max-w-md w-full p-6 relative">
       <button
         className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
@@ -299,7 +299,7 @@ export default function ServicesCard({ servicio, mascotas, tieneToken }) {
 
       {/* Modal para seleccionar la mascota */}
       {showModal && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+        <div className="fixed inset-0 flex items-center justify-center bg-black  z-50">
           <div className="bg-white p-6 rounded-lg shadow-lg max-w-md w-full">
             <h2 className="text-2xl font-bold mb-4">Selecciona tu mascota</h2>
             <ul>
@@ -333,7 +333,7 @@ export default function ServicesCard({ servicio, mascotas, tieneToken }) {
 
       {/* Modal de "No tienes mascotas registradas" o "No estás logueado" */}
       {showNoMascotasModal && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+        <div className="fixed inset-0 flex items-center justify-center bg-black z-50">
           <div className="bg-white p-6 rounded-lg shadow-lg max-w-md w-full text-center">
             {tieneToken ? (
               <>
@@ -363,7 +363,7 @@ export default function ServicesCard({ servicio, mascotas, tieneToken }) {
 
       {/* Modal de carga "Realizando Reserva de servicio" */}
       {isLoading && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+        <div className="fixed inset-0 flex items-center justify-center bg-black  z-50">
           <div className="bg-white p-6 rounded-lg shadow-lg max-w-md w-full text-center">
             <h2 className="text-2xl font-bold text-blue-600 mb-4">Realizando Reserva de servicio</h2>
             <p className="text-gray-700 mb-4">
@@ -375,7 +375,7 @@ export default function ServicesCard({ servicio, mascotas, tieneToken }) {
 
       {/* Modal de confirmación de reserva exitosa */}
       {showConfirmation && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+        <div className="fixed inset-0 flex items-center justify-center bg-black  z-50">
           <div className="bg-white p-6 rounded-lg shadow-lg max-w-md w-full text-center">
             <h2 className="text-2xl font-bold text-green-600 mb-4">Reserva Confirmada</h2>
             <p className="text-gray-700 mb-4">¡Reserva realizada con éxito!</p>

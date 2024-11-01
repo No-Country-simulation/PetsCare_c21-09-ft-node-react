@@ -1,7 +1,6 @@
 import { useEffect, useContext, useState } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import { NavBarMenu } from "../mockData/data";
-import { SiDatadog } from "react-icons/si";
 import CajaSesion from "./CajaSesion";
 import CajaAdmin from "./CajaAdmin";
 import { MdMenu, MdClose } from "react-icons/md";
@@ -41,7 +40,7 @@ const NavBar = () => {
           </div>
 
           {/* Botón hamburguesa */}
-          <div className="lg:hidden pl-20 pt-2">
+          <div className="lg:hidden ml-auto">
             <button
               onClick={() => setOpen(!open)}
               className="text-3xl focus:outline-none"

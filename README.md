@@ -1,8 +1,10 @@
-<img src="https://github.com/No-Country-simulation/PetsCare_c21-09-ft-node-react/blob/5319fe6dd30986283c05f0b3ac53c8fe6be0a19a/src/assets/dog.png" alt="Cuidado Peludo pets" width="120"/> 
-
-# Cuidado Peludo 
-
-<img src="https://github.com/No-Country-simulation/PetsCare_c21-09-ft-node-react/blob/5319fe6dd30986283c05f0b3ac53c8fe6be0a19a/src/assets/logo.png" alt="Cuidado Peludo Logo" width="80"/>
+<table align="center">
+  <tr>
+    <td><img src="https://raw.githubusercontent.com/No-Country-simulation/PetsCare_c21-09-ft-node-react/desarrollo/src/assets/logo.png" alt="Cuidado Peludo Logo" width="80"/></td>
+    <td><h1>Cuidado Peludo</h1></td>
+    <td><img src="https://raw.githubusercontent.com/No-Country-simulation/PetsCare_c21-09-ft-node-react/desarrollo/src/assets/dog.png" alt="Cuidado Peludo pets" width="120"/></td>
+  </tr>
+</table>
 
 A platform designed to connect pet owners in Argentina with specialized pet care services, making it easier to find and book services such as dog walking, daycare, transport, veterinary care, training, and general pet care.
 

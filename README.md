@@ -68,19 +68,38 @@ We organized our work using sprints, with daily meetings to discuss progress, ad
 
 ## Installation and Setup
 
+### Project Installation Guide
+
+Follow these steps to set up and run the project in your local environment:
+
 1. **Clone the repository**:
    ```bash
    git clone https://github.com/yourusername/cuidado-peludo.git
    cd cuidado-peludo
+   
+2. **Prerequisites**:
 
-2. **Backend Setup**:
-- Ensure Docker is installed and running on your system. 
-- Run MySQL on Docker:
+- **Java 17 LTS**: Ensure you have Java version 17 installed.
+- **Maven**: Required for dependency management and building the Spring Boot project.
+- **Node.js LTS**: Needed for package management and frontend tools.
+- **Docker and Docker Compose**: For managing containers, including the MySQL database.
+
+3. **Database Setup with Docker**:
+- **Download the MySQL 8.4.0 image**:
    ```bash
-   docker-compose up
-- Start the backend server using Spring Boot (adjust configurations in application.properties as needed):
+   docker pull mysql:8.4.0
+
+  - **Start the MySQL container**: Navigate to the project root, where the docker-compose.yml file is located, and run:
+     ```bash
+     docker-compose up -d
+  
+This will start the MySQL container in the background.
+
+4. **Build and Run the Project**:
+- **Backend (Spring Boot)**:
    ```bash
-  ./mvnw spring-boot:run
+  mvn clean install
+  mvn spring-boot:run
   
 3. **Frontend Setup**:
 - Navigate to the client directory.
@@ -92,12 +111,7 @@ We organized our work using sprints, with daily meetings to discuss progress, ad
    ```bash
   npm run dev
 
-4. **Database Configuration**:
-- Ensure your database connection details match those in application.properties:
-   ```bash
-  spring.datasource.url=jdbc:mysql://localhost:3307/db_cuidadomascotas
-  spring.datasource.username=root
-  spring.datasource.password=admin
+Ensure that all services are running and that database connection settings are correct.
   
 ## Usage
 
@@ -117,6 +131,16 @@ Some potential future improvements include:
 - Enhancing the review system to include photos and more detailed feedback 
 - Expanding the range of services to include grooming, pet training classes, and emergency care 
 - Building a mobile application for iOS and Android
+
+## Deployment Information
+The deployment for testing was carried out on AWS using an EC2 t2.micro instance configured with Ubuntu 22.04. The setup included installing Java 17 and Nginx to serve the React project and connect via reverse proxy to the MySQL database, which was hosted using AWS RDS. An HTTPS certificate for the test domain was installed via Certbot.
+
+## API Documentation
+
+All endpoints can be accessed once the application is running on port 8080 via Swagger at the following URL:
+
+[http://localhost:8080/swagger-ui/index.html](http://localhost:8080/swagger-ui/index.html)
+
 
 ## Acknowledgements
 

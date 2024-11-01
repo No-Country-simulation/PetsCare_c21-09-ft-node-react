@@ -29,7 +29,7 @@ With the significant number of pet-owning households in Argentina, there is a gr
 ## Key Features
 - **Personalized Service Search**: Users can choose the type of service needed (walking, daycare, transport, etc.) tailored to their pet's specific needs for fast and efficient searching.
 
-  <img src="https://raw.githubusercontent.com/No-Country-simulation/PetsCare_c21-09-ft-node-react/refs/heads/desarrollo/src/assets/busquedaservicios.png?token=GHSAT0AAAAAACYBE5IVT33B4G55MMFNARBWZZEDLQA" alt="Personalized search service" width="400"/>
+  <img src="https://github.com/No-Country-simulation/PetsCare_c21-09-ft-node-react/blob/cdf6599373fe7bed5c044d8f1746baad2d8513b0/src/assets/busquedaservicios.png" alt="Personalized search service" width="400"/>
 
 - **Location Filter**: By entering their city or neighborhood, pet owners can find service providers nearby, ensuring convenience and accessibility.
 
@@ -37,7 +37,7 @@ With the significant number of pet-owning households in Argentina, there is a gr
   
 - **Service Listing with Reviews**: Each provider displays their profile with photos, service descriptions, prices, and reviews from other users, adding transparency and ease in comparing options.
 
-  <img src="" alt="Service Listing with Reviews" width="400"/>
+  <img src="https://raw.githubusercontent.com/No-Country-simulation/PetsCare_c21-09-ft-node-react/refs/heads/desarrollo/src/assets/opcionesprestadores.png?token=GHSAT0AAAAAACYBE5IUVPSASLGLJ5T3GCNCZZED2HQ" alt="Service Listing with Reviews" width="400"/>
 
 - **Service Detail and Booking Options**: Users can view detailed service information and proceed to book or contact the provider, making the process smooth and straightforward.
 

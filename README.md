@@ -30,27 +30,40 @@ With the significant number of pet-owning households in Argentina, there is a gr
 **Cuidado Peludo** offers an opportunity to create an ecosystem where pet owners can access services like walking, daycare, transport, veterinary care, training, and other care services in one place. Leveraging the high adoption rate of pets in Argentina, this platform addresses a crucial need in a market that is still largely non-digital.
 
 ## Key Features
+
 - **Personalized Service Search**: Users can choose the type of service needed (walking, daycare, transport, etc.) tailored to their pet's specific needs for fast and efficient searching.
 
-  <img src="https://github.com/No-Country-simulation/PetsCare_c21-09-ft-node-react/blob/cdf6599373fe7bed5c044d8f1746baad2d8513b0/src/assets/busquedaservicios.png" alt="Personalized search service" width="800"/>
+  <div align="center">
+    <img src="https://raw.githubusercontent.com/No-Country-simulation/PetsCare_c21-09-ft-node-react/desarrollo/src/assets/busquedaservicios.png" alt="Personalized search service" width="800"/>
+  </div>
 
 - **Location Filter**: By entering their city or neighborhood, pet owners can find service providers nearby, ensuring convenience and accessibility.
 
-  <img src="https://github.com/No-Country-simulation/PetsCare_c21-09-ft-node-react/blob/5319fe6dd30986283c05f0b3ac53c8fe6be0a19a/src/assets/filtroubicacion.png" alt="Location filer" width="800"/>
-  
+  <div align="center">
+    <img src="https://raw.githubusercontent.com/No-Country-simulation/PetsCare_c21-09-ft-node-react/desarrollo/src/assets/filtroubicacion.png" alt="Location filter" width="800"/>
+  </div>
+
 - **Service Listing with Reviews**: Each provider displays their profile with photos, service descriptions, prices, and reviews from other users, adding transparency and ease in comparing options.
 
-  <img src="https://github.com/No-Country-simulation/PetsCare_c21-09-ft-node-react/blob/5319fe6dd30986283c05f0b3ac53c8fe6be0a19a/src/assets/opcionesprestadores.png" alt="Service Listing with Reviews" width="800"/>
+  <div align="center">
+    <img src="https://raw.githubusercontent.com/No-Country-simulation/PetsCare_c21-09-ft-node-react/desarrollo/src/assets/opcionesprestadores.png" alt="Service Listing with Reviews" width="800"/>
+  </div>
 
 - **Service Detail and Booking Options**: Users can view detailed service information and proceed to book or contact the provider, making the process smooth and straightforward.
 
-  <img src="https://github.com/No-Country-simulation/PetsCare_c21-09-ft-node-react/blob/5319fe6dd30986283c05f0b3ac53c8fe6be0a19a/src/assets/detallesservicio.png" alt="Service Detail" width="800"/>
-  
-  <img src="https://github.com/No-Country-simulation/PetsCare_c21-09-ft-node-react/blob/5319fe6dd30986283c05f0b3ac53c8fe6be0a19a/src/assets/disponibilidadservicio.png" alt="Booking Options" width="800"/>
+  <div align="center">
+    <img src="https://raw.githubusercontent.com/No-Country-simulation/PetsCare_c21-09-ft-node-react/desarrollo/src/assets/detallesservicio.png" alt="Service Detail" width="800"/>
+  </div>
+
+  <div align="center">
+    <img src="https://raw.githubusercontent.com/No-Country-simulation/PetsCare_c21-09-ft-node-react/desarrollo/src/assets/disponibilidadservicio.png" alt="Booking Options" width="800"/>
+  </div>
 
 - **Interactive Map**: A map feature displays nearby providers, enhancing the efficiency of the search and allowing for better planning.
 
-  <img src="https://github.com/No-Country-simulation/PetsCare_c21-09-ft-node-react/blob/5319fe6dd30986283c05f0b3ac53c8fe6be0a19a/src/assets/mapa.png" alt="Interactive map" width="800"/>
+  <div align="center">
+    <img src="https://raw.githubusercontent.com/No-Country-simulation/PetsCare_c21-09-ft-node-react/desarrollo/src/assets/mapa.png" alt="Interactive map" width="800"/>
+  </div>
 
 ## Design Process
 The design process involved multiple iterations in Figma. The platform was initially designed for desktop use but is fully responsive for other devices. You can view the design prototype on Figma [here](https://www.figma.com/proto/DvdKKnVCzvJcJ0WDmiPZYj/Proyecto-Cuidado-Peludo-1?node-id=2015-1029&node-type=canvas&t=tfgiYaMGA38A4cRl-1&scaling=min-zoom&content-scaling=fixed&page-id=2001%3A571&starting-point-node-id=2015%3A1029).

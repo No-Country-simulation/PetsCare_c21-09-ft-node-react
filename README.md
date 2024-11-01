@@ -1,8 +1,8 @@
 <table align="center">
   <tr>
-    <td><img src="https://raw.githubusercontent.com/No-Country-simulation/PetsCare_c21-09-ft-node-react/desarrollo/src/assets/logo.png" alt="Cuidado Peludo Logo" width="80"/></td>
+    <td><img src="https://github.com/No-Country-simulation/PetsCare_c21-09-ft-node-react/blob/e050e2299fa314d164cf35e8a0e4aced148427a3/src/assets/logo.png" alt="Cuidado Peludo Logo" width="80"/></td>
     <td><h1>Cuidado Peludo</h1></td>
-    <td><img src="https://raw.githubusercontent.com/No-Country-simulation/PetsCare_c21-09-ft-node-react/desarrollo/src/assets/dog.png" alt="Cuidado Peludo pets" width="120"/></td>
+    <td><img src="https://github.com/No-Country-simulation/PetsCare_c21-09-ft-node-react/blob/e050e2299fa314d164cf35e8a0e4aced148427a3/src/assets/dog.png" alt="Cuidado Peludo pets" width="80"/></td>
   </tr>
 </table>
 

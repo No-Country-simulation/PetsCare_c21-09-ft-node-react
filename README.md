@@ -28,15 +28,30 @@ With the significant number of pet-owning households in Argentina, there is a gr
 
 ## Key Features
 - **Personalized Service Search**: Users can choose the type of service needed (walking, daycare, transport, etc.) tailored to their pet's specific needs for fast and efficient searching.
+
+  <img src="https://raw.githubusercontent.com/No-Country-simulation/PetsCare_c21-09-ft-node-react/refs/heads/desarrollo/src/assets/busquedaservicios.png?token=GHSAT0AAAAAACYBE5IVT33B4G55MMFNARBWZZEDLQA" alt="Personalized search service" width="400"/>
+
 - **Location Filter**: By entering their city or neighborhood, pet owners can find service providers nearby, ensuring convenience and accessibility.
+
+  <img src="https://raw.githubusercontent.com/No-Country-simulation/PetsCare_c21-09-ft-node-react/refs/heads/desarrollo/src/assets/filtroubicacion.png?token=GHSAT0AAAAAACYBE5IULGPJQHOAN6OIN5CGZZEDN5A" alt="Location filer" width="400"/>
+  
 - **Service Listing with Reviews**: Each provider displays their profile with photos, service descriptions, prices, and reviews from other users, adding transparency and ease in comparing options.
+
+  <img src="" alt="Service Listing with Reviews" width="400"/>
+
 - **Service Detail and Booking Options**: Users can view detailed service information and proceed to book or contact the provider, making the process smooth and straightforward.
+
+  <img src="https://raw.githubusercontent.com/No-Country-simulation/PetsCare_c21-09-ft-node-react/refs/heads/desarrollo/src/assets/detallesservicio.png?token=GHSAT0AAAAAACYBE5IV5E2ZRHDBQ2IEIHP6ZZEDVEQ" alt="Service Detail" width="400"/>
+  
+  <img src="https://raw.githubusercontent.com/No-Country-simulation/PetsCare_c21-09-ft-node-react/refs/heads/desarrollo/src/assets/disponibilidadservicio.png?token=GHSAT0AAAAAACYBE5IV6SGQR3QILN2BCRB2ZZEDVQQ" alt="Booking Options" width="400"/>
+
 - **Interactive Map**: A map feature displays nearby providers, enhancing the efficiency of the search and allowing for better planning.
+
+  <img src="https://raw.githubusercontent.com/No-Country-simulation/PetsCare_c21-09-ft-node-react/refs/heads/desarrollo/src/assets/mapa.png?token=GHSAT0AAAAAACYBE5IVYM5FXO3NHKARLFUMZZEDTOA" alt="Interactive map" width="400"/>
 
 ## Design Process
 The design process involved multiple iterations in Figma. The platform was initially designed for desktop use but is fully responsive for other devices. You can view the design prototype on Figma [here](https://www.figma.com/proto/DvdKKnVCzvJcJ0WDmiPZYj/Proyecto-Cuidado-Peludo-1?node-id=2015-1029&node-type=canvas&t=tfgiYaMGA38A4cRl-1&scaling=min-zoom&content-scaling=fixed&page-id=2001%3A571&starting-point-node-id=2015%3A1029).
 
-<img src="https://raw.githubusercontent.com/No-Country-simulation/PetsCare_c21-09-ft-node-react/refs/heads/desarrollo/src/assets/dog.png?token=GHSAT0AAAAAACYBE5IUNZQQORWQV7OUUDE6ZZECJEQ" alt="Cuidado Peludo pets" width="120"/>
 ## Technical Stack
 - **Frontend**: React and Tailwind CSS
 - **Backend**: Spring Boot

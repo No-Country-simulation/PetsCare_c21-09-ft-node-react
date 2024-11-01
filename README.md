@@ -1,6 +1,6 @@
-# Cuidado Peludo <img src="https://raw.githubusercontent.com/No-Country-simulation/PetsCare_c21-09-ft-node-react/refs/heads/desarrollo/src/assets/logo.png?token=GHSAT0AAAAAACYBE5IVIMUE52IS5WKBQJSMZZECBMA" alt="Cuidado Peludo Logo" width="80"/>
+# Cuidado Peludo <img src="https://github.com/No-Country-simulation/PetsCare_c21-09-ft-node-react/blob/5319fe6dd30986283c05f0b3ac53c8fe6be0a19a/src/assets/logo.png" alt="Cuidado Peludo Logo" width="80"/>
 
-<img src="https://raw.githubusercontent.com/No-Country-simulation/PetsCare_c21-09-ft-node-react/refs/heads/desarrollo/src/assets/dog.png?token=GHSAT0AAAAAACYBE5IUNZQQORWQV7OUUDE6ZZECJEQ" alt="Cuidado Peludo pets" width="120"/>
+<img src="https://github.com/No-Country-simulation/PetsCare_c21-09-ft-node-react/blob/5319fe6dd30986283c05f0b3ac53c8fe6be0a19a/src/assets/dog.png" alt="Cuidado Peludo pets" width="120"/>
 
 
 A platform designed to connect pet owners in Argentina with specialized pet care services, making it easier to find and book services such as dog walking, daycare, transport, veterinary care, training, and general pet care.
@@ -33,21 +33,21 @@ With the significant number of pet-owning households in Argentina, there is a gr
 
 - **Location Filter**: By entering their city or neighborhood, pet owners can find service providers nearby, ensuring convenience and accessibility.
 
-  <img src="https://raw.githubusercontent.com/No-Country-simulation/PetsCare_c21-09-ft-node-react/refs/heads/desarrollo/src/assets/filtroubicacion.png?token=GHSAT0AAAAAACYBE5IULGPJQHOAN6OIN5CGZZEDN5A" alt="Location filer" width="400"/>
+  <img src="https://github.com/No-Country-simulation/PetsCare_c21-09-ft-node-react/blob/5319fe6dd30986283c05f0b3ac53c8fe6be0a19a/src/assets/filtroubicacion.png" alt="Location filer" width="400"/>
   
 - **Service Listing with Reviews**: Each provider displays their profile with photos, service descriptions, prices, and reviews from other users, adding transparency and ease in comparing options.
 
-  <img src="https://raw.githubusercontent.com/No-Country-simulation/PetsCare_c21-09-ft-node-react/refs/heads/desarrollo/src/assets/opcionesprestadores.png?token=GHSAT0AAAAAACYBE5IUVPSASLGLJ5T3GCNCZZED2HQ" alt="Service Listing with Reviews" width="400"/>
+  <img src="https://github.com/No-Country-simulation/PetsCare_c21-09-ft-node-react/blob/5319fe6dd30986283c05f0b3ac53c8fe6be0a19a/src/assets/opcionesprestadores.png" alt="Service Listing with Reviews" width="400"/>
 
 - **Service Detail and Booking Options**: Users can view detailed service information and proceed to book or contact the provider, making the process smooth and straightforward.
 
-  <img src="https://raw.githubusercontent.com/No-Country-simulation/PetsCare_c21-09-ft-node-react/refs/heads/desarrollo/src/assets/detallesservicio.png?token=GHSAT0AAAAAACYBE5IV5E2ZRHDBQ2IEIHP6ZZEDVEQ" alt="Service Detail" width="400"/>
+  <img src="https://github.com/No-Country-simulation/PetsCare_c21-09-ft-node-react/blob/5319fe6dd30986283c05f0b3ac53c8fe6be0a19a/src/assets/detallesservicio.png" alt="Service Detail" width="400"/>
   
-  <img src="https://raw.githubusercontent.com/No-Country-simulation/PetsCare_c21-09-ft-node-react/refs/heads/desarrollo/src/assets/disponibilidadservicio.png?token=GHSAT0AAAAAACYBE5IV6SGQR3QILN2BCRB2ZZEDVQQ" alt="Booking Options" width="400"/>
+  <img src="https://github.com/No-Country-simulation/PetsCare_c21-09-ft-node-react/blob/5319fe6dd30986283c05f0b3ac53c8fe6be0a19a/src/assets/disponibilidadservicio.png" alt="Booking Options" width="400"/>
 
 - **Interactive Map**: A map feature displays nearby providers, enhancing the efficiency of the search and allowing for better planning.
 
-  <img src="https://raw.githubusercontent.com/No-Country-simulation/PetsCare_c21-09-ft-node-react/refs/heads/desarrollo/src/assets/mapa.png?token=GHSAT0AAAAAACYBE5IVYM5FXO3NHKARLFUMZZEDTOA" alt="Interactive map" width="400"/>
+  <img src="https://github.com/No-Country-simulation/PetsCare_c21-09-ft-node-react/blob/5319fe6dd30986283c05f0b3ac53c8fe6be0a19a/src/assets/mapa.png" alt="Interactive map" width="400"/>
 
 ## Design Process
 The design process involved multiple iterations in Figma. The platform was initially designed for desktop use but is fully responsive for other devices. You can view the design prototype on Figma [here](https://www.figma.com/proto/DvdKKnVCzvJcJ0WDmiPZYj/Proyecto-Cuidado-Peludo-1?node-id=2015-1029&node-type=canvas&t=tfgiYaMGA38A4cRl-1&scaling=min-zoom&content-scaling=fixed&page-id=2001%3A571&starting-point-node-id=2015%3A1029).

@@ -77,6 +77,8 @@ The design process involved multiple iterations in Figma. The platform was initi
 ## Team Organization
 This project was developed as part of No Country's simulation program, which provides real-world experience to help people develop technical and interpersonal skills. Our team consisted of 11 members, with seven actively contributing to the project. We had frontend developers, backend developers, a UX designer, and a team leader.
 
+![Team Collaboration](https://github.com/No-Country-simulation/PetsCare_c21-09-ft-node-react/blob/df5eb3644f905fcc92e7ea42b7720ab76c44363f/src/assets/c21-09-ft-node-react%20Team%20-%20Cupe%20Background.jpg)
+
 We organized our work using sprints, with daily meetings to discuss progress, address blockers, and assign tasks. Our flexible schedule allowed us to adapt to individual availability, fostering a collaborative and supportive team environment.
 
 ## Installation and Setup
